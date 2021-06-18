@@ -1,0 +1,49 @@
+<template>
+  <div>
+    <H2></H2> 
+    <SideMenu></SideMenu>
+    <SignIn></SignIn>
+  </div>
+</template>
+
+<script>
+import H2 from '@/components/Atoms/H2.vue';
+import SideMenu from '@/components/Organisms/SideMenu.vue';
+import SignIn from '@/components/Organisms/SignIn.vue';
+export default {
+  name: 'HelloWorld',
+  components: {
+    H2,
+    // H3,
+    // P,
+    // Button,
+    // Tag,
+    // Icon,
+    SideMenu,
+    SignIn,
+  },
+  data(){
+    return{
+    }
+  }
+};
+</script>
+<style scoped>
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+
+
+
+</style>
