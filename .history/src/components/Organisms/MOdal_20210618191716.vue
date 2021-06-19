@@ -7,8 +7,11 @@
       <div class="card column is-half ">
         <div class="card-content">
           <div class="content">
-            <Form></Form>
-
+            <Form>/<Form>
+            Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros.
+            Donec id elit non mi porta gravida at eget metus. Cum sociis natoque
+            penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            Cras mattis consectetur purus sit amet fermentum.
           </div>
           <button class="button" @click="closeModal">閉じる</button>
         </div>
@@ -19,7 +22,7 @@
 </template>
 
 <script>
-import Form from '@/components/Molecules/Form';
+import Form from '../components/Molecules/Form';
 
 
 export default {
