@@ -1,0 +1,32 @@
+<template>
+
+<div class="box">
+  <article class="media">
+
+    <div class="media-content">
+      <div class="content">
+        <p has-text-left>
+          <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+          <br>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+        </p>
+        <span class="tag">Tag label</span>
+        <span class="tag">Tag label</span>
+      </div>
+    </div>
+  </article>
+</div>
+  
+</template>
+
+
+<script>
+export default {
+  
+}
+</script>
+
+
+<style scoped>
+
+</style>
