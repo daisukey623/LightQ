@@ -34,6 +34,7 @@
         <div class="mt-5">
         <h3 class="title is-3">回答する</h3>
          <CommentForm/>
+         <CommentFeed/>
          </div>
       </div>
     </div>
@@ -45,12 +46,14 @@ import { mapGetters } from 'vuex';
 import SideMenu from '../components/Organisms/SideMenu';
 import Header from '../components/Organisms/Header';
 import CommentForm from '../components/Molecules/CommentForm';
+import CommentFeed from '../components/Organisms/CommentFeed';
 
 export default {
   components: {
     SideMenu,
     Header,
     CommentForm,
+    CommentFeed
   },
   created() {
     this.$store.dispatch('goPost', this.$route.params.id);
