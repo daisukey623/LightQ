@@ -88,8 +88,9 @@ export default new Vuex.Store({
         });
       });
     },
-    async goPost({ commit }, e) {
-      const postRef = await db.collection('posts').doc(e);
+    async goPost({ commit },e) {
+      console.log(e)
+      const postRef = await db.collection('posts').doc(e) ;
       const postDoc = await postRef.get();
       if (postDoc.exists) {
         console.log(postDoc.data());
