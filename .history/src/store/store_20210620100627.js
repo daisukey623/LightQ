@@ -93,6 +93,7 @@ export default new Vuex.Store({
       const postDoc = await postRef.get();
       if (postDoc.exists) {
         console.log(postDoc.data());
+        // postDoc.data();
         commit('goPost', postDoc.data());
       } else {
         console.log('No such document!');

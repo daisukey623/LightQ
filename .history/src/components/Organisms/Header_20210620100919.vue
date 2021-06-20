@@ -21,7 +21,7 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
-        <button class="button is-light" @click="logOut()">ログアウト</button>
+        <button class="button is-light" @click="logOut()">Button</button>
       </div>
   </div>
 </nav>

@@ -14,7 +14,7 @@ export default new Vuex.Store({
     userLists: [],
     userListsID: [],
     ReceiveUserListsIndex: '',
-    post: '',
+    post:'',
     postsLists: [],
     postsListsId: [],
     comments: {
@@ -52,8 +52,8 @@ export default new Vuex.Store({
       state.postsListsId.push(doc.id);
     },
     goPost(state, doc) {
-      state.post = doc;
-      console.log(doc);
+     state.post = doc
+     console.log(doc)
     },
 
     resetStore(state) {
@@ -73,30 +73,34 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async getUser({ commit }) {
-      await db
-        .collection('users')
-        .doc(auth.currentUser.uid)
-        .onSnapshot((doc) => {
-          commit('getUser', doc);
-        });
+    getUser({ commit }) {
+      // const AsyncGetUser = async () => {
+        await db
+          .collection('users')
+          .doc(auth.currentUser.uid)
+          .onSnapshot((doc) => {
+            commit('getUser', doc);
+          });
+      };
+      AsyncGetUser();
     },
     async getPostsLists({ commit }) {
-      await db.collection('posts').onSnapshot((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          commit('getPostsLists', doc);
+        await db.collection('posts').onSnapshot((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            commit('getPostsLists', doc);
+          });
         });
-      });
     },
     async goPost({ commit }, e) {
-      const postRef = await db.collection('posts').doc(e);
-      const postDoc = await postRef.get();
-      if (postDoc.exists) {
-        console.log(postDoc.data());
-        commit('goPost', postDoc.data());
-      } else {
-        console.log('No such document!');
-      }
+        const postRef = await db.collection('posts').doc(e);
+        const postDoc = await postRef.get();
+        if (postDoc.exists) {
+          console.log(postDoc.data());
+          // postDoc.data();
+          commit('goPost',postDoc.data());
+        } else {
+          console.log('No such document!');
+        }
     },
 
     getReceiveUserIndex({ commit }, index) {
