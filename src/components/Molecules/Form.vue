@@ -1,5 +1,4 @@
 <template>
-  <form>
     <div class="field">
       <label class="label">相談したい採用領域</label>
       <div class="control">
@@ -55,7 +54,6 @@
         <button class="button" type="submit" @click="addPost">送信</button>
       </div>
     </div>
-  </form>
 </template>
 
 <script>
