@@ -27,11 +27,11 @@ export default {
   },
   methods:{
     addComment() {
-      console.log(this.comment);
+      if(this.comment !== ''){
       db.collection('comments')
         .doc()
         .set(
-            {
+          {
             comment: this.comment,
             post_id: this.$route.params.id,
             user_id:auth.currentUser.uid
@@ -39,6 +39,9 @@ export default {
           { marge: true }
         );
       this.init();
+      } else{
+        window.alert('回答が空白です')
+      }
     },
     init(){
       this.comment = '';

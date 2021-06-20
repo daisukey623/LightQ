@@ -17,13 +17,8 @@ export default new Vuex.Store({
     post: '',
     postsLists: [],
     postsListsId: [],
-    comments: {
-      comments_id: '',
-      comment: '',
-      post_id: '',
-      user_id: '',
-    },
     commentsLists: [],
+    commentsListsId: [],
     stateModal: false,
   },
   getters: {
@@ -39,6 +34,9 @@ export default new Vuex.Store({
     postsListsId: (state) => {
       return state.postsListsId;
     },
+    commentsLists: (state) => {
+      return state.commentsLists;
+    },
     stateModal: (state) => {
       return state.stateModal;
     },
@@ -51,9 +49,12 @@ export default new Vuex.Store({
       state.postsLists.push(doc.data());
       state.postsListsId.push(doc.id);
     },
+    getCommentsLists(state, doc) {
+      state.commentsLists.push(doc.data());
+      state.commentsListsId.push(doc.id);
+    },
     goPost(state, doc) {
       state.post = doc;
-      console.log(doc);
     },
 
     resetStore(state) {
@@ -82,18 +83,25 @@ export default new Vuex.Store({
         });
     },
     async getPostsLists({ commit }) {
-      await db.collection('posts').onSnapshot((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          commit('getPostsLists', doc);
-        });
+      const querySnapshot = await db.collection('posts').get();
+      querySnapshot.forEach((doc) => {
+        commit('getPostsLists', doc);
       });
     },
-    async goPost({ commit },e) {
-      console.log(e)
-      const postRef = await db.collection('posts').doc(e) ;
+    async getCommentsLists({ commit }, e) {
+      const querySnapshot = await db
+        .collection('comments')
+        .where('post_id', '==', e)
+        .get();
+
+      querySnapshot.forEach((doc) => {
+        commit('getCommentsLists', doc);
+      });
+    },
+    async goPost({ commit }, e) {
+      const postRef = await db.collection('posts').doc(e);
       const postDoc = await postRef.get();
       if (postDoc.exists) {
-        console.log(postDoc.data());
         commit('goPost', postDoc.data());
       } else {
         console.log('No such document!');
