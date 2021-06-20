@@ -41,8 +41,6 @@ export default {
   },
   methods: {
     toPosts(index) {
-      console.log(this.postsListsId[index])
-      // this.$store.dispatch('goPost',this.postsListsId[index])
       this.$router.push(`/posts/${this.postsListsId[index]}`);
     },
   },

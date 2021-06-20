@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-for="(postsList, index) in postsLists" :key="`first-${index}`">
-      <div @click="toPosts(index)" class="isPointer">
+    <div v-for="(commentsList, index) in commentsLists" :key="`first-${index}`">
+      <div class="isPointer">
         <div class="box mb-1">
           <article class="media">
             <div class="media-content">
@@ -9,18 +9,13 @@
                 <p class="has-text-left">
                   <!-- <strong>John Smith</strong>
                   <br /> -->
-                  {{ postsList.title }}
+                  {{ commentsList.comment }}
                 </p>
                 <div class="is-flex">
-                  <p class=" has-text-left">
-                    <span class="tag mx-1 ">{{ postsList.status }}</span>
-                  </p>
-                  <p class=" has-text-left">
-                    <span class="tag mx-1 has-text-left">{{
-                      postsList.tags
-                    }}</span>
-                  </p>
-                </div>
+
+                  <button class="button is-small has-text-left">この回答で解決</button>
+
+              </div>
               </div>
             </div>
           </article>
@@ -34,17 +29,13 @@
 import { mapGetters } from 'vuex';
 export default {
   created() {
-    this.$store.dispatch('getPostsLists');
+    this.$store.dispatch('getCommentsLists',this.$route.params.id);
   },
   computed: {
-    ...mapGetters(['postsLists','postsListsId']),
+    ...mapGetters(['commentsLists']),
   },
   methods: {
-    toPosts(index) {
-      console.log(this.postsListsId[index])
-      // this.$store.dispatch('goPost',this.postsListsId[index])
-      this.$router.push(`/posts/${this.postsListsId[index]}`);
-    },
+
   },
 };
 </script>

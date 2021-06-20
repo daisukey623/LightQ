@@ -31,11 +31,14 @@
             </div>
           </article>
         </div>
-        <div class="mt-5">
-        <h3 class="title is-3">回答する</h3>
+
+        <h3 class="title is-3 mt-5">回答する</h3>
+      
          <CommentForm/>
+         <hr>
+         
+                 <h3 class="title is-3 mt-5">回答一覧</h3>
          <CommentFeed/>
-         </div>
       </div>
     </div>
   </div>
