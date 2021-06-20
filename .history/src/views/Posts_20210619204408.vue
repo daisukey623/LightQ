@@ -18,7 +18,7 @@ export default {
   },
   methods:{
     test(){
-      console.log(this.$route.params.id)
+      console.log(this.$$route)
     }
   },
 
