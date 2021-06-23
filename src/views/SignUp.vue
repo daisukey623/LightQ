@@ -34,8 +34,9 @@ export default {
       auth
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((result) => {
-          result.user
-          this.createUser()
+          result.user.updateProfile({
+        displayName:this.userName
+        })
           alert('アカウントを作成しました');
           this.$router.push('/home');
         })

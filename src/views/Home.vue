@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <Header></Header>
-      <div>{{ LoginUser.name }}さんようこそ</div>
+      <div>{{ auth.currentUser.displayName }}さんようこそ</div>
 
       <h2 class="subtitle is-2">投稿一覧</h2>
 
@@ -24,6 +24,8 @@ import SideMenu from '../components/Organisms/SideMenu';
 import Header from '../components/Organisms/Header';
 import Modal from '../components/Organisms/Modal';
 import MainFeed from '../components/Organisms/MainFeed';
+import { auth } from '/src/main.js';
+
 export default {
   components: {
     SideMenu,
@@ -34,6 +36,7 @@ export default {
   data() {
     return {
       showModal: true,
+      auth:auth
     };
   },
   created() {
