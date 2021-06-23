@@ -13,7 +13,7 @@
                 </p>
                 <div class="is-flex">
 
-                  <button class="button is-small has-text-left">この回答で解決</button>
+                  <button class="button is-small has-text-left" @click="test()">この回答で解決</button>
 
               </div>
               </div>
@@ -30,12 +30,17 @@ import { mapGetters } from 'vuex';
 export default {
   created() {
     this.$store.dispatch('getCommentsLists',this.$route.params.id);
+    this.$store.dispatch('getCommentsUsersLists',this.$route.params.id);
   },
   computed: {
-    ...mapGetters(['commentsLists']),
+    ...mapGetters(['commentsLists','commentsUsersLists']),
+
   },
   methods: {
-
+    test(){
+      console.log(this.commentsLists[0].user_id)
+      console.log(this.commentsUsersLists[0])
+    }
   },
 };
 </script>

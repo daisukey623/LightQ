@@ -34,7 +34,8 @@ export default {
           {
             comment: this.comment,
             post_id: this.$route.params.id,
-            user_id:auth.currentUser.uid
+            user_id:auth.currentUser.uid,
+            user_name:auth.currentUser.uid.name,
           },
           { marge: true }
         );
@@ -45,7 +46,7 @@ export default {
     },
     init(){
       this.comment = '';
-    }
+    },
   }
 };
 </script>
