@@ -44,21 +44,18 @@ export default new Vuex.Store({
   },
   mutations: {
     setUser(state, authUser) {
-      state.LoginUser =  authUser;
+      state.LoginUser = authUser;
     },
     setPostsLists(state, doc) {
-      state.postsLists.push(doc.data());
-      state.postsListsId.push(doc.id);
+      state.postsLists = doc.Doc;
+      state.postsListsId = doc.DocId;
     },
     setCommentsLists(state, doc) {
-      state.commentsLists.push(doc.data());
-      state.commentsListsId.push(doc.id);
+      state.commentsLists = doc.Doc;
+      state.commentsListsId = doc.DocId;
     },
-    setCommentsUsersLists(state, doc) {
-      state.usersLists.push(doc.data());
-      state.usersListsId.push(doc.id);
-    },
-    soPost(state, doc) {
+
+    goPost(state, doc) {
       state.post = doc;
     },
 
@@ -81,41 +78,35 @@ export default new Vuex.Store({
   actions: {
     async getUser({ commit }) {
       commit('setUser', auth.authUser);
-      
     },
+
     async getPostsLists({ commit }) {
-      const querySnapshot = await db.collection('posts').get();
-      querySnapshot.forEach((doc) => {
-        commit('setPostsLists', doc);
+      await db.collection('posts').onSnapshot((querySnapshot) => {
+        let Doc = [];
+        let DocId = [];
+        querySnapshot.forEach((doc) => {
+          Doc.push(doc.data());
+          DocId.push(doc.id);
+        });
+        commit('setPostsLists', { Doc, DocId });
       });
     },
+
     async getCommentsLists({ commit }, e) {
-      const querySnapshotComments = await db
+      await db
         .collection('comments')
         .where('post_id', '==', e)
-        .get();
-        querySnapshotComments.forEach((doc) => {
-        commit('setCommentsLists', doc);
-      });
-
-      const querySnapshotUsers = await db
-        .collection('users')
-        .where('post_id', '==', e)
-        .get();
-        querySnapshotUsers.forEach((doc) => {
-        commit('setCommentsUsersLists', doc);
-      });
+        .onSnapshot((querySnapshot) => {
+          let Doc = [];
+          let DocId = [];
+          querySnapshot.forEach((doc) => {
+            Doc.push(doc.data());
+            DocId.push(doc.id);
+          });
+          commit('setCommentsLists', { Doc, DocId });
+        });
     },
-    // async getCommentsUsersLists({ commit },e) {
-    //   const querySnapshot = await db
-    //     .collection('users')
-    //     .where('post_id', '==', e)
-    //     .get();
 
-    //   querySnapshot.forEach((doc) => {
-    //     commit('getCommentsUsersLists', doc);
-    //   });
-    // },
     async goPost({ commit }, e) {
       const postRef = await db.collection('posts').doc(e);
       const postDoc = await postRef.get();
