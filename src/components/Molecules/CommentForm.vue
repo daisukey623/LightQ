@@ -35,7 +35,7 @@ export default {
             comment: this.comment,
             post_id: this.$route.params.id,
             user_id:auth.currentUser.uid,
-            user_name:auth.currentUser.uid.name,
+            user_name:auth.currentUser.displayName,
           },
           { marge: true }
         );
