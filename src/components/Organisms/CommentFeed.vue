@@ -14,8 +14,7 @@
                 </p>
                 <div class="is-flex">
 
-                  <button class="button is-small has-text-left" @click="test()">ベストアンサー</button>
-
+                  <button class="button is-small has-text-left" @click="uppdatePostStatus(index)">ベストアンサー</button>
               </div>
               </div>
             </div>
@@ -30,15 +29,14 @@
 import { mapGetters } from 'vuex';
 export default {
   created() {
-    this.$store.dispatch('getCommentsLists',this.$route.params.id);
   },
   computed: {
-    ...mapGetters(['commentsLists','commentsUsersLists']),
+    ...mapGetters(['commentsLists','commentsUsersLists','commentsListsId','post']),
 
   },
   methods: {
-    test(){
-      console.log('回答をクリック')
+    uppdatePostStatus(index){
+      this.$store.dispatch('uppdatePostStatus',{postId:this.$route.params.id,commentId:this.commentsListsId[index]})
     }
   },
 };

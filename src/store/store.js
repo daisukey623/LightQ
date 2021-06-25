@@ -14,6 +14,7 @@ export default new Vuex.Store({
     postsListsId: [],
     commentsLists: [],
     commentsListsId: [],
+    bestAnswerComment: '',
     stateModal: false,
   },
   getters: {
@@ -32,9 +33,13 @@ export default new Vuex.Store({
     commentsLists: (state) => {
       return state.commentsLists;
     },
-    commentsUsersLists: (state) => {
-      return state.commentsUsersLists;
+    commentsListsId: (state) => {
+      return state.commentsListsId;
     },
+    bestAnswerComment: (state) => {
+      return state.bestAnswerComment;
+    },
+
     stateModal: (state) => {
       return state.stateModal;
     },
@@ -51,7 +56,12 @@ export default new Vuex.Store({
       state.commentsLists = doc.Doc;
       state.commentsListsId = doc.DocId;
     },
-
+    setBestAnswerComment(state, doc) {
+      state.bestAnswerComment = doc;
+    },
+    updatePost(state, e) {
+      state.post = e;
+    },
     goPost(state, doc) {
       state.post = doc;
     },
@@ -102,6 +112,32 @@ export default new Vuex.Store({
           });
           commit('setCommentsLists', { Doc, DocId });
         });
+    },
+    async getBestAnswerComment({ commit }, e) {
+      try {
+        const Doc = await db
+          .collection('comments')
+          .doc(e)
+          .get();
+        commit('setBestAnswerComment', Doc.data());
+      } catch (error) {
+        console.log(error, 'エラー');
+      }
+    },
+
+    async uppdatePostStatus({ commit }, { postId, commentId }) {
+      await db
+        .collection('posts')
+        .doc(postId)
+        .update({
+          status: '解決済',
+          best_answer: commentId,
+        });
+      const postDoc = await db
+        .collection('posts')
+        .doc(postId)
+        .get();
+      commit('updatePost', postDoc.data());
     },
 
     async goPost({ commit }, e) {
