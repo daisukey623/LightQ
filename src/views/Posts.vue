@@ -14,11 +14,11 @@
             <div class="media-content">
               <div class="content">
                 <p class="has-text-left has-text-weight-semibold">
-                  <strong>John Smith</strong>
+                  <strong> @{{ post.user_name }}</strong>
                   <br />
                   {{ post.title }}
                 </p>
-                <p class="has-text-left">{{ post.body }}</p>
+                <p class="has-text-left" style="white-space:pre-wrap;">{{ post.body }}</p>
                 <div class="is-flex">
                   <p class=" has-text-left">
                     <span class="tag mx-1 ">{{ post.status }}</span>

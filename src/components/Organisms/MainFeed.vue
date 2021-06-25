@@ -13,6 +13,9 @@
                 </p>
                 <div class="is-flex">
                   <p class=" has-text-left">
+                    <span class="tag mx-1 ">@{{ postsList.user_name }}</span>
+                  </p>
+                  <p class=" has-text-left">
                     <span class="tag mx-1 ">{{ postsList.status }}</span>
                   </p>
                   <p class=" has-text-left">

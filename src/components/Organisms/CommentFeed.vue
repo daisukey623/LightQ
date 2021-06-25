@@ -7,13 +7,14 @@
             <div class="media-content">
               <div class="content">
                 <p class="has-text-left">
-                  <!-- <strong>John Smith</strong>
-                  <br /> -->
+                  @{{commentsList.user_name}}
+                </p>
+                <p class="has-text-left" style="white-space:pre-wrap;">
                   {{ commentsList.comment }}
                 </p>
                 <div class="is-flex">
 
-                  <button class="button is-small has-text-left" @click="test()">この回答で解決</button>
+                  <button class="button is-small has-text-left" @click="test()">ベストアンサー</button>
 
               </div>
               </div>
@@ -30,7 +31,6 @@ import { mapGetters } from 'vuex';
 export default {
   created() {
     this.$store.dispatch('getCommentsLists',this.$route.params.id);
-    this.$store.dispatch('getCommentsUsersLists',this.$route.params.id);
   },
   computed: {
     ...mapGetters(['commentsLists','commentsUsersLists']),
@@ -38,8 +38,7 @@ export default {
   },
   methods: {
     test(){
-      console.log(this.commentsLists[0].user_id)
-      console.log(this.commentsUsersLists[0])
+      console.log('回答をクリック')
     }
   },
 };
