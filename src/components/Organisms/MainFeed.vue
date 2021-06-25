@@ -7,8 +7,6 @@
             <div class="media-content">
               <div class="content">
                 <p class="has-text-left">
-                  <!-- <strong>John Smith</strong>
-                  <br /> -->
                   {{ postsList.title }}
                 </p>
                 <div class="is-flex">

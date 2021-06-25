@@ -14,6 +14,7 @@ export default new Vuex.Store({
     postsListsId: [],
     commentsLists: [],
     commentsListsId: [],
+    bestAnswerComment:'',
     stateModal: false,
   },
   getters: {
@@ -32,9 +33,13 @@ export default new Vuex.Store({
     commentsLists: (state) => {
       return state.commentsLists;
     },
-    commentsUsersLists: (state) => {
-      return state.commentsUsersLists;
+    commentsListsId: (state) => {
+      return state.commentsListsId;
     },
+    bestAnswerComment: (state) => {
+      return state.bestAnswerComment;
+    },
+
     stateModal: (state) => {
       return state.stateModal;
     },
@@ -51,7 +56,12 @@ export default new Vuex.Store({
       state.commentsLists = doc.Doc;
       state.commentsListsId = doc.DocId;
     },
-
+    setBestAnswerComment(state, doc) {
+      state.bestAnswerComment = doc
+    },
+    updatePost(state, e) {
+      state.post = e;
+    },
     goPost(state, doc) {
       state.post = doc;
     },
@@ -91,17 +101,37 @@ export default new Vuex.Store({
 
     async getCommentsLists({ commit }, e) {
       await db
-        .collection('comments')
-        .where('post_id', '==', e)
-        .onSnapshot((querySnapshot) => {
-          let Doc = [];
-          let DocId = [];
-          querySnapshot.forEach((doc) => {
-            Doc.push(doc.data());
-            DocId.push(doc.id);
+      .collection('comments')
+      .where('post_id', '==', e)
+      .onSnapshot((querySnapshot) => {
+        let Doc = [];
+        let DocId = [];
+        querySnapshot.forEach((doc) => {
+          Doc.push(doc.data());
+          DocId.push(doc.id);
           });
           commit('setCommentsLists', { Doc, DocId });
         });
+    },
+    async getBestAnswerComment({commit},e){
+      const Doc = await db.collection('comments').doc(e).get()
+      commit('setBestAnswerComment',Doc.data())
+
+    },
+
+    async uppdatePostStatus({ commit }, { postId, commentId }) {
+      await db
+        .collection('posts')
+        .doc(postId)
+        .update({
+          status: '解決済',
+          best_answer: commentId,
+        });
+      const postDoc = await db
+        .collection('posts')
+        .doc(postId)
+        .get();
+      commit('updatePost', postDoc.data());
     },
 
     async goPost({ commit }, e) {

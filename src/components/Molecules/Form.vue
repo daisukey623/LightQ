@@ -79,6 +79,7 @@ export default {
             status: '受付中',
             like_count: 0,
             user_name: auth.currentUser.displayName,
+            best_answer:''
           },
           { marge: true }
         );
