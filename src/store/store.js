@@ -6,7 +6,6 @@ import { db } from '../main.js';
 import { auth } from '../main.js';
 export default new Vuex.Store({
   state: {
-    LoginUser: '',
     userLists: [],
     userListsID: [],
     ReceiveUserListsIndex: '',
@@ -15,8 +14,6 @@ export default new Vuex.Store({
     postsListsId: [],
     commentsLists: [],
     commentsListsId: [],
-    commentsUsersLists: [],
-    commentsUsersListsId: [],
     stateModal: false,
   },
   getters: {
