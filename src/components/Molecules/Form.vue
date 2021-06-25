@@ -67,7 +67,6 @@ export default {
   },
   methods: {
     addPost() {
-      console.log(this.tag, this.title, this.body);
       db.collection('posts')
         .doc()
         .set(
