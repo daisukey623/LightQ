@@ -14,7 +14,7 @@ export default new Vuex.Store({
     postsListsId: [],
     commentsLists: [],
     commentsListsId: [],
-    bestAnswerComment:'',
+    bestAnswerComment: '',
     stateModal: false,
   },
   getters: {
@@ -57,7 +57,7 @@ export default new Vuex.Store({
       state.commentsListsId = doc.DocId;
     },
     setBestAnswerComment(state, doc) {
-      state.bestAnswerComment = doc
+      state.bestAnswerComment = doc;
     },
     updatePost(state, e) {
       state.post = e;
@@ -101,22 +101,28 @@ export default new Vuex.Store({
 
     async getCommentsLists({ commit }, e) {
       await db
-      .collection('comments')
-      .where('post_id', '==', e)
-      .onSnapshot((querySnapshot) => {
-        let Doc = [];
-        let DocId = [];
-        querySnapshot.forEach((doc) => {
-          Doc.push(doc.data());
-          DocId.push(doc.id);
+        .collection('comments')
+        .where('post_id', '==', e)
+        .onSnapshot((querySnapshot) => {
+          let Doc = [];
+          let DocId = [];
+          querySnapshot.forEach((doc) => {
+            Doc.push(doc.data());
+            DocId.push(doc.id);
           });
           commit('setCommentsLists', { Doc, DocId });
         });
     },
-    async getBestAnswerComment({commit},e){
-      const Doc = await db.collection('comments').doc(e).get()
-      commit('setBestAnswerComment',Doc.data())
-
+    async getBestAnswerComment({ commit }, e) {
+      try {
+        const Doc = await db
+          .collection('comments')
+          .doc(e)
+          .get();
+        commit('setBestAnswerComment', Doc.data());
+      } catch (error) {
+        console.log(error, 'エラー');
+      }
     },
 
     async uppdatePostStatus({ commit }, { postId, commentId }) {
