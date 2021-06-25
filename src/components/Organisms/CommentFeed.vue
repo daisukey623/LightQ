@@ -12,9 +12,9 @@
                 <p class="has-text-left" style="white-space:pre-wrap;">
                   {{ commentsList.comment }}
                 </p>
-                <div class="is-flex">
-
-                  <button class="button is-small has-text-left" @click="uppdatePostStatus(index)">ベストアンサー</button>
+                <div class="is-flex"  v-if="auth.currentUser.uid === post.user_id">
+                  <button class="button is-small has-text-left"
+                  @click="uppdatePostStatus(index)" >ベストアンサー</button>
               </div>
               </div>
             </div>
@@ -26,8 +26,14 @@
 </template>
 
 <script>
+import { auth } from '/src/main.js';
 import { mapGetters } from 'vuex';
 export default {
+  data(){
+    return{
+      auth:auth
+    }
+  },
   created() {
   },
   computed: {
@@ -37,7 +43,7 @@ export default {
   methods: {
     uppdatePostStatus(index){
       this.$store.dispatch('uppdatePostStatus',{postId:this.$route.params.id,commentId:this.commentsListsId[index]})
-    }
+    },
   },
 };
 </script>
