@@ -150,8 +150,13 @@ export default new Vuex.Store({
       }
     },
 
-    getReceiveUserIndex({ commit }, index) {
-      commit('getReceiveUserIndex', index);
+    // async getDleteComment ({commit,commentId}){
+      
+    //   commit()
+    // },
+
+    getReceiveUserIndex({ commit }) {
+      commit('getReceiveUserIndex');
     },
     resetStore({ commit }) {
       commit('resetStore');
