@@ -16,6 +16,8 @@ export default new Vuex.Store({
     commentsListsId: [],
     bestAnswerComment: '',
     stateModal: false,
+    isShowQuestionnaire:false,
+    isShowQuestionnaireSignUp:false,
   },
   getters: {
     LoginUser: (state) => {
@@ -42,6 +44,12 @@ export default new Vuex.Store({
 
     stateModal: (state) => {
       return state.stateModal;
+    },
+    isShowQuestionnaire: (state) => {
+      return state.isShowQuestionnaire;
+    },
+    isShowQuestionnaireSignUp: (state) => {
+      return state.isShowQuestionnaireSignUp;
     },
   },
   mutations: {
@@ -78,8 +86,16 @@ export default new Vuex.Store({
     showModal(state) {
       state.stateModal = true;
     },
+    showQuestionnaire(state) {
+      state.isShowQuestionnaire = true;
+    },
+    showQuestionnaireSignUp(state) {
+      state.isShowQuestionnaireSignUp = true;
+    },
     closeModal(state) {
       state.stateModal = false;
+      state.isShowQuestionnaire = false;
+      state.isShowQuestionnaireSignUp = false;
     },
   },
   actions: {
@@ -150,11 +166,6 @@ export default new Vuex.Store({
       }
     },
 
-    // async getDleteComment ({commit,commentId}){
-      
-    //   commit()
-    // },
-
     getReceiveUserIndex({ commit }) {
       commit('getReceiveUserIndex');
     },
@@ -163,6 +174,12 @@ export default new Vuex.Store({
     },
     showModal({ commit }) {
       commit('showModal');
+    },
+    showQuestionnaire({ commit }) {
+      commit('showQuestionnaire');
+    },
+    showQuestionnaireSignUp({ commit }) {
+      commit('showQuestionnaireSignUp');
     },
     closeModal({ commit }) {
       commit('closeModal');

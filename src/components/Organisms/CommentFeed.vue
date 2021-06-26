@@ -25,7 +25,7 @@
                 >
                   <button
                     class="button is-small has-text-left"
-                    @click="uppdatePostStatus(index)"
+                    @click="uppdatePostStatus(index); showQuestionnaire()"
                   >
                     ベストアンサー
                   </button>
@@ -42,6 +42,7 @@
 <script>
 import { auth, db } from '/src/main.js';
 import { mapGetters } from 'vuex';
+
 export default {
   data() {
     return {
@@ -73,6 +74,10 @@ export default {
         window.alert('削除しました');
       }
     },
+      showQuestionnaire(){
+       this.$store.dispatch('showQuestionnaire');
+       console.log('クリック')
+    }
   },
 };
 </script>

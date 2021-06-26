@@ -59,6 +59,7 @@
         <h3 class="title is-3 mt-5">回答一覧</h3>
         <CommentFeed />
         <Modal />
+        <Questionnaire />
       </div>
     </div>
   </div>
@@ -71,6 +72,8 @@ import Header from '../components/Organisms/Header';
 import CommentForm from '../components/Molecules/CommentForm';
 import CommentFeed from '../components/Organisms/CommentFeed';
 import Modal from '../components/Organisms/Modal';
+import Questionnaire from '@/components/Organisms/Questionnaire';
+
 
 export default {
   components: {
@@ -79,6 +82,7 @@ export default {
     CommentForm,
     CommentFeed,
     Modal,
+    Questionnaire,
   },
   created() {
     this.$store.dispatch('goPost', this.$route.params.id);
