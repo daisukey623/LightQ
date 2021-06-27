@@ -8,7 +8,7 @@
           <p>各領域の理解度の状態を振り返りましょう！</p>
       <b-field label="採用計画" class="m-6">
         <b-slider
-          v-model="value_tag1"
+          v-model="tag1"
           :max="100"
           tooltip-always
           aria-label="採用計画"
@@ -21,7 +21,7 @@
 
       <b-field label="母種団形成" class="m-6">
         <b-slider
-          v-model="value_tag2"
+          v-model="tag2"
           :max="100"
           tooltip-always
           aria-label="母集団形成"
@@ -33,7 +33,7 @@
       </b-field>
       <b-field label="選考" class="m-6">
         <b-slider
-          v-model="value_tag3"
+          v-model="tag3"
           :max="100"
           tooltip-always
           aria-label="選考"
@@ -45,7 +45,7 @@
       </b-field>
       <b-field label="内定者フォロー" class="m-6">
         <b-slider
-          v-model="value_tag4"
+          v-model="tag4"
           :max="100"
           tooltip-always
           aria-label="内定者フォロー"
@@ -73,10 +73,10 @@ import { auth, db } from '/src/main.js';
 export default {
   data() {
     return {
-      value_tag1: 0,
-      value_tag2: 0,
-      value_tag3: 0,
-      value_tag4: 0,
+      tag1: 0,
+      tag2: 0,
+      tag3: 0,
+      tag4: 0,
     };
   },
   computed: {
@@ -96,10 +96,10 @@ export default {
         .set(
           {
             user_id: auth.currentUser.uid,
-            plan_score:this.value_tag1,
-            population_score:this.value_tag2,
-            selection_score:this.value_tag3,
-            follow_score:this.value_tag4,
+            plan_score:this.tag1,
+            population_score:this.tag2,
+            selection_score:this.tag3,
+            follow_score:this.tag4,
             createdAt: new Date()
           },
           { marge: true }

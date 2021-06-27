@@ -14,6 +14,7 @@ export default new Vuex.Store({
     postsListsId: [],
     commentsLists: [],
     commentsListsId: [],
+    scores:[],
     bestAnswerComment: '',
     stateModal: false,
     isShowQuestionnaire:false,
@@ -37,6 +38,9 @@ export default new Vuex.Store({
     },
     commentsListsId: (state) => {
       return state.commentsListsId;
+    },
+    scores: (state) => {
+      return state.scores;
     },
     bestAnswerComment: (state) => {
       return state.bestAnswerComment;
@@ -63,6 +67,10 @@ export default new Vuex.Store({
     setCommentsLists(state, doc) {
       state.commentsLists = doc.Doc;
       state.commentsListsId = doc.DocId;
+    },
+    setScores(state, doc) {
+      // console.log(doc.Doc)
+      state.scores = doc.Doc
     },
     setBestAnswerComment(state, doc) {
       state.bestAnswerComment = doc;
@@ -164,6 +172,22 @@ export default new Vuex.Store({
       } else {
         console.log('No such document!');
       }
+    },
+
+    async getScores({ commit }) {
+      await db
+        .collection('scores')
+        .where('user_id', '==', auth.currentUser.uid)
+        .onSnapshot((querySnapshot) => {
+          let DocAll = [];
+          querySnapshot.forEach((doc) => {
+            DocAll.push(doc.data());
+          });
+          let DocSort = DocAll.sort((a,b) => b.createdAt - a.createdAt);
+          let Doc = [];
+          Doc.push(DocSort[0],DocSort[1])
+          commit('setScores', { Doc });
+        });
     },
 
     getReceiveUserIndex({ commit }) {

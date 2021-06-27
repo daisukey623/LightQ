@@ -34,8 +34,10 @@
           </article>
         </div>
         <h3 class="title is-3 mt-5">ベストアンサー</h3>
-        <p v-if="post.best_answer === ''">ベストアンサーはありません。回答受付中です。</p>
-        <div class="box mb-1" v-else >
+        <p v-if="post.best_answer === ''">
+          ベストアンサーはありません。回答受付中です。
+        </p>
+        <div class="box mb-1" v-else>
           <article class="media">
             <div class="media-content">
               <div class="content">
@@ -47,8 +49,8 @@
               </div>
             </div>
           </article>
-            </div>
-  
+        </div>
+
         <hr />
 
         <h3 class="title is-3 mt-5">回答する</h3>
@@ -74,7 +76,6 @@ import CommentFeed from '../components/Organisms/CommentFeed';
 import Modal from '../components/Organisms/Modal';
 import Questionnaire from '@/components/Organisms/Questionnaire';
 
-
 export default {
   components: {
     SideMenu,
@@ -91,6 +92,7 @@ export default {
 
   beforeUpdate() {
     this.$store.dispatch('getBestAnswerComment', this.post.best_answer);
+
   },
 
   computed: {
