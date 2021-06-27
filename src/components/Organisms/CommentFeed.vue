@@ -25,7 +25,7 @@
                 >
                   <button
                     class="button is-small has-text-left"
-                    @click="uppdatePostStatus(index); showQuestionnaire()"
+                    @click="uppdatePostStatus(index)"
                   >
                     ベストアンサー
                   </button>
@@ -64,6 +64,7 @@ export default {
         postId: this.$route.params.id,
         commentId: this.commentsListsId[index],
       });
+      this.showQuestionnaire()
     },
     async deleteComment(index) {
       if (window.confirm('コメントを削除しても良いですか？')) {
@@ -76,7 +77,6 @@ export default {
     },
       showQuestionnaire(){
        this.$store.dispatch('showQuestionnaire');
-       console.log('クリック')
     }
   },
 };
