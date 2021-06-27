@@ -13,13 +13,19 @@
     <button @click="sendRegister">新規登録</button>
     <br /><br />
     <router-link to="/login">ログインはこちらから</router-link>
+    <QuestionnaireSignUp/>
   </div>
 </template>
 
 <script>
 import  { auth } from '../main';
 import  { db }  from '../main'; 
+import QuestionnaireSignUp from '@/components/Organisms/QuestionnaireSignUp';
+
 export default {
+  components:{
+QuestionnaireSignUp
+  },
   data() {
     return {
       userName: '',
@@ -28,21 +34,21 @@ export default {
     };
   },
   methods: {
-    sendRegister: function() {
-      console.log(auth)
-      console.log(db)
-      auth
+   async sendRegister() {
+     await auth
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((result) => {
           result.user.updateProfile({
         displayName:this.userName
         })
-          alert('アカウントを作成しました');
-          this.$router.push('/home');
+         
+         this.$store.dispatch('showQuestionnaireSignUp')
+
         })
         .catch((error) => {
           alert(error.message);
         });
+        
     },
     createUser() {
       db.collection('users')

@@ -2,7 +2,6 @@
   <div class="modal  is-active" v-show="stateModal">
     <div class="modal-background"></div>
     <div class="modal-content   columns is-centered ">
-      <!-- Any other Bulma elements you want -->
       <div class="card column is-half ">
         <div class="card-content">
           <div class="content">

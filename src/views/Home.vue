@@ -3,7 +3,6 @@
     <div class="container">
       <Header></Header>
       <div>{{ auth.currentUser.displayName }}さんようこそ</div>
-
       <h2 class="subtitle is-2">投稿一覧</h2>
 
       <div class="columns">
@@ -13,6 +12,7 @@
         <div class="column is-6">
           <MainFeed></MainFeed>
           <Modal></Modal>
+          
         </div>
       </div>
     </div>

@@ -33,6 +33,7 @@ const routes = [
     path: '/signup',
     component: SignUp,
   },
+
 ]
 
 const router = new VueRouter({

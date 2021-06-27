@@ -42,6 +42,7 @@
 <script>
 import { auth, db } from '/src/main.js';
 import { mapGetters } from 'vuex';
+
 export default {
   data() {
     return {
@@ -63,6 +64,7 @@ export default {
         postId: this.$route.params.id,
         commentId: this.commentsListsId[index],
       });
+      this.showQuestionnaire()
     },
     async deleteComment(index) {
       if (window.confirm('コメントを削除しても良いですか？')) {
@@ -73,6 +75,9 @@ export default {
         window.alert('削除しました');
       }
     },
+      showQuestionnaire(){
+       this.$store.dispatch('showQuestionnaire');
+    }
   },
 };
 </script>
