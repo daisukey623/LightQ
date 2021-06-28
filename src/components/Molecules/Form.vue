@@ -66,11 +66,11 @@ export default {
     };
   },
   methods: {
-    addPost() {
-      db.collection('posts')
-        .doc()
-        .set(
+   async addPost() {
+     const ref = await db.collection('posts').doc()
+        ref.set(
           {
+            id:ref.id,
             user_id: auth.currentUser.uid,
             title: this.title,
             body: this.body,

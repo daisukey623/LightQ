@@ -1,14 +1,52 @@
 <template>
-  
+  <div>
+    <div class="container">
+      <Header />
+      <h2 class="subtitle is-2">プロフィール</h2>
+      <div class="columns">
+        <div class="submenu column is-3">
+          <SideMenu />
+        </div>
+        <div class="submenu column is-6">
+          <Score></Score>
+          <h3 class="subtitle is-3">自分の投稿一覧</h3> 
+          <MyFeed></MyFeed>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+import SideMenu from '@/components/Organisms/SideMenu';
+import Header from '@/components//Organisms/Header';
+import Score from '@/components//Organisms/Score';
+import MyFeed from '@/components//Organisms/MyFeed';
+// import { mapActions } from 'vuex';
+
+
 export default {
-  
-}
+  components: {
+    SideMenu,
+    Header,
+    Score,
+    MyFeed,
+  },
+  data(){
+    return{
+    }
+  },
+  created(){
+    // this.getScores
+    },
+  computed: {
+
+  },
+  methods: {
+      // ...mapActions(['getScores']),
+
+  },
+};
 </script>
 
-
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -5,10 +5,10 @@
         Menu
       </p>
       <ul class="menu-list">
-        <li><a>ホーム</a></li>
+        <li @click="toHome"><a>ホーム</a></li>
         <li><a>マイページ</a>
         <ul>
-          <li><a>プロフィール</a></li>
+          <li @click="toUsers"><a>プロフィール</a></li>
           <li><a>フォロワー</a></li>
         </ul></li>
 
@@ -20,11 +20,18 @@
 </template>
 
 <script>
+import { auth, } from '/src/main.js';
 export default {
   methods:{
     showModal(){
        this.$store.dispatch('showModal');
-    }
+    },
+    toHome(){
+      this.$router.push('/home')
+    },
+    toUsers() {
+      this.$router.push(`/users/${auth.currentUser.uid}`);
+    },
   }
 };
 </script>
