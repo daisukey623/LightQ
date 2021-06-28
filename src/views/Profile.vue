@@ -9,9 +9,10 @@
         </div>
         <div class="submenu column is-6">
           <Score></Score>
+          <h3 class="subtitle is-3">自分の投稿一覧</h3> 
+          <MyFeed></MyFeed>
         </div>
       </div>
-      <button @click="test">クリック</button>
     </div>
   </div>
 </template>
@@ -20,28 +21,30 @@
 import SideMenu from '@/components/Organisms/SideMenu';
 import Header from '@/components//Organisms/Header';
 import Score from '@/components//Organisms/Score';
-import { mapGetters } from 'vuex';
+import MyFeed from '@/components//Organisms/MyFeed';
+// import { mapActions } from 'vuex';
+
 
 export default {
   components: {
     SideMenu,
     Header,
     Score,
+    MyFeed,
   },
   data(){
     return{
     }
   },
   created(){
-    this.$store.dispatch('getScores')
+    // this.getScores
     },
   computed: {
-    ...mapGetters(['scores']),
+
   },
   methods: {
-    test() {
-      console.log(this.scores[0].follow_score);
-    },
+      // ...mapActions(['getScores']),
+
   },
 };
 </script>

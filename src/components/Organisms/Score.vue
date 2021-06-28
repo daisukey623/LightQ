@@ -1,6 +1,6 @@
 <script>
 import { Bar } from 'vue-chartjs';
-import { mapGetters } from 'vuex';
+import { mapGetters,mapActions } from 'vuex';
 
 export default {
   extends: Bar,
@@ -13,7 +13,7 @@ export default {
           {
             label: '前回',
             backgroundColor: '#CFD8DC',
-            data: [this.scores[1].population_score, 40, 30, 80],
+            data: [10, 40, 30, 80],
           },
           {
             label: '最新',
@@ -39,15 +39,17 @@ export default {
       },
     };
   },
-  mounted() {
-    this.renderChart(this.chartdata, this.options);
-    console.log(this.scores[1].population_score)
+  created() {
+   this.getScores()
+    // this.renderChart(this.chartdata, this.options);
   },
 
   computed: {
     ...mapGetters(['scores']),
   },
-  methods: {},
+  methods: {
+    ...mapActions(['getScores']),
+  },
 };
 </script>
 <style scoped></style>

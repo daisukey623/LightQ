@@ -45,7 +45,6 @@ export default new Vuex.Store({
     bestAnswerComment: (state) => {
       return state.bestAnswerComment;
     },
-
     stateModal: (state) => {
       return state.stateModal;
     },
@@ -183,12 +182,14 @@ export default new Vuex.Store({
           querySnapshot.forEach((doc) => {
             DocAll.push(doc.data());
           });
+          
           let DocSort = DocAll.sort((a,b) => b.createdAt - a.createdAt);
           let Doc = [];
           Doc.push(DocSort[0],DocSort[1])
           commit('setScores', { Doc });
         });
     },
+  
 
     getReceiveUserIndex({ commit }) {
       commit('getReceiveUserIndex');
