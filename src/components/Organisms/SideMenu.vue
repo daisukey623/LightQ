@@ -9,7 +9,7 @@
         <li><a>マイページ</a>
         <ul>
           <li @click="toUsers"><a>プロフィール</a></li>
-          <li><a>フォロワー</a></li>
+          <li @click="toFollows"><a>フォロワー</a></li>
         </ul></li>
 
 
@@ -31,6 +31,9 @@ export default {
     },
     toUsers() {
       this.$router.push(`/users/${auth.currentUser.uid}`);
+    },
+    toFollows() {
+      this.$router.push(`/follows/${auth.currentUser.uid}`);
     },
   }
 };
