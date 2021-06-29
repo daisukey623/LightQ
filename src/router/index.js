@@ -5,6 +5,7 @@ import SignIn from '../views/SignIn.vue';
 import SignUp from '../views/SignUp.vue';
 import Posts from '../views/Posts.vue';
 import Profile from '../views/Profile.vue';
+import Follows from '../views/Follows.vue';
 import firebase from 'firebase/app';
 
 
@@ -29,6 +30,11 @@ const routes = [
   {
     path: '/users/:id',
     component: Profile,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/Follows/:id',
+    component: Follows,
     meta: { requiresAuth: true }
   },
   {

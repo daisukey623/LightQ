@@ -17,6 +17,7 @@ export default new Vuex.Store({
     scores:[],
     bestAnswerComment: '',
     stateModal: false,
+    follows:[],
     isShowQuestionnaire:false,
     isShowQuestionnaireSignUp:false,
   },
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     },
     post: (state) => {
       return state.post;
+    },
+    follows: (state) => {
+      return state.follows;
     },
     postsListsId: (state) => {
       return state.postsListsId;
@@ -63,12 +67,15 @@ export default new Vuex.Store({
       state.postsLists = doc.Doc;
       state.postsListsId = doc.DocId;
     },
+    setFollows(state, doc) {
+      state.follows = doc.Doc;
+      console.log(doc.Doc)
+    },
     setCommentsLists(state, doc) {
       state.commentsLists = doc.Doc;
       state.commentsListsId = doc.DocId;
     },
     setScores(state, doc) {
-      // console.log(doc.Doc)
       state.scores = doc.Doc
     },
     setBestAnswerComment(state, doc) {
@@ -136,6 +143,18 @@ export default new Vuex.Store({
           commit('setCommentsLists', { Doc, DocId });
         });
     },
+    async getFollows({ commit }) {
+      await db
+        .collection('follows')
+        .where('following', '==', auth.currentUser.uid)
+        .onSnapshot((querySnapshot) => {
+          let Doc = [];
+          querySnapshot.forEach((doc) => {
+            Doc.push(doc.data());
+          });
+          commit('setFollows', { Doc });
+        });
+    },
     async getBestAnswerComment({ commit }, e) {
       try {
         const Doc = await db
@@ -178,7 +197,7 @@ export default new Vuex.Store({
         .collection('scores')
         .where('user_id', '==', auth.currentUser.uid)
         .onSnapshot((querySnapshot) => {
-          let DocAll = [];
+          const DocAll = [];
           querySnapshot.forEach((doc) => {
             DocAll.push(doc.data());
           });

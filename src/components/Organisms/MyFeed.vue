@@ -35,6 +35,7 @@
 import { mapGetters } from 'vuex';
 import { auth } from '/src/main.js';
 
+
 export default {
   created() {
     this.$store.dispatch('getPostsLists');
