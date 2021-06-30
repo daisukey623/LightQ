@@ -1,9 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import {auth, db} from '../main.js';
 
 Vue.use(Vuex);
-import { db } from '../main.js';
-import { auth } from '../main.js';
 export default new Vuex.Store({
   state: {
     userLists: [],
@@ -69,8 +68,7 @@ export default new Vuex.Store({
       state.commentsListsId = doc.DocId;
     },
     setScores(state, doc) {
-      // console.log(doc.Doc)
-      state.scores = doc.Doc
+      state.scores = doc.Doc;
     },
     setBestAnswerComment(state, doc) {
       state.bestAnswerComment = doc;
@@ -164,7 +162,7 @@ export default new Vuex.Store({
       commit('updatePost', postDoc.data());
     },
 
-    async goPost({ commit }, e) {
+    async goPost({commit}, e) {
       const postRef = await db.collection('posts').doc(e);
       const postDoc = await postRef.get();
       if (postDoc.exists) {
@@ -174,29 +172,35 @@ export default new Vuex.Store({
       }
     },
 
-    async getScores({ commit }) {
+    async getScores({commit}) {
       await db
-        .collection('scores')
-        .where('user_id', '==', auth.currentUser.uid)
-        .onSnapshot((querySnapshot) => {
-          let DocAll = [];
-          querySnapshot.forEach((doc) => {
-            DocAll.push(doc.data());
+          .collection('scores')
+          .where('user_id', '==', auth.currentUser.uid)
+          .onSnapshot((querySnapshot) => {
+            const Doc = [];
+            querySnapshot.forEach((doc) => {
+              const data = {
+                id: doc.id,
+                user_id: doc.data().user_id,
+                createdAt: doc.data().createdAt,
+                follow_score: doc.data().follow_score,
+                plan_score: doc.data().plan_score,
+                population_score: doc.data().population_score,
+                selection_score: doc.data().selection_score,
+              }
+              Doc.push(data);
+            }, Doc);
+            commit('setScores', {Doc});
           });
-          let DocSort = DocAll.sort((a,b) => b.createdAt - a.createdAt);
-          let Doc = [];
-          Doc.push(DocSort[0],DocSort[1])
-          commit('setScores', { Doc });
-        });
     },
 
-    getReceiveUserIndex({ commit }) {
+    getReceiveUserIndex({commit}) {
       commit('getReceiveUserIndex');
     },
-    resetStore({ commit }) {
+    resetStore({commit}) {
       commit('resetStore');
     },
-    showModal({ commit }) {
+    showModal({commit}) {
       commit('showModal');
     },
     showQuestionnaire({ commit }) {

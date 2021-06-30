@@ -8,10 +8,9 @@
           <SideMenu />
         </div>
         <div class="submenu column is-6">
-          <Score></Score>
+          <Score/>
         </div>
       </div>
-      <button @click="test">クリック</button>
     </div>
   </div>
 </template>
@@ -20,7 +19,6 @@
 import SideMenu from '@/components/Organisms/SideMenu';
 import Header from '@/components//Organisms/Header';
 import Score from '@/components//Organisms/Score';
-import { mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -31,17 +29,6 @@ export default {
   data(){
     return{
     }
-  },
-  created(){
-    this.$store.dispatch('getScores')
-    },
-  computed: {
-    ...mapGetters(['scores']),
-  },
-  methods: {
-    test() {
-      console.log(this.scores[0].follow_score);
-    },
   },
 };
 </script>
