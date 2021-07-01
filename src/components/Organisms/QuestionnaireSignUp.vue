@@ -95,10 +95,11 @@ export default {
       this.$router.push('/home');
     },
       setScores() {
-      db.collection('scores')
+      const ref = db.collection('scores')
         .doc()
-        .set(
+        ref.set(
           {
+            id:ref.id,
             user_id: auth.currentUser.uid,
             plan_score:this.value_tag1,
             population_score:this.value_tag2,

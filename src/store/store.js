@@ -2,8 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 Vue.use(Vuex);
-import { db } from '../main.js';
-import { auth } from '../main.js';
+import { db,auth } from '../main.js';
 export default new Vuex.Store({
   state: {
     userLists: [],
@@ -69,7 +68,6 @@ export default new Vuex.Store({
     },
     setFollows(state, doc) {
       state.follows = doc.Doc;
-      console.log(doc.Doc)
     },
     setCommentsLists(state, doc) {
       state.commentsLists = doc.Doc;
@@ -194,19 +192,25 @@ export default new Vuex.Store({
 
     async getScores({ commit }) {
       await db
-        .collection('scores')
-        .where('user_id', '==', auth.currentUser.uid)
-        .onSnapshot((querySnapshot) => {
-          const DocAll = [];
-          querySnapshot.forEach((doc) => {
-            DocAll.push(doc.data());
-          });
-          
-          let DocSort = DocAll.sort((a,b) => b.createdAt - a.createdAt);
-          let Doc = [];
-          Doc.push(DocSort[0],DocSort[1])
-          commit('setScores', { Doc });
-        });
+      .collection('scores')
+      .where('user_id', '==', auth.currentUser.uid)
+      .onSnapshot((querySnapshot) => {
+        const Doc = [];
+        querySnapshot.forEach((doc) => {
+          const data = {
+            id: doc.id,
+            user_id: doc.data().user_id,
+            createdAt: doc.data().createdAt,
+            follow_score: doc.data().follow_score,
+            plan_score: doc.data().plan_score,
+            population_score: doc.data().population_score,
+            selection_score: doc.data().selection_score,
+          }
+          Doc.push(data);
+        }, Doc);
+        console.log(Doc)
+        commit('setScores', {Doc});
+      });
     },
   
 

@@ -1,6 +1,6 @@
 <script>
 import { Bar } from 'vue-chartjs';
-import { mapGetters,mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   extends: Bar,
@@ -13,12 +13,12 @@ export default {
           {
             label: '前回',
             backgroundColor: '#CFD8DC',
-            data: [10, 40, 30, 80],
+            data: [10, 40, 30, 81],
           },
           {
             label: '最新',
             backgroundColor: '#f87979',
-            data: [10, 40, 30, 80],
+            data: [10, 40, 36, 82],
           },
         ],
       },
@@ -39,13 +39,15 @@ export default {
       },
     };
   },
-  created() {
-   this.getScores()
-    // this.renderChart(this.chartdata, this.options);
+  async created() {
+    await this.getScores();
+    console.log(this.$store.getters.scores);
+    console.log(this.scores[1].population_score);
+    this.renderChart(this.chartdata, this.options);
   },
 
   computed: {
-    ...mapGetters(['scores']),
+    ...mapGetters(['scores', 'LoginUser']),
   },
   methods: {
     ...mapActions(['getScores']),

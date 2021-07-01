@@ -8,7 +8,7 @@
           <SideMenu />
         </div>
         <div class="submenu column is-6">
-          <Score></Score>
+          <Score/>
           <h3 class="subtitle is-3">自分の投稿一覧</h3> 
           <MyFeed></MyFeed>
         </div>
@@ -36,16 +36,7 @@ export default {
     return{
     }
   },
-  created(){
-    // this.getScores
-    },
-  computed: {
 
-  },
-  methods: {
-      // ...mapActions(['getScores']),
-
-  },
 };
 </script>
 
