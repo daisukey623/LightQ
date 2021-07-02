@@ -35,23 +35,24 @@
 import { mapGetters } from 'vuex';
 import { auth } from '/src/main.js';
 
-
 export default {
   created() {
     this.$store.dispatch('getPostsLists');
   },
   computed: {
-    ...mapGetters(['postsLists', 'postsListsId']),
+    ...mapGetters(['postsLists']),
     myPosts() {
-      return this.postsLists.filter(function(myPost) {
+     return this.postsLists.filter(function(myPost) {
         return myPost.user_id === auth.currentUser.uid;
       });
     },
+  
   },
   methods: {
     toPosts(index) {
       this.$router.push(`/posts/${this.myPosts[index].id}`);
     },
+
   },
 };
 </script>

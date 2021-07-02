@@ -41,10 +41,12 @@ export default {
         const ref = await db.collection('comments').doc();
         ref.set(
           {
+            id:ref.id,
             comment: this.comment,
             post_id: this.$route.params.id,
             user_id: auth.currentUser.uid,
             user_name: auth.currentUser.displayName,
+            createdAt: new Date()
           },
           { marge: true }
         );
@@ -68,6 +70,7 @@ export default {
             id: ref.id,
             following: auth.currentUser.uid,
             followed: this.post.user_id,
+            followed_name: this.post.user_name,
           },
           { marge: true }
         );
@@ -79,5 +82,4 @@ export default {
   },
 };
 </script>
-
 <style scoped></style>

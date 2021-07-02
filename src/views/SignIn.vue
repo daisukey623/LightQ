@@ -1,16 +1,45 @@
-
 <template>
-  <div>
-    <h2>ログイン画面</h2>
-    <label for="name">Email：</label>
-    <input id="remail" type="email" v-model="email" />
-    <br /><br />
-    <label for="password">パスワード：</label>
-    <input id="password" type="password" v-model="password" />
-    <br /><br />
-    <button @click="Login">ログイン</button>
-    <br /><br />
-    <router-link to="/register">新規登録はこちらから</router-link>
+<div class="container">
+  <div class=" columns is-centered">
+    <div class="box column is-half">
+      <h2 class="subtitle  is-2">ログイン</h2>
+      <div class="has-text-left">
+        <div class="control m-5">
+          <label class="label">Email</label>
+          <p class="control has-icons-left has-icons-right">
+            <input
+              class="input"
+              id="remail"
+              type="email"
+              placeholder="メールアドレスを入力してください"
+              v-model="email"
+            />
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </p>
+        </div>
+        <div class="control m-5">
+          <label class="label" for="password">パスワード</label>
+          <p class="control has-icons-left has-icons-right">
+            <input
+              class="input"
+              id="password"
+              type="password"
+              placeholder="パスワードを入力してください"
+              v-model="password"
+            />
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </p>
+        </div>
+      </div>
+      <button class="button is-info" @click="Login">ログインする</button>
+      <br /><br />
+      <router-link to="/register">新規登録はこちらから</router-link>
+    </div>
+  </div>
   </div>
 </template>
 

@@ -91,10 +91,11 @@ export default {
       this.setScores()
     },   
       setScores() {
-      db.collection('scores')
+      const ref = db.collection('scores')
         .doc()
-        .set(
+        ref.set(
           {
+            id:ref.id,
             user_id: auth.currentUser.uid,
             plan_score:this.tag1,
             population_score:this.tag2,
