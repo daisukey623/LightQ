@@ -35,6 +35,8 @@ export default {
   },
   data() {
     return {
+            file: null,
+            url:null,
       showModal: true,
       auth:auth
     };
@@ -46,11 +48,8 @@ export default {
     LoginUser() {
       return this.$store.getters.LoginUser;
     },
-
   },
-  methods: {
-
-  },
+  
 };
 </script>
 

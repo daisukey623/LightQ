@@ -19,6 +19,7 @@ export default new Vuex.Store({
     follows:[],
     isShowQuestionnaire:false,
     isShowQuestionnaireSignUp:false,
+    isShowProfileIMG:false,
   },
   getters: {
     LoginUser: (state) => {
@@ -53,6 +54,9 @@ export default new Vuex.Store({
     },
     isShowQuestionnaire: (state) => {
       return state.isShowQuestionnaire;
+    },
+    isShowProfileIMG: (state) => {
+      return state.isShowProfileIMG;
     },
     isShowQuestionnaireSignUp: (state) => {
       return state.isShowQuestionnaireSignUp;
@@ -97,6 +101,9 @@ export default new Vuex.Store({
     },
     showModal(state) {
       state.stateModal = true;
+    },
+    showProfileIMG(state) {
+      state.isShowProfileIMG = true;
     },
     showQuestionnaire(state) {
       state.isShowQuestionnaire = true;
@@ -223,6 +230,9 @@ export default new Vuex.Store({
     },
     showModal({ commit }) {
       commit('showModal');
+    },
+    showProfileIMG({ commit }) {
+      commit('showProfileIMG');
     },
     showQuestionnaire({ commit }) {
       commit('showQuestionnaire');

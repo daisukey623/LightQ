@@ -4,8 +4,8 @@
     <div class="modal-content columns is-centered">
       <div class="card column is-half ">
         <div class="card-content">
-          <p>各領域の理解度の状態を登録しましょう。</p>
-          <p>以降の振り返りに役立ちます。</p>
+          <p class=" is-size-5 has-text-weight-bold">現在の採用業務の理解度を登録しましょう</p>
+          <p>以降の振り返りに役立ちます</p>
           <b-field label="採用計画" class="m-6">
             <b-slider
               v-model="value_tag1"
@@ -56,7 +56,7 @@
             </b-slider>
           </b-field>
           <button class="button" type="submit" @click="send">
-            振り返り完了
+           完了する
           </button>
           <button
             class="modal-close is-large"

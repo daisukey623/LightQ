@@ -36,8 +36,9 @@
         </div>
       </div>
       <button class="button is-info" @click="Login">ログインする</button>
-      <br /><br />
-      <router-link to="/register">新規登録はこちらから</router-link>
+      <div class="m-5">
+      <router-link to="/signup">新規登録はこちらから</router-link>
+      </div>
     </div>
   </div>
   </div>
