@@ -42,11 +42,10 @@ export default {
   computed: {
     ...mapGetters(['postsLists']),
     myPosts() {
-     return this.postsLists.filter(function(myPost) {
+      return this.postsLists.filter(function(myPost) {
         return myPost.user_id === auth.currentUser.uid;
       });
     },
-  
   },
   methods: {
     toPosts(index) {

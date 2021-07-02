@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Header />
+    <Header />   
 
     <h2 class="subtitle is-2">詳細ページ</h2>
 
