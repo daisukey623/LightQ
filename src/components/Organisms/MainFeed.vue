@@ -38,12 +38,14 @@ export default {
     this.$store.dispatch('getPostsLists');
   },
   computed: {
-    ...mapGetters(['postsLists','postsListsId']),
+    ...mapGetters(['postsLists']),
+ 
   },
   methods: {
     toPosts(index) {
-      this.$router.push(`/posts/${this.postsListsId[index]}`);
+      this.$router.push(`/posts/${this.postsLists[index].id}`);
     },
+
   },
 };
 </script>

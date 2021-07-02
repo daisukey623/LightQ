@@ -14,7 +14,6 @@
         <p class="control">
           <button class="button" @click="addComment">回答を送信</button>
         </p>
-        <button @click="test">テスト</button>
       </div>
     </div>
   </article>
@@ -79,9 +78,6 @@ export default {
         console.log('セットできません')
       }
     },
-    test(){
-      console.log(this.follows)
-    }
 
   },
 };

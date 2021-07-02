@@ -117,12 +117,13 @@ export default new Vuex.Store({
 
     async getPostsLists({ commit }) {
       await db.collection('posts').onSnapshot((querySnapshot) => {
-        let Doc = [];
+        let DocAll = [];
         let DocId = [];
         querySnapshot.forEach((doc) => {
-          Doc.push(doc.data());
+          DocAll.push(doc.data());
           DocId.push(doc.id);
         });
+     const Doc = DocAll.sort((a,b) => b.createdAt - a.createdAt);
         commit('setPostsLists', { Doc, DocId });
       });
     },
