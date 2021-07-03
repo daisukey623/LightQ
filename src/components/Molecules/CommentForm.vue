@@ -41,12 +41,13 @@ export default {
         const ref = await db.collection('comments').doc();
         ref.set(
           {
-            id:ref.id,
+            id: ref.id,
             comment: this.comment,
             post_id: this.$route.params.id,
             user_id: auth.currentUser.uid,
             user_name: auth.currentUser.displayName,
-            createdAt: new Date()
+            createdAt: new Date(),
+            user_photoURL: auth.currentUser.photoURL,
           },
           { marge: true }
         );
@@ -74,11 +75,10 @@ export default {
           },
           { marge: true }
         );
-      }else{
-        console.log('セットできません')
+      } else {
+        console.log('セットできません');
       }
     },
-
   },
 };
 </script>

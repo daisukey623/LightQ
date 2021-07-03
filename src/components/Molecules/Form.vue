@@ -78,6 +78,7 @@ export default {
             status: '受付中',
             like_count: 0,
             user_name: auth.currentUser.displayName,
+            user_photoURL: auth.currentUser.photoURL,
             best_answer:'',
             createdAt: new Date()
           },

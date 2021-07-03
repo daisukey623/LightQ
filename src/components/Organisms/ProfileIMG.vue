@@ -75,13 +75,9 @@ export default {
       await user
         .updateProfile({
           photoURL: this.url,
-          // Update successful
-          // ...
         })
         .catch((error) => {
           console.log(error);
-          // An error occurred
-          // ...
         });
     },
   },
