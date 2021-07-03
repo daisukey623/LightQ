@@ -8,11 +8,20 @@
               <div class="content">
                 <p class="has-text-left">
                   {{ postsList.title }}
+                  <br />
+                  <small class="mr-4">@{{ postsList.user_name }}</small>
+                  <small>{{
+                    `${postsList.createdAt.toDate().getFullYear()}/
+                    ${postsList.createdAt.toDate().getMonth() +
+                      1}/${postsList.createdAt
+                      .toDate()
+                      .getDate()} ${postsList.createdAt
+                      .toDate()
+                      .getHours()}:${postsList.createdAt.toDate().getMinutes()}
+                    `
+                  }}</small>
                 </p>
                 <div class="is-flex">
-                  <p class=" has-text-left">
-                    <span class="tag mx-1 ">@{{ postsList.user_name }}</span>
-                  </p>
                   <p class=" has-text-left">
                     <span class="tag mx-1 ">{{ postsList.status }}</span>
                   </p>
@@ -32,20 +41,20 @@
 </template>
 
 <script>
+// import dayjs from 'dayjs'
 import { mapGetters } from 'vuex';
 export default {
   created() {
     this.$store.dispatch('getPostsLists');
+    // console.log(dayjs('2020-05-10T09:00:00+09:00').format('YYYY/MM/DD HH:mm'))
   },
   computed: {
     ...mapGetters(['postsLists']),
- 
   },
   methods: {
     toPosts(index) {
       this.$router.push(`/posts/${this.postsLists[index].id}`);
     },
-
   },
 };
 </script>
