@@ -4,6 +4,15 @@
       <div @click="toPosts(index)" class="isPointer">
         <div class="box mb-1">
           <article class="media">
+            <div class="media-left">
+              <figure class="mb-3">
+                <p class="image  ">
+                  <img class="is-rounded isFit" :src="postsList.user_photoURL" />
+                </p>
+              </figure>
+              <span class="tag is-info is-light mx-1 ">{{ postsList.status }}</span>
+            </div>
+
             <div class="media-content">
               <div class="content">
                 <p class="has-text-left">
@@ -22,10 +31,7 @@
                   }}</small>
                 </p>
                 <div class="is-flex">
-                  <p class=" has-text-left">
-                    <span class="tag mx-1 ">{{ postsList.status }}</span>
-                  </p>
-                  <p class=" has-text-left">
+                  <p class=" has-text-left mt-3">
                     <span class="tag mx-1 has-text-left">{{
                       postsList.tags
                     }}</span>
@@ -41,12 +47,11 @@
 </template>
 
 <script>
-// import dayjs from 'dayjs'
 import { mapGetters } from 'vuex';
+
 export default {
   created() {
     this.$store.dispatch('getPostsLists');
-    // console.log(dayjs('2020-05-10T09:00:00+09:00').format('YYYY/MM/DD HH:mm'))
   },
   computed: {
     ...mapGetters(['postsLists']),
@@ -62,5 +67,10 @@ export default {
 <style scoped>
 .isPointer {
   cursor: pointer;
+}
+.isFit {
+    width: 64px;
+  height: 64px;
+  object-fit: cover;
 }
 </style>

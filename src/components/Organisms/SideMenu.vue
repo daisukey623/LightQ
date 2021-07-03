@@ -4,30 +4,43 @@
       <p class="menu-label p-3  has-background-light">
         Menu
       </p>
-      <ul class="menu-list">
+
+      <div>
+      <figure class="image">
+        <img class="is-rounded isFit  isCenter" :src="auth.currentUser.photoURL" />
+      </figure>
+      <p class="m-3"><small>{{ auth.currentUser.displayName}}</small></p>
+      </div>
+
+      <ul class="menu-list ">
         <li @click="toHome"><a>ホーム</a></li>
-        <li><a>マイページ</a>
-        <ul>
-          <li @click="toUsers"><a>プロフィール</a></li>
-          <li @click="toFollows"><a>フォロワー</a></li>
-        </ul></li>
-
-
+        <li>
+          <a>マイページ</a>
+          <ul>
+            <li @click="toUsers"><a>プロフィール</a></li>
+            <li @click="toFollows"><a>フォロワー</a></li>
+          </ul>
+        </li>
       </ul>
-      <button class="button mt-6 " @click="showModal">質問する</button>
+      <button class="button is-info mt-6 " @click="showModal">質問する</button>
     </aside>
   </div>
 </template>
 
 <script>
-import { auth, } from '/src/main.js';
+import { auth } from '/src/main.js';
 export default {
-  methods:{
-    showModal(){
-       this.$store.dispatch('showModal');
+  data() {
+    return {
+      auth: auth,
+    };
+  },
+  methods: {
+    showModal() {
+      this.$store.dispatch('showModal');
     },
-    toHome(){
-      this.$router.push('/home')
+    toHome() {
+      this.$router.push('/home');
     },
     toUsers() {
       this.$router.push(`/users/${auth.currentUser.uid}`);
@@ -35,8 +48,17 @@ export default {
     toFollows() {
       this.$router.push(`/follows/${auth.currentUser.uid}`);
     },
-  }
+  },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.isFit {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+}
+.isCenter{
+  margin: 0 auto;
+}
+</style>
