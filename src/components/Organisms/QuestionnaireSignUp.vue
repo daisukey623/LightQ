@@ -58,11 +58,7 @@
           <button class="button" type="submit" @click="send">
            完了する
           </button>
-          <button
-            class="modal-close is-large"
-            aria-label="close"
-            @click="closeModal"
-          ></button>
+
         </div>
       </div>
     </div>
@@ -87,12 +83,12 @@ export default {
   },
   methods: {
     closeModal() {
-      console.log('クリック');
       this.$store.dispatch('closeModal');
     },
     send() {
       this.setScores();
       this.$router.push('/home');
+      this.closeModal()
     },
       setScores() {
       const ref = db.collection('scores')

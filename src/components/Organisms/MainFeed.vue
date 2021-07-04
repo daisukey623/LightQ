@@ -18,8 +18,8 @@
                 <p class="has-text-left">
                   {{ postsList.title }}
                   <br />
-                  <small class="mr-4">@{{ postsList.user_name }}</small>
-                  <small>{{
+                  <small class="mr-4 has-text-grey">@{{ postsList.user_name }}</small>
+                  <small class="has-text-grey">{{
                     `${postsList.createdAt.toDate().getFullYear()}/
                     ${postsList.createdAt.toDate().getMonth() +
                       1}/${postsList.createdAt
