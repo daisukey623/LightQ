@@ -2,20 +2,32 @@
   <div>
     <p>フォロー</p>
     <div v-for="(list, index) in follows" :key="`first-${index}`">
-      <div class="isPointer box mb-1">
+      <div class="isPointer box mb-1" @click="toUsers(index)">
+        <div class="has-text-right">
+          <button
+            class="delete"
+            @click="deleteFollows(index)"
+            v-if="auth.currentUser.uid === list.following"
+          ></button>
+        </div>
         <article class="media">
+          <div class="media-left">
+            <figure class="mb-3">
+              <p class="image  ">
+                <img class="is-rounded isFit" :src="list.followed_photoURL" />
+              </p>
+            </figure>
+          </div>
+
           <div class="media-content">
             <div class="content">
-              <div class="has-text-left">
-                <p
-                  class="has-text-right"
-                  @click="deleteComment(index)"
-                  v-if="auth.currentUser.uid === list.following"
+              <p class="has-text-left">
+                <small class="mr-4 has-text-grey"
+                  >@{{ list.followed_name }}</small
                 >
-                  <a class="tag is-delete "></a>
-                </p>
-                @{{ list.followed_name }}
-              </div>
+              </p>
+
+              <div class="is-flex"></div>
             </div>
           </div>
         </article>
@@ -34,26 +46,23 @@ export default {
       auth: auth,
     };
   },
-  created(
-    
-  ) {},
+  created() {},
   computed: {
-    ...mapGetters([
-      'follows',
-    ]),
+    ...mapGetters(['follows']),
   },
   methods: {
-
-    async deleteComment(index) {
-      if (window.confirm('コメントを削除しても良いですか？')) {
+    async deleteFollows(index) {
+      if (window.confirm('フォローを削除しても良いですか？')) {
         await db
-          .collection('comments')
-          .doc(this.commentsListsId[index])
+          .collection('follows')
+          .doc(this.follows[index].id)
           .delete();
         window.alert('削除しました');
       }
     },
-
+      toUsers(index) {
+      this.$router.push(`/users/${this.follows[index].followed}`);
+    },
   },
 };
 </script>
@@ -61,5 +70,10 @@ export default {
 <style scoped>
 .isPointer {
   cursor: pointer;
+}
+.isFit {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
 }
 </style>

@@ -18,7 +18,7 @@
           <a>マイページ</a>
           <ul>
             <li @click="toUsers"><a>プロフィール</a></li>
-            <li @click="toFollows"><a>フォロワー</a></li>
+            <li @click="toFollows"><a>フォロー</a></li>
           </ul>
         </li>
       </ul>
