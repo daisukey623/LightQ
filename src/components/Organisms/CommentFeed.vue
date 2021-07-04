@@ -4,17 +4,43 @@
       <div class="isPointer">
         <div class="box mb-1">
           <article class="media">
-            <div class="media-content">
+            <div class="media-left">
+              <figure class="mb-3">
+                <p class="image  ">
+                  <img
+                    class="is-rounded isFit"
+                    :src="commentsList.user_photoURL"
+                  />
+                </p>
+              </figure>
+            </div>
+            <div class="media-content ">
               <div class="content">
                 <div class="has-text-left">
-                  <p
-                    class="has-text-right"
+                  <div  class="has-text-right">
+
+                  <button
+                    class="delete"
                     @click="deleteComment(index)"
                     v-if="auth.currentUser.uid === commentsList.user_id"
                   >
-                    <a class="tag is-delete "></a>
-                  </p>
-                  @{{ commentsList.user_name }}
+                  </button>
+                  </div>
+                  <small class="mr-4 has-text-grey"
+                    >@{{ commentsList.user_name }}</small
+                  >
+                  <small class="has-text-grey">{{
+                    `${commentsList.createdAt.toDate().getFullYear()}/
+                    ${commentsList.createdAt.toDate().getMonth() +
+                      1}/${commentsList.createdAt
+                      .toDate()
+                      .getDate()} ${commentsList.createdAt
+                      .toDate()
+                      .getHours()}:${commentsList.createdAt
+                      .toDate()
+                      .getMinutes()}
+                    `
+                  }}</small>
                 </div>
                 <p class="has-text-left" style="white-space:pre-wrap;">
                   {{ commentsList.comment }}
@@ -27,7 +53,7 @@
                     class="button is-small has-text-left"
                     @click="uppdatePostStatus(index)"
                   >
-                    ベストアンサー
+                    ベストアンサーにする
                   </button>
                 </div>
               </div>
@@ -64,7 +90,7 @@ export default {
         postId: this.$route.params.id,
         commentId: this.commentsListsId[index],
       });
-      this.showQuestionnaire()
+      this.showQuestionnaire();
     },
     async deleteComment(index) {
       if (window.confirm('コメントを削除しても良いですか？')) {
@@ -75,9 +101,9 @@ export default {
         window.alert('削除しました');
       }
     },
-      showQuestionnaire(){
-       this.$store.dispatch('showQuestionnaire');
-    }
+    showQuestionnaire() {
+      this.$store.dispatch('showQuestionnaire');
+    },
   },
 };
 </script>
@@ -85,5 +111,10 @@ export default {
 <style scoped>
 .isPointer {
   cursor: pointer;
+}
+.isFit {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
 }
 </style>

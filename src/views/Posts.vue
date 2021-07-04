@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Header />   
+    <Header />
 
     <h2 class="subtitle is-2">詳細ページ</h2>
 
@@ -11,21 +11,39 @@
       <div class="column is-6">
         <div class="box mb-1">
           <article class="media">
+            <div class="media-left">
+              <figure class="mb-3">
+                <p class="image  ">
+                  <img class="is-rounded isFit" :src="post.user_photoURL" />
+                </p>
+              </figure>
+              <span class="tag is-info is-light mx-1 ">{{ post.status }}</span>
+            </div>
+
             <div class="media-content">
               <div class="content">
-                <p class="has-text-left has-text-weight-semibold">
-                  <strong> @{{ post.user_name }}</strong>
-                  <br />
+                <p class="has-text-left">
                   {{ post.title }}
+                  <br />
+                  <small class="mr-4 has-text-grey"
+                    >@{{ post.user_name }}</small
+                  >
+                  <small class="has-text-grey">{{
+                    `${post.createdAt.toDate().getFullYear()}/
+                    ${post.createdAt.toDate().getMonth() +
+                      1}/${post.createdAt
+                      .toDate()
+                      .getDate()} ${post.createdAt
+                      .toDate()
+                      .getHours()}:${post.createdAt.toDate().getMinutes()}
+                    `
+                  }}</small>
                 </p>
                 <p class="has-text-left" style="white-space:pre-wrap;">
                   {{ post.body }}
                 </p>
                 <div class="is-flex">
-                  <p class=" has-text-left">
-                    <span class="tag mx-1 ">{{ post.status }}</span>
-                  </p>
-                  <p class=" has-text-left">
+                  <p class=" has-text-left mt-3">
                     <span class="tag mx-1 has-text-left">{{ post.tags }}</span>
                   </p>
                 </div>
@@ -39,13 +57,43 @@
         </p>
         <div class="box mb-1" v-else>
           <article class="media">
+            <div class="media-left">
+              <figure class="mb-3">
+                <p class="image  ">
+                  <img
+                    class="is-rounded isFit"
+                    :src="bestAnswerComment.user_photoURL"
+                  />
+                </p>
+              </figure>
+            </div>
+
             <div class="media-content">
               <div class="content">
-                <p class="has-text-left">@{{ bestAnswerComment.user_name }}</p>
+                <p class="has-text-left">
+                  <br />
+                  <small class="mr-4 has-text-grey"
+                    >@{{ bestAnswerComment.user_name }}</small
+                  >
+                  <small class="has-text-grey">{{
+                    `${bestAnswerComment.createdAt.toDate().getFullYear()}/
+                    ${bestAnswerComment.createdAt.toDate().getMonth() +
+                      1}/${bestAnswerComment.createdAt
+                      .toDate()
+                      .getDate()} ${bestAnswerComment.createdAt
+                      .toDate()
+                      .getHours()}:${bestAnswerComment.createdAt
+                      .toDate()
+                      .getMinutes()}
+                    `
+                  }}</small>
+                </p>
                 <p class="has-text-left" style="white-space:pre-wrap;">
                   {{ bestAnswerComment.comment }}
                 </p>
-                <div class="is-flex"></div>
+                <div class="is-flex">
+                  <p class=" has-text-left mt-3"></p>
+                </div>
               </div>
             </div>
           </article>
@@ -92,7 +140,6 @@ export default {
 
   beforeUpdate() {
     this.$store.dispatch('getBestAnswerComment', this.post.best_answer);
-
   },
 
   computed: {
@@ -102,4 +149,13 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.isPointer {
+  cursor: pointer;
+}
+.isFit {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+}
+</style>
