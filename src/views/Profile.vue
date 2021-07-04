@@ -22,7 +22,6 @@ import SideMenu from '@/components/Organisms/SideMenu';
 import Header from '@/components//Organisms/Header';
 import Score from '@/components//Organisms/Score';
 import MyFeed from '@/components//Organisms/MyFeed';
-// import { mapActions } from 'vuex';
 
 
 export default {

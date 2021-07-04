@@ -12,7 +12,7 @@
       </div>
       <div class="field">
         <p class="control">
-          <button class="button" @click="addComment">回答を送信</button>
+          <button class="button  is-info " @click="addComment">回答を送信</button>
         </p>
       </div>
     </div>
