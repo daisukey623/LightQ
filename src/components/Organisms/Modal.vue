@@ -2,16 +2,17 @@
   <div class="modal  is-active" v-show="stateModal">
     <div class="modal-background"></div>
     <div class="modal-content   columns is-centered ">
-      <div class="card column is-half ">
+      <div class="card column is-half  ">
+        <div class="has-text-right mr-5">
+          <button class="delete " @click="closeModal">閉じる</button>
+          </div>
         <div class="card-content">
           <div class="content">
             <Form></Form>
           </div>
-          <button class="button" @click="closeModal">閉じる</button>
         </div>
       </div>
     </div>
-    <button class="modal-close is-large" aria-label="close"></button>
   </div>
 </template>
 

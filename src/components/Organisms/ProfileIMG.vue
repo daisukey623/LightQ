@@ -20,11 +20,6 @@
           <button class="button" type="submit" @click="send">
             完了して次へ
           </button>
-          <button
-            class="modal-close is-large"
-            aria-label="close"
-            @click="closeModal"
-          ></button>
         </div>
       </div>
     </div>

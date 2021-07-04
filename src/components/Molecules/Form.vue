@@ -31,26 +31,26 @@
       </label>
     </div>
 
-    <label class="label">タイトル</label>
+    <label class="label mt-5">タイトル</label>
     <div class="control">
       <input
         class="input"
         type="text"
-        placeholder="Text input"
+        placeholder="質問のタイトルを記入してください"
         v-model="title"
       />
     </div>
 
-    <label class="label">相談内容</label>
+    <label class="label mt-5">相談内容</label>
     <div class="control">
       <textarea
         class="textarea"
-        placeholder="10 lines of textarea"
+        placeholder="質問の内容を記入してください"
         rows="10"
         v-model="body"
       ></textarea>
 
-      <button class="button" type="submit" @click="addPost">送信</button>
+      <button class="button is-info mt-5" type="submit" @click="addPost">送信する</button>
     </div>
   </div>
 </template>
