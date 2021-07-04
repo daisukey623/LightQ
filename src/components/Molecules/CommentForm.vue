@@ -72,6 +72,7 @@ export default {
             following: auth.currentUser.uid,
             followed: this.post.user_id,
             followed_name: this.post.user_name,
+            followed_photoURL: this.post.user_photoURL,
           },
           { marge: true }
         );

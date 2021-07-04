@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 Vue.use(Vuex);
-import { db,auth } from '../main.js';
+import { db, auth } from '../main.js';
 export default new Vuex.Store({
   state: {
     userLists: [],
@@ -13,13 +13,13 @@ export default new Vuex.Store({
     postsListsId: [],
     commentsLists: [],
     commentsListsId: [],
-    scores:[],
+    scores: [],
     bestAnswerComment: '',
     stateModal: false,
-    follows:[],
-    isShowQuestionnaire:false,
-    isShowQuestionnaireSignUp:false,
-    isShowProfileIMG:false,
+    follows: [],
+    isShowQuestionnaire: false,
+    isShowQuestionnaireSignUp: false,
+    isShowProfileIMG: false,
   },
   getters: {
     LoginUser: (state) => {
@@ -46,6 +46,7 @@ export default new Vuex.Store({
     scores: (state) => {
       return state.scores;
     },
+
     bestAnswerComment: (state) => {
       return state.bestAnswerComment;
     },
@@ -78,7 +79,7 @@ export default new Vuex.Store({
       state.commentsListsId = doc.DocId;
     },
     setScores(state, doc) {
-      state.scores = doc.Doc
+      state.scores = doc.Doc;
     },
     setBestAnswerComment(state, doc) {
       state.bestAnswerComment = doc;
@@ -102,6 +103,7 @@ export default new Vuex.Store({
     showModal(state) {
       state.stateModal = true;
     },
+
     showProfileIMG(state) {
       state.isShowProfileIMG = true;
     },
@@ -130,7 +132,7 @@ export default new Vuex.Store({
           DocAll.push(doc.data());
           DocId.push(doc.id);
         });
-     const Doc = DocAll.sort((a,b) => b.createdAt - a.createdAt);
+        const Doc = DocAll.sort((a, b) => b.createdAt - a.createdAt);
         commit('setPostsLists', { Doc, DocId });
       });
     },
@@ -200,27 +202,26 @@ export default new Vuex.Store({
 
     async getScores({ commit }) {
       await db
-      .collection('scores')
-      .where('user_id', '==', auth.currentUser.uid)
-      .onSnapshot((querySnapshot) => {
-        const Doc = [];
-        querySnapshot.forEach((doc) => {
-          const data = {
-            id: doc.id,
-            user_id: doc.data().user_id,
-            createdAt: doc.data().createdAt,
-            follow_score: doc.data().follow_score,
-            plan_score: doc.data().plan_score,
-            population_score: doc.data().population_score,
-            selection_score: doc.data().selection_score,
-          }
-          Doc.push(data);
-        }, Doc);
-        console.log(Doc)
-        commit('setScores', {Doc});
-      });
+        .collection('scores')
+        .where('user_id', '==', auth.currentUser.uid)
+        .onSnapshot((querySnapshot) => {
+          const Doc = [];
+          querySnapshot.forEach((doc) => {
+            const data = {
+              id: doc.id,
+              user_id: doc.data().user_id,
+              createdAt: doc.data().createdAt,
+              follow_score: doc.data().follow_score,
+              plan_score: doc.data().plan_score,
+              population_score: doc.data().population_score,
+              selection_score: doc.data().selection_score,
+            };
+            Doc.push(data);
+          }, Doc);
+          // console.log(Doc)
+          commit('setScores', { Doc });
+        });
     },
-  
 
     getReceiveUserIndex({ commit }) {
       commit('getReceiveUserIndex');

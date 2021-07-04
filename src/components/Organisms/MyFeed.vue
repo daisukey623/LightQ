@@ -4,19 +4,41 @@
       <div @click="toPosts(index)" class="isPointer">
         <div class="box mb-1">
           <article class="media">
+            <div class="media-left">
+              <figure class="mb-3">
+                <p class="image  ">
+                  <img
+                    class="is-rounded isFit"
+                    :src="postsList.user_photoURL"
+                  />
+                </p>
+              </figure>
+              <span class="tag is-info is-light mx-1 ">{{
+                postsList.status
+              }}</span>
+            </div>
+
             <div class="media-content">
               <div class="content">
                 <p class="has-text-left">
                   {{ postsList.title }}
+                  <br />
+                  <small class="mr-4 has-text-grey"
+                    >@{{ postsList.user_name }}</small
+                  >
+                  <small class="has-text-grey">{{
+                    `${postsList.createdAt.toDate().getFullYear()}/
+                    ${postsList.createdAt.toDate().getMonth() +
+                      1}/${postsList.createdAt
+                      .toDate()
+                      .getDate()} ${postsList.createdAt
+                      .toDate()
+                      .getHours()}:${postsList.createdAt.toDate().getMinutes()}
+                    `
+                  }}</small>
                 </p>
                 <div class="is-flex">
-                  <p class=" has-text-left">
-                    <span class="tag mx-1 ">@{{ postsList.user_name }}</span>
-                  </p>
-                  <p class=" has-text-left">
-                    <span class="tag mx-1 ">{{ postsList.status }}</span>
-                  </p>
-                  <p class=" has-text-left">
+                  <p class=" has-text-left mt-3">
                     <span class="tag mx-1 has-text-left">{{
                       postsList.tags
                     }}</span>
@@ -33,19 +55,26 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { auth } from '/src/main.js';
 
 export default {
+  data() {
+    return {
+      params: this.$route.params.id,
+    };
+  },
   created() {
     this.$store.dispatch('getPostsLists');
   },
+
   computed: {
-    ...mapGetters(['postsLists']),
     myPosts() {
-      return this.postsLists.filter(function(myPost) {
-        return myPost.user_id === auth.currentUser.uid;
+      const params = this.params;
+      const postsListsFilter = this.postsLists.filter(function(myPost) {
+        return myPost.user_id === params;
       });
+      return postsListsFilter;
     },
+    ...mapGetters(['postsLists']),
   },
   methods: {
     toPosts(index) {
@@ -59,5 +88,11 @@ export default {
 <style scoped>
 .isPointer {
   cursor: pointer;
+}
+
+.isFit {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
 }
 </style>
