@@ -13,7 +13,6 @@ export default new Vuex.Store({
     postsListsId: [],
     commentsLists: [],
     commentsListsId: [],
-    scores: [],
     bestAnswerComment: '',
     stateModal: false,
     follows: [],
@@ -42,9 +41,6 @@ export default new Vuex.Store({
     },
     commentsListsId: (state) => {
       return state.commentsListsId;
-    },
-    scores: (state) => {
-      return state.scores;
     },
 
     bestAnswerComment: (state) => {
@@ -78,9 +74,7 @@ export default new Vuex.Store({
       state.commentsLists = doc.Doc;
       state.commentsListsId = doc.DocId;
     },
-    setScores(state, doc) {
-      state.scores = doc.Doc;
-    },
+
     setBestAnswerComment(state, doc) {
       state.bestAnswerComment = doc;
     },
@@ -198,29 +192,6 @@ export default new Vuex.Store({
       } else {
         console.log('No such document!');
       }
-    },
-
-    async getScores({ commit }) {
-      await db
-        .collection('scores')
-        .where('user_id', '==', auth.currentUser.uid)
-        .onSnapshot((querySnapshot) => {
-          const Doc = [];
-          querySnapshot.forEach((doc) => {
-            const data = {
-              id: doc.id,
-              user_id: doc.data().user_id,
-              createdAt: doc.data().createdAt,
-              follow_score: doc.data().follow_score,
-              plan_score: doc.data().plan_score,
-              population_score: doc.data().population_score,
-              selection_score: doc.data().selection_score,
-            };
-            Doc.push(data);
-          }, Doc);
-          // console.log(Doc)
-          commit('setScores', { Doc });
-        });
     },
 
     getReceiveUserIndex({ commit }) {
