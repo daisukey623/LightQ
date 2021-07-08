@@ -21,7 +21,7 @@
 
                   <button
                     class="delete"
-                    @click="deleteComment(index)"
+                    @click="deleteComment(commentsList.id)"
                     v-if="auth.currentUser.uid === commentsList.user_id"
                   >
                   </button>
@@ -51,7 +51,7 @@
                 >
                   <button
                     class="button is-small has-text-left"
-                    @click="uppdatePostStatus(index)"
+                    @click="uppdatePostStatus(commentsList.id)"
                   >
                     ベストアンサーにする
                   </button>
@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import { auth, db } from '/src/main.js';
+import { auth,db  } from '/src/main.js';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -79,24 +79,22 @@ export default {
   computed: {
     ...mapGetters([
       'commentsLists',
-      'commentsUsersLists',
-      'commentsListsId',
       'post',
     ]),
   },
   methods: {
-    uppdatePostStatus(index) {
+    uppdatePostStatus(id) {
       this.$store.dispatch('uppdatePostStatus', {
         postId: this.$route.params.id,
-        commentId: this.commentsListsId[index],
+        commentId: id,
       });
       this.showQuestionnaire();
     },
-    async deleteComment(index) {
+    async deleteComment(id) {
       if (window.confirm('コメントを削除しても良いですか？')) {
         await db
           .collection('comments')
-          .doc(this.commentsListsId[index])
+          .doc(id)
           .delete();
         window.alert('削除しました');
       }

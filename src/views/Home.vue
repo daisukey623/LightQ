@@ -11,7 +11,6 @@
         <div class="column is-6">
           <MainFeed></MainFeed>
           <Modal></Modal>
-          
         </div>
       </div>
     </div>
@@ -34,10 +33,10 @@ export default {
   },
   data() {
     return {
-            file: null,
-            url:null,
+      file: null,
+      url: null,
       showModal: true,
-      auth:auth
+      auth: auth,
     };
   },
   created() {
@@ -48,10 +47,7 @@ export default {
       return this.$store.getters.LoginUser;
     },
   },
-  
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

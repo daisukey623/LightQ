@@ -5,17 +5,12 @@ Vue.use(Vuex);
 import { db, auth } from '../main.js';
 export default new Vuex.Store({
   state: {
-    userLists: [],
-    userListsID: [],
-    ReceiveUserListsIndex: '',
     post: '',
     postsLists: [],
-    postsListsId: [],
     commentsLists: [],
-    commentsListsId: [],
+    follows: [],
     bestAnswerComment: '',
     stateModal: false,
-    follows: [],
     isShowQuestionnaire: false,
     isShowQuestionnaireSignUp: false,
     isShowProfileIMG: false,
@@ -33,14 +28,9 @@ export default new Vuex.Store({
     follows: (state) => {
       return state.follows;
     },
-    postsListsId: (state) => {
-      return state.postsListsId;
-    },
+
     commentsLists: (state) => {
       return state.commentsLists;
-    },
-    commentsListsId: (state) => {
-      return state.commentsListsId;
     },
 
     bestAnswerComment: (state) => {
@@ -65,14 +55,12 @@ export default new Vuex.Store({
     },
     setPostsLists(state, doc) {
       state.postsLists = doc.Doc;
-      state.postsListsId = doc.DocId;
     },
     setFollows(state, doc) {
       state.follows = doc.Doc;
     },
     setCommentsLists(state, doc) {
-      state.commentsLists = doc.Doc;
-      state.commentsListsId = doc.DocId;
+      state.commentsLists = doc.DocSort;
     },
 
     setBestAnswerComment(state, doc) {
@@ -87,8 +75,6 @@ export default new Vuex.Store({
 
     resetStore(state) {
       state.LoginUser = '';
-      state.userLists = [];
-      state.userListsID = [];
       state.postsLists = [];
     },
     getReceiveUserIndex(state, index) {
@@ -142,7 +128,8 @@ export default new Vuex.Store({
             Doc.push(doc.data());
             DocId.push(doc.id);
           });
-          commit('setCommentsLists', { Doc, DocId });
+          const DocSort = Doc.sort((a, b) => b.createdAt - a.createdAt);
+          commit('setCommentsLists', { DocSort, DocId });
         });
     },
     async getFollows({ commit }) {
