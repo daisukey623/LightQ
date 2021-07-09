@@ -8,7 +8,7 @@
           <SideMenu />
         </div>
         <div class="submenu column is-6">
-          <FollowsFeed></FollowsFeed>
+          <FeedFollows></FeedFollows>
         </div>
       </div>
     </div>
@@ -18,14 +18,14 @@
 <script>
 import SideMenu from '@/components/Organisms/SideMenu';
 import Header from '@/components//Organisms/Header';
-import FollowsFeed from '@/components//Organisms/FollowsFeed';
+import FeedFollows from '@/components//Organisms/FeedFollows';
 
 
 export default {
   components: {
     SideMenu,
     Header,
-    FollowsFeed,
+    FeedFollows,
   },
 
   created(){

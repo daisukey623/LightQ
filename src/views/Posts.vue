@@ -103,11 +103,11 @@
 
         <h3 class="title is-3 mt-5">回答する</h3>
 
-        <CommentForm />
+        <FormComments />
         <hr />
 
         <h3 class="title is-3 mt-5">回答一覧</h3>
-        <CommentFeed />
+        <FeedComments />
         <Modal />
         <Questionnaire />
       </div>
@@ -119,8 +119,8 @@
 import { mapGetters } from 'vuex';
 import SideMenu from '../components/Organisms/SideMenu';
 import Header from '../components/Organisms/Header';
-import CommentForm from '../components/Molecules/CommentForm';
-import CommentFeed from '../components/Organisms/CommentFeed';
+import FormComments from '../components/Molecules/FormComments';
+import FeedComments from '../components/Organisms/FeedComments';
 import Modal from '../components/Organisms/Modal';
 import Questionnaire from '@/components/Organisms/Questionnaire';
 
@@ -128,14 +128,14 @@ export default {
   components: {
     SideMenu,
     Header,
-    CommentForm,
-    CommentFeed,
+    FormComments,
+    FeedComments,
     Modal,
     Questionnaire,
   },
   created() {
     this.$store.dispatch('goPost', this.$route.params.id);
-    this.$store.dispatch('getCommentsLists', this.$route.params.id);
+    this.$store.dispatch('getComments', this.$route.params.id);
   },
 
   beforeUpdate() {

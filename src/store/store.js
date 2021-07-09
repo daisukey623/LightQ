@@ -6,8 +6,8 @@ import { db, auth } from '../main.js';
 export default new Vuex.Store({
   state: {
     post: '',
-    postsLists: [],
-    commentsLists: [],
+    posts: [],
+    comments: [],
     follows: [],
     bestAnswerComment: '',
     stateModal: false,
@@ -19,8 +19,8 @@ export default new Vuex.Store({
     LoginUser: (state) => {
       return state.LoginUser;
     },
-    postsLists: (state) => {
-      return state.postsLists;
+    posts: (state) => {
+      return state.posts;
     },
     post: (state) => {
       return state.post;
@@ -29,8 +29,8 @@ export default new Vuex.Store({
       return state.follows;
     },
 
-    commentsLists: (state) => {
-      return state.commentsLists;
+    comments: (state) => {
+      return state.comments;
     },
 
     bestAnswerComment: (state) => {
@@ -53,14 +53,14 @@ export default new Vuex.Store({
     setUser(state, authUser) {
       state.LoginUser = authUser;
     },
-    setPostsLists(state, doc) {
-      state.postsLists = doc.Doc;
+    setPosts(state, doc) {
+      state.posts = doc.Doc;
     },
     setFollows(state, doc) {
       state.follows = doc.Doc;
     },
-    setCommentsLists(state, doc) {
-      state.commentsLists = doc.DocSort;
+    setComments(state, doc) {
+      state.comments = doc.DocSort;
     },
 
     setBestAnswerComment(state, doc) {
@@ -75,7 +75,7 @@ export default new Vuex.Store({
 
     resetStore(state) {
       state.LoginUser = '';
-      state.postsLists = [];
+      state.posts = [];
     },
     getReceiveUserIndex(state, index) {
       state.ReceiveUserListsIndex = index;
@@ -104,7 +104,7 @@ export default new Vuex.Store({
       commit('setUser', auth.authUser);
     },
 
-    async getPostsLists({ commit }) {
+    async getPosts({ commit }) {
       await db.collection('posts').onSnapshot((querySnapshot) => {
         let DocAll = [];
         let DocId = [];
@@ -113,11 +113,11 @@ export default new Vuex.Store({
           DocId.push(doc.id);
         });
         const Doc = DocAll.sort((a, b) => b.createdAt - a.createdAt);
-        commit('setPostsLists', { Doc, DocId });
+        commit('setPosts', { Doc, DocId });
       });
     },
 
-    async getCommentsLists({ commit }, e) {
+    async getComments({ commit }, e) {
       await db
         .collection('comments')
         .where('post_id', '==', e)
@@ -129,7 +129,7 @@ export default new Vuex.Store({
             DocId.push(doc.id);
           });
           const DocSort = Doc.sort((a, b) => b.createdAt - a.createdAt);
-          commit('setCommentsLists', { DocSort, DocId });
+          commit('setComments', { DocSort, DocId });
         });
     },
     async getFollows({ commit }) {
