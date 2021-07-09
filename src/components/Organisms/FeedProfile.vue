@@ -63,18 +63,18 @@ export default {
     };
   },
   created() {
-    this.$store.dispatch('getPostsLists');
+    this.$store.dispatch('getPosts');
   },
 
   computed: {
     myPosts() {
       const params = this.params;
-      const postsListsFilter = this.postsLists.filter(function(myPost) {
+      const postsListsFilter = this.posts.filter(function(myPost) {
         return myPost.user_id === params;
       });
       return postsListsFilter;
     },
-    ...mapGetters(['postsLists']),
+    ...mapGetters(['posts']),
   },
   methods: {
     toPosts(index) {

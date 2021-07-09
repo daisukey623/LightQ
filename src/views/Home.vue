@@ -9,7 +9,7 @@
           <SideMenu></SideMenu>
         </div>
         <div class="column is-6">
-          <MainFeed></MainFeed>
+          <FeedPosts></FeedPosts>
           <Modal></Modal>
         </div>
       </div>
@@ -21,7 +21,7 @@
 import SideMenu from '../components/Organisms/SideMenu';
 import Header from '../components/Organisms/Header';
 import Modal from '../components/Organisms/Modal';
-import MainFeed from '../components/Organisms/MainFeed';
+import FeedPosts from '../components/Organisms/FeedPosts';
 import { auth } from '/src/main.js';
 
 export default {
@@ -29,7 +29,7 @@ export default {
     SideMenu,
     Header,
     Modal,
-    MainFeed,
+    FeedPosts,
   },
   data() {
     return {

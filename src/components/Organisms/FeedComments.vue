@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="(commentsList, index) in commentsLists" :key="`first-${index}`">
+    <div v-for="(commentsList, index) in comments" :key="`first-${index}`">
       <div class="isPointer">
         <div class="box mb-1">
           <article class="media">
@@ -78,7 +78,7 @@ export default {
   created() {},
   computed: {
     ...mapGetters([
-      'commentsLists',
+      'comments',
       'post',
     ]),
   },

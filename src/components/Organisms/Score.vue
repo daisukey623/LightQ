@@ -59,7 +59,6 @@ export default {
         }, Doc);
 
          const DocSort = Doc.sort((a,b) => b.createdAt - a.createdAt);
-         console.log(DocSort)
 
         const obj = {
           labels: ['採用計画', '母集団形成', '選考', '内定者フォロー'],

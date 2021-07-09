@@ -10,7 +10,7 @@
         <div class="submenu column is-6">
           <Score />
           <h3 class="subtitle is-3">投稿一覧</h3>
-          <MyFeed></MyFeed>
+          <FeedProfile></FeedProfile>
         </div>
       </div>
     </div>
@@ -21,14 +21,14 @@
 import SideMenu from '@/components/Organisms/SideMenu';
 import Header from '@/components//Organisms/Header';
 import Score from '@/components//Organisms/Score';
-import MyFeed from '@/components//Organisms/MyFeed';
+import FeedProfile from '@/components//Organisms/FeedProfile';
 
 export default {
   components: {
     SideMenu,
     Header,
     Score,
-    MyFeed,
+    FeedProfile,
   },
 };
 </script>

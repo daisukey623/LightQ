@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="(postsList, index) in postsLists" :key="`first-${index}`">
+    <div v-for="(postsList, index) in posts" :key="`first-${index}`">
       <div @click="toPosts(index)" class="isPointer">
         <div class="box mb-1">
           <article class="media">
@@ -51,14 +51,14 @@ import { mapGetters } from 'vuex';
 
 export default {
   created() {
-    this.$store.dispatch('getPostsLists');
+    this.$store.dispatch('getPosts');
   },
   computed: {
-    ...mapGetters(['postsLists']),
+    ...mapGetters(['posts']),
   },
   methods: {
     toPosts(index) {
-      this.$router.push(`/posts/${this.postsLists[index].id}`);
+      this.$router.push(`/posts/${this.posts[index].id}`);
     },
   },
 };
