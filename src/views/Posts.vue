@@ -28,16 +28,7 @@
                   <small class="mr-4 has-text-grey"
                     >@{{ post.user_name }}</small
                   >
-                  <small class="has-text-grey">{{
-                    `${post.createdAt.toDate().getFullYear()}/
-                    ${post.createdAt.toDate().getMonth() +
-                      1}/${post.createdAt
-                      .toDate()
-                      .getDate()} ${post.createdAt
-                      .toDate()
-                      .getHours()}:${post.createdAt.toDate().getMinutes()}
-                    `
-                  }}</small>
+                  <small class="has-text-grey" >{{ setDate(post) }}</small>
                 </p>
                 <p class="has-text-left" style="white-space:pre-wrap;">
                   {{ post.body }}
@@ -76,16 +67,7 @@
                     >@{{ bestAnswerComment.user_name }}</small
                   >
                   <small class="has-text-grey">{{
-                    `${bestAnswerComment.createdAt.toDate().getFullYear()}/
-                    ${bestAnswerComment.createdAt.toDate().getMonth() +
-                      1}/${bestAnswerComment.createdAt
-                      .toDate()
-                      .getDate()} ${bestAnswerComment.createdAt
-                      .toDate()
-                      .getHours()}:${bestAnswerComment.createdAt
-                      .toDate()
-                      .getMinutes()}
-                    `
+                    setDate(bestAnswerComment)
                   }}</small>
                 </p>
                 <p class="has-text-left" style="white-space:pre-wrap;">
@@ -133,8 +115,11 @@ export default {
     Modal,
     Questionnaire,
   },
+  data() {
+    return {};
+  },
   created() {
-    this.$store.dispatch('goPost', this.$route.params.id);
+    this.$store.dispatch('getPost', this.$route.params.id);
     this.$store.dispatch('getComments', this.$route.params.id);
   },
 
@@ -144,8 +129,19 @@ export default {
 
   computed: {
     ...mapGetters(['post', 'bestAnswerComment']),
+    
+    setDate() {
+      return function(item) {
+        return `
+                ${item.createdAt.toDate().getFullYear()}/
+                ${item.createdAt.toDate().getMonth() + 1}/
+                ${item.createdAt.toDate().getDate()}
+                ${item.createdAt.toDate().getHours()}:
+                ${item.createdAt.toDate().getMinutes()}
+              `;
+      };
+    },
   },
-  methods: {},
 };
 </script>
 

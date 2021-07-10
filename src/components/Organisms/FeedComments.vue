@@ -17,30 +17,17 @@
             <div class="media-content ">
               <div class="content">
                 <div class="has-text-left">
-                  <div  class="has-text-right">
-
-                  <button
-                    class="delete"
-                    @click="deleteComment(commentsList.id)"
-                    v-if="auth.currentUser.uid === commentsList.user_id"
-                  >
-                  </button>
+                  <div class="has-text-right">
+                    <button
+                      class="delete"
+                      @click="deleteComment(commentsList.id)"
+                      v-if="auth.currentUser.uid === commentsList.user_id"
+                    ></button>
                   </div>
                   <small class="mr-4 has-text-grey"
                     >@{{ commentsList.user_name }}</small
                   >
-                  <small class="has-text-grey">{{
-                    `${commentsList.createdAt.toDate().getFullYear()}/
-                    ${commentsList.createdAt.toDate().getMonth() +
-                      1}/${commentsList.createdAt
-                      .toDate()
-                      .getDate()} ${commentsList.createdAt
-                      .toDate()
-                      .getHours()}:${commentsList.createdAt
-                      .toDate()
-                      .getMinutes()}
-                    `
-                  }}</small>
+                  <small class="has-text-grey">{{setDate(commentsList)}}</small>
                 </div>
                 <p class="has-text-left" style="white-space:pre-wrap;">
                   {{ commentsList.comment }}
@@ -66,7 +53,7 @@
 </template>
 
 <script>
-import { auth,db  } from '/src/main.js';
+import { auth, db } from '/src/main.js';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -77,10 +64,18 @@ export default {
   },
   created() {},
   computed: {
-    ...mapGetters([
-      'comments',
-      'post',
-    ]),
+    setDate: function() {
+      return function(item) {
+        return `
+                ${item.createdAt.toDate().getFullYear()}/
+                ${item.createdAt.toDate().getMonth() + 1}/
+                ${item.createdAt.toDate().getDate()}
+                ${item.createdAt.toDate().getHours()}:
+                ${item.createdAt.toDate().getMinutes()}
+              `;
+      };
+    },
+    ...mapGetters(['comments', 'post']),
   },
   methods: {
     uppdatePostStatus(id) {

@@ -7,10 +7,15 @@
             <div class="media-left">
               <figure class="mb-3">
                 <p class="image  ">
-                  <img class="is-rounded isFit" :src="postsList.user_photoURL" />
+                  <img
+                    class="is-rounded isFit"
+                    :src="postsList.user_photoURL"
+                  />
                 </p>
               </figure>
-              <span class="tag is-info is-light mx-1 ">{{ postsList.status }}</span>
+              <span class="tag is-info is-light mx-1 ">{{
+                postsList.status
+              }}</span>
             </div>
 
             <div class="media-content">
@@ -18,17 +23,10 @@
                 <p class="has-text-left">
                   {{ postsList.title }}
                   <br />
-                  <small class="mr-4 has-text-grey">@{{ postsList.user_name }}</small>
-                  <small class="has-text-grey">{{
-                    `${postsList.createdAt.toDate().getFullYear()}/
-                    ${postsList.createdAt.toDate().getMonth() +
-                      1}/${postsList.createdAt
-                      .toDate()
-                      .getDate()} ${postsList.createdAt
-                      .toDate()
-                      .getHours()}:${postsList.createdAt.toDate().getMinutes()}
-                    `
-                  }}</small>
+                  <small class="mr-4 has-text-grey"
+                    >@{{ postsList.user_name }}</small
+                  >
+                  <small class="has-text-grey">{{setDate(postsList)}}</small>
                 </p>
                 <div class="is-flex">
                   <p class=" has-text-left mt-3">
@@ -54,6 +52,17 @@ export default {
     this.$store.dispatch('getPosts');
   },
   computed: {
+    setDate: function() {
+      return function(item) {
+        return `
+                ${item.createdAt.toDate().getFullYear()}/
+                ${item.createdAt.toDate().getMonth() + 1}/
+                ${item.createdAt.toDate().getDate()}
+                ${item.createdAt.toDate().getHours()}:
+                ${item.createdAt.toDate().getMinutes()}
+              `;
+      };
+    },
     ...mapGetters(['posts']),
   },
   methods: {
@@ -69,7 +78,7 @@ export default {
   cursor: pointer;
 }
 .isFit {
-    width: 64px;
+  width: 64px;
   height: 64px;
   object-fit: cover;
 }

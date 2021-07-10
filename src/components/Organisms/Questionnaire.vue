@@ -93,6 +93,7 @@ export default {
     send() {
       this.closeModal();
       this.setScores();
+      
     },
     setScores() {
       const ref = db.collection('scores').doc();

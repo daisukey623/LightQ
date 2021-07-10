@@ -69,7 +69,7 @@ export default new Vuex.Store({
     updatePost(state, e) {
       state.post = e;
     },
-    goPost(state, doc) {
+    setPost(state, doc) {
       state.post = doc;
     },
 
@@ -171,11 +171,11 @@ export default new Vuex.Store({
       commit('updatePost', postDoc.data());
     },
 
-    async goPost({ commit }, e) {
+    async getPost({ commit }, e) {
       const postRef = await db.collection('posts').doc(e);
       const postDoc = await postRef.get();
       if (postDoc.exists) {
-        commit('goPost', postDoc.data());
+        commit('setPost', postDoc.data());
       } else {
         console.log('No such document!');
       }

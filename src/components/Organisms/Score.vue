@@ -1,7 +1,7 @@
 <script>
 import { Bar } from 'vue-chartjs';
 import { mapGetters } from 'vuex';
-import { db, auth } from '/src/main.js';
+import { db } from '/src/main.js';
 
 export default {
   extends: Bar,
@@ -42,7 +42,7 @@ export default {
   async mounted() {
     await db
       .collection('scores')
-      .where('user_id', '==', auth.currentUser.uid)
+      .where('user_id', '==', this.$route.params.id)
       .onSnapshot((querySnapshot) => {
         const Doc = [];
         querySnapshot.forEach((doc) => {
@@ -66,12 +66,12 @@ export default {
             {
               label: '前回',
               backgroundColor: '#7B7B7B',
-              data: [DocSort[0].plan_score, DocSort[0].population_score,DocSort[0].selection_score, DocSort[0].follow_score],
+              data: [DocSort[1].plan_score, DocSort[1].population_score,DocSort[1].selection_score, DocSort[1].follow_score],
             },
             {
               label: '最新',
               backgroundColor: '#1D6ECF',
-              data: [DocSort[1].plan_score, DocSort[1].population_score,DocSort[1].selection_score, DocSort[1].follow_score],
+              data: [DocSort[0].plan_score, DocSort[0].population_score,DocSort[0].selection_score, DocSort[0].follow_score],
             },
           ],
         };
