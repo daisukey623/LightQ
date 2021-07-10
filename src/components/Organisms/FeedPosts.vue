@@ -26,7 +26,7 @@
                   <small class="mr-4 has-text-grey"
                     >@{{ postsList.user_name }}</small
                   >
-                  <small class="has-text-grey">{{setDate(postsList)}}</small>
+                  <small class="has-text-grey">{{ setDate(postsList) }}</small>
                 </p>
                 <div class="is-flex">
                   <p class=" has-text-left mt-3">
@@ -51,6 +51,7 @@ export default {
   created() {
     this.$store.dispatch('getPosts');
   },
+
   computed: {
     setDate: function() {
       return function(item) {

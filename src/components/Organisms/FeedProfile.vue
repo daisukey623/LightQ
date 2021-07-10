@@ -26,7 +26,7 @@
                   <small class="mr-4 has-text-grey"
                     >@{{ postsList.user_name }}</small
                   >
-                  <small class="has-text-grey">{{setDate(postsList)}}</small>
+                  <small class="has-text-grey">{{ setDate(postsList) }}</small>
                 </p>
                 <div class="is-flex">
                   <p class=" has-text-left mt-3">
@@ -50,21 +50,13 @@ import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
-      params: this.$route.params.id,
     };
   },
   created() {
-    this.$store.dispatch('getPosts');
+    
   },
 
   computed: {
-    myPosts() {
-      const params = this.params;
-      const postsListsFilter = this.posts.filter(function(myPost) {
-        return myPost.user_id === params;
-      });
-      return postsListsFilter;
-    },
     setDate: function() {
       return function(item) {
         return `
@@ -76,7 +68,7 @@ export default {
               `;
       };
     },
-    ...mapGetters(['posts']),
+    ...mapGetters(['myPosts']),
   },
   methods: {
     toPosts(index) {

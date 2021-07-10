@@ -9,11 +9,13 @@ export default new Vuex.Store({
     posts: [],
     comments: [],
     follows: [],
+    myPosts: [],
     bestAnswerComment: '',
     stateModal: false,
     isShowQuestionnaire: false,
     isShowQuestionnaireSignUp: false,
     isShowProfileIMG: false,
+    IsloadingShow: true,
   },
   getters: {
     LoginUser: (state) => {
@@ -27,6 +29,9 @@ export default new Vuex.Store({
     },
     follows: (state) => {
       return state.follows;
+    },
+    myPosts: (state) => {
+      return state.myPosts;
     },
 
     comments: (state) => {
@@ -48,6 +53,9 @@ export default new Vuex.Store({
     isShowQuestionnaireSignUp: (state) => {
       return state.isShowQuestionnaireSignUp;
     },
+    IsloadingShow: (state) => {
+      return state.IsloadingShow;
+    },
   },
   mutations: {
     setUser(state, authUser) {
@@ -55,6 +63,9 @@ export default new Vuex.Store({
     },
     setPosts(state, doc) {
       state.posts = doc.Doc;
+    },
+    setMyPosts(state, doc) {
+      state.myPosts = doc.Doc;
     },
     setFollows(state, doc) {
       state.follows = doc.Doc;
@@ -75,7 +86,8 @@ export default new Vuex.Store({
 
     resetStore(state) {
       state.LoginUser = '';
-      state.posts = [];
+      (state.post = ''), (state.posts = []);
+      (state.comments = []), (state.bestAnswerComment = '');
     },
     getReceiveUserIndex(state, index) {
       state.ReceiveUserListsIndex = index;
@@ -98,6 +110,9 @@ export default new Vuex.Store({
       state.isShowQuestionnaire = false;
       state.isShowQuestionnaireSignUp = false;
     },
+    IsloadingShow(state) {
+      state.IsloadingShow = false;
+    },
   },
   actions: {
     async getUser({ commit }) {
@@ -114,6 +129,23 @@ export default new Vuex.Store({
         });
         const Doc = DocAll.sort((a, b) => b.createdAt - a.createdAt);
         commit('setPosts', { Doc, DocId });
+      });
+    },
+
+    async getMyPosts({ commit }, e) {
+      await db.collection('posts').onSnapshot((querySnapshot) => {
+        let DocAll = [];
+        querySnapshot.forEach((doc) => {
+          DocAll.push(doc.data());
+        });
+
+        const myDoc = DocAll.filter(function(myPost) {
+          return myPost.user_id === e;
+        });
+
+        const Doc = myDoc.sort((a, b) => b.createdAt - a.createdAt);
+
+        commit('setMyPosts', { Doc });
       });
     },
 
@@ -201,6 +233,9 @@ export default new Vuex.Store({
     },
     closeModal({ commit }) {
       commit('closeModal');
+    },
+    IsloadingShow({ commit }) {
+      commit('IsloadingShow');
     },
   },
 });

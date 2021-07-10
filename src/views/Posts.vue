@@ -129,7 +129,7 @@ export default {
 
   computed: {
     ...mapGetters(['post', 'bestAnswerComment']),
-    
+
     setDate() {
       return function(item) {
         return `

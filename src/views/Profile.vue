@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="container">
+      <button @click="test">クリック</button>
       <Header />
       <h2 class="subtitle is-2">プロフィール</h2>
       <div class="columns">
@@ -22,6 +23,7 @@ import SideMenu from '@/components/Organisms/SideMenu';
 import Header from '@/components//Organisms/Header';
 import Score from '@/components//Organisms/Score';
 import FeedProfile from '@/components//Organisms/FeedProfile';
+import { auth } from '/src/main.js';
 
 export default {
   components: {
@@ -30,6 +32,17 @@ export default {
     Score,
     FeedProfile,
   },
+  data() {
+    return {};
+  },
+  created() {
+    this.$store.dispatch('getMyPosts', this.$route.params.id);
+  },
+  beforeRouteUpdate(to, from, next) {
+    this.$store.dispatch('getMyPosts', auth.currentUser.uid);
+    next();
+  },
+
 };
 </script>
 
