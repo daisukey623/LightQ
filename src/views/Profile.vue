@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="container">
-      <button @click="test">クリック</button>
       <Header />
       <h2 class="subtitle is-2">プロフィール</h2>
       <div class="columns">
@@ -9,7 +8,7 @@
           <SideMenu />
         </div>
         <div class="submenu column is-6">
-          <Score />
+          <Score ref="child"></Score>
           <h3 class="subtitle is-3">投稿一覧</h3>
           <FeedProfile></FeedProfile>
         </div>
@@ -40,6 +39,7 @@ export default {
   },
   beforeRouteUpdate(to, from, next) {
     this.$store.dispatch('getMyPosts', auth.currentUser.uid);
+    this.$refs.child.getMyScores()
     next();
   },
 
