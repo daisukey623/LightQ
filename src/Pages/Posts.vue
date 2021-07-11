@@ -6,7 +6,7 @@
 
     <div class="columns">
       <div class="submenu column is-3">
-        <SideMenu />
+        <SideMenu class="is-hidden-mobile"></SideMenu>
       </div>
       <div class="column is-6">
         <div class="box mb-1">

@@ -5,7 +5,7 @@
       <H2>フォロー一覧</H2>
       <div class="columns">
         <div class="submenu column is-3">
-          <SideMenu />
+          <SideMenu class="is-hidden-mobile"></SideMenu>
         </div>
         <div class="submenu column is-6">
           <FeedFollows></FeedFollows>

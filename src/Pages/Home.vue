@@ -3,10 +3,9 @@
     <div class="container">
       <Header></Header>
       <H2>投稿一覧</H2>
-
       <div class="columns">
         <div class="submenu column is-3">
-          <SideMenu></SideMenu>
+          <SideMenu class="is-hidden-mobile"></SideMenu>
         </div>
         <div class="column is-6">
           <FeedPosts></FeedPosts>
@@ -43,7 +42,6 @@ export default {
   },
   created() {
     this.$store.dispatch('getUser');
-    
   },
   computed: {
     LoginUser() {

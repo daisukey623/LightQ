@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <aside>
+ 
+    <aside class="fixed">
       <p class="menu-label p-3  has-background-light">
         Menu
       </p>
@@ -27,9 +27,9 @@
           </ul>
         </li>
       </ul>
-      <Button color="is-info mt-6" @click.native="showModal">質問する</Button>
+      <Button color="is-info mt-6 is-hidden-mobile" @click.native="showModal">質問する</Button>
     </aside>
-  </div>
+
 </template>
 
 <script>
@@ -70,5 +70,10 @@ export default {
 }
 .isCenter {
   margin: 0 auto;
+}
+.fixed {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
 }
 </style>
