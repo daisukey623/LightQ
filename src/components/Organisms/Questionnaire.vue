@@ -61,9 +61,7 @@
               <b-slider-tick :value="100">Perfect</b-slider-tick>
             </b-slider>
           </b-field>
-          <button class="button" type="submit" @click="send">
-            振り返り完了
-          </button>
+          <Button @click.native="send">振り返り完了</Button>
         </div>
       </div>
     </div>
@@ -73,6 +71,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { auth, db } from '/src/main.js';
+import Button from '@/components/Atoms/Button';
 
 export default {
   data() {
@@ -82,6 +81,9 @@ export default {
       tag3: 0,
       tag4: 0,
     };
+  },
+  components:{
+    Button
   },
   computed: {
     ...mapGetters(['isShowQuestionnaire']),

@@ -2,7 +2,7 @@
   <div class="container">
     <Header />
 
-    <h2 class="subtitle is-2">詳細ページ</h2>
+    <H2>詳細ページ</H2>
 
     <div class="columns">
       <div class="submenu column is-3">
@@ -42,7 +42,7 @@
             </div>
           </article>
         </div>
-        <h3 class="title is-3 mt-5">ベストアンサー</h3>
+        <H3 class="mt-5">ベストアンサー</H3>
         <p v-if="post.best_answer === ''">
           ベストアンサーはありません。回答受付中です。
         </p>
@@ -83,12 +83,12 @@
 
         <hr />
 
-        <h3 class="title is-3 mt-5">回答する</h3>
+        <H3 class = "mt-5">回答する</H3>
 
         <FormComments />
         <hr />
 
-        <h3 class="title is-3 mt-5">回答一覧</h3>
+        <H3 class = "mt-5">回答一覧</H3>
         <FeedComments />
         <Modal />
         <Questionnaire />
@@ -105,6 +105,9 @@ import FormComments from '../components/Molecules/FormComments';
 import FeedComments from '../components/Organisms/FeedComments';
 import Modal from '../components/Organisms/Modal';
 import Questionnaire from '@/components/Organisms/Questionnaire';
+import H2 from '@/components/Atoms/H2';
+import H3 from '@/components/Atoms/H3';
+
 
 export default {
   components: {
@@ -114,6 +117,8 @@ export default {
     FeedComments,
     Modal,
     Questionnaire,
+    H2,
+    H3
   },
   data() {
     return {};

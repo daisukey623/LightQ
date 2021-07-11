@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <Header />
-      <h2 class="subtitle is-2">フォロー一覧</h2>
+      <H2>フォロー一覧</H2>
       <div class="columns">
         <div class="submenu column is-3">
           <SideMenu />
@@ -19,6 +19,7 @@
 import SideMenu from '@/components/Organisms/SideMenu';
 import Header from '@/components//Organisms/Header';
 import FeedFollows from '@/components//Organisms/FeedFollows';
+import H2 from '@/components/Atoms/H2';
 
 
 export default {
@@ -26,6 +27,7 @@ export default {
     SideMenu,
     Header,
     FeedFollows,
+    H2
   },
 
   created(){

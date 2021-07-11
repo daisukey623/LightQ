@@ -12,7 +12,7 @@
       </div>
       <div class="field">
         <p class="control">
-          <button class="button  is-info " @click="addComment">回答を送信</button>
+         <Button color="is-info" @click.native="addComment">回答を送信</Button>
         </p>
       </div>
     </div>
@@ -22,12 +22,16 @@
 <script>
 import { db, auth } from '/src/main.js';
 import { mapGetters } from 'vuex';
+import Button from '@/components/Atoms/Button';
 
 export default {
   data() {
     return {
       comment: '',
     };
+  },
+  components:{
+    Button
   },
   created() {
     this.$store.dispatch('getFollows');

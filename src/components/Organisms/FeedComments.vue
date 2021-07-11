@@ -36,12 +36,8 @@
                   class="is-flex"
                   v-if="auth.currentUser.uid === post.user_id"
                 >
-                  <button
-                    class="button is-small has-text-left"
-                    @click="uppdatePostStatus(commentsList.id)"
-                  >
-                    ベストアンサーにする
-                  </button>
+  
+                  <Button class="is-small has-text-left" @click.native="uppdatePostStatus(commentsList.id)">ベストアンサーにする</Button>
                 </div>
               </div>
             </div>
@@ -55,6 +51,7 @@
 <script>
 import { auth, db } from '/src/main.js';
 import { mapGetters } from 'vuex';
+import Button from '@/components/Atoms/Button';
 
 export default {
   data() {
@@ -62,7 +59,9 @@ export default {
       auth: auth,
     };
   },
-  created() {},
+  components:{
+    Button
+  },
   computed: {
     setDate: function() {
       return function(item) {
