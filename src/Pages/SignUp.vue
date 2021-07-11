@@ -2,7 +2,7 @@
   <div class="container">
     <div class=" columns is-centered">
       <div class="box column is-half">
-        <h2 class="subtitle  is-2">新規登録</h2>
+        <H2>新規登録</H2>
         <div class="has-text-left">
           <div class="control m-5">
             <label class="label">お名前</label>
@@ -51,9 +51,7 @@
             </p>
           </div>
         </div>
-        <button class="button is-info" @click="sendRegister">
-          新規登録する
-        </button>
+        <Button  color="is-info" @click.native="sendRegister">新規登録する</Button>
         <div class="m-3">
           <router-link to="/signin">ログインはこちらから</router-link>
         </div>
@@ -68,11 +66,15 @@
 import { auth } from '../main';
 import QuestionnaireSignUp from '@/components/Organisms/QuestionnaireSignUp';
 import ProfileIMG from '@/components/Organisms/ProfileIMG';
+import H2 from '@/components/Atoms/H2';
+import Button from '@/components/Atoms/Button';
 
 export default {
   components: {
     QuestionnaireSignUp,
     ProfileIMG,
+    H2,
+    Button
   },
   data() {
     return {

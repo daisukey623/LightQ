@@ -58,7 +58,7 @@
           <button class="button" type="submit" @click="send">
            完了する
           </button>
-
+          <Button @click.native="send">完了する</Button>
         </div>
       </div>
     </div>
@@ -68,6 +68,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { auth, db } from '/src/main.js';
+import Button from '@/components/Atoms/Button';
 
 export default {
   data() {
@@ -77,6 +78,9 @@ export default {
       value_tag3: 0,
       value_tag4: 0,
     };
+  },
+  components:{
+    Button
   },
   computed: {
     ...mapGetters(['isShowQuestionnaireSignUp']),

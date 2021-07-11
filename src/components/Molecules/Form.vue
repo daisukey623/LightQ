@@ -50,13 +50,14 @@
         v-model="body"
       ></textarea>
 
-      <button class="button is-info mt-5" type="submit" @click="addPost">送信する</button>
+          <Button class="mt-5" color="is-info" @click.native="addPost">送信する</Button>
     </div>
   </div>
 </template>
 
 <script>
 import { db, auth } from '/src/main.js';
+import Button from '@/components/Atoms/Button';
 export default {
   data() {
     return {
@@ -64,6 +65,9 @@ export default {
       title: '',
       body: '',
     };
+  },
+  components:{
+    Button
   },
   methods: {
    async addPost() {

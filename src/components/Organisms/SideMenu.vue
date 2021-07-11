@@ -6,10 +6,15 @@
       </p>
 
       <div>
-      <figure class="image">
-        <img class="is-rounded isFit  isCenter" :src="auth.currentUser.photoURL" />
-      </figure>
-      <p class="m-3"><small>{{ auth.currentUser.displayName}}</small></p>
+        <figure class="image">
+          <img
+            class="is-rounded isFit  isCenter"
+            :src="auth.currentUser.photoURL"
+          />
+        </figure>
+        <p class="m-3">
+          <small>{{ auth.currentUser.displayName }}</small>
+        </p>
       </div>
 
       <ul class="menu-list ">
@@ -22,18 +27,23 @@
           </ul>
         </li>
       </ul>
-      <button class="button is-info mt-6 " @click="showModal">質問する</button>
+      <Button color="is-info mt-6" @click.native="showModal">質問する</Button>
     </aside>
   </div>
 </template>
 
 <script>
 import { auth } from '/src/main.js';
+import Button from '@/components/Atoms/Button';
+
 export default {
   data() {
     return {
       auth: auth,
     };
+  },
+  components: {
+    Button,
   },
   methods: {
     showModal() {
@@ -58,7 +68,7 @@ export default {
   height: 64px;
   object-fit: cover;
 }
-.isCenter{
+.isCenter {
   margin: 0 auto;
 }
 </style>

@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <Header></Header>
-      <h2 class="subtitle is-2">投稿一覧</h2>
+      <H2>投稿一覧</H2>
 
       <div class="columns">
         <div class="submenu column is-3">
@@ -22,6 +22,7 @@ import SideMenu from '../components/Organisms/SideMenu';
 import Header from '../components/Organisms/Header';
 import Modal from '../components/Organisms/Modal';
 import FeedPosts from '../components/Organisms/FeedPosts';
+import H2 from '@/components/Atoms/H2';
 import { auth } from '/src/main.js';
 
 export default {
@@ -30,6 +31,7 @@ export default {
     Header,
     Modal,
     FeedPosts,
+    H2,
   },
   data() {
     return {
