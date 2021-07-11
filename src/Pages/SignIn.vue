@@ -1,8 +1,9 @@
 <template>
   <div class="container">
+    <Header></Header>
     <div class=" columns is-centered">
-      <div class="box column is-half">
-        <H2>ログイン</H2>
+      <div class="box column is-half mt-6">
+        <H2 class="mt-4">ログイン</H2>
         <div class="has-text-left">
           <div class="control m-5">
             <label class="label">Email</label>
@@ -48,6 +49,7 @@
 import firebase from 'firebase';
 import H2 from '@/components/Atoms/H2';
 import Button from '@/components/Atoms/Button';
+import Header from '@/components//Organisms/Header';
 export default {
   data() {
     return {
@@ -57,7 +59,8 @@ export default {
   },
   components: {
     H2,
-    Button
+    Button,
+    Header
   },
   methods: {
     Login: function() {

@@ -1,8 +1,9 @@
 <template>
   <div class="container">
+        <Header></Header>
     <div class=" columns is-centered">
-      <div class="box column is-half">
-        <H2>新規登録</H2>
+      <div class="box column is-half mt-6">
+        <H2 class="mt-4">新規登録</H2>
         <div class="has-text-left">
           <div class="control m-5">
             <label class="label">お名前</label>
@@ -68,13 +69,16 @@ import QuestionnaireSignUp from '@/components/Organisms/QuestionnaireSignUp';
 import ProfileIMG from '@/components/Organisms/ProfileIMG';
 import H2 from '@/components/Atoms/H2';
 import Button from '@/components/Atoms/Button';
+import Header from '@/components//Organisms/Header';
+
 
 export default {
   components: {
     QuestionnaireSignUp,
     ProfileIMG,
     H2,
-    Button
+    Button,
+    Header
   },
   data() {
     return {
