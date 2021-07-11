@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import SignIn from '../views/SignIn.vue';
 import SignUp from '../views/SignUp.vue';
@@ -8,9 +8,7 @@ import Profile from '../views/Profile.vue';
 import Follows from '../views/Follows.vue';
 import firebase from 'firebase/app';
 
-
-
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   // {
@@ -20,55 +18,53 @@ const routes = [
   {
     path: '/home',
     component: Home,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true },
   },
   {
     path: '/posts/:id',
     component: Posts,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true },
   },
   {
     path: '/users/:id',
     component: Profile,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true },
   },
   {
     path: '/Follows/:id',
     component: Follows,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true },
   },
   {
     path: '/signin',
-    component: SignIn
+    component: SignIn,
   },
   {
     path: '/signup',
     component: SignUp,
   },
-
-]
+];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-router.beforeEach((to, from, next) =>{
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
   if (requiresAuth) {
-    firebase.auth().onAuthStateChanged(function (user) {
+    firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         next();
+        this.$store.dispatch('resetStore')
       } else {
         next('/signin');
       }
-    })
+    });
   } else {
     next();
   }
 });
 
-
-
-export default router
+export default router;

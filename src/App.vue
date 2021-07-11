@@ -1,10 +1,5 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/home">Home</router-link> |
-      <router-link to="/signup">サインアップ</router-link> |
-      <router-link to="/signin">サインイン</router-link> |
-    </div>
+  <div id="app" class="m-6">
     <router-view/>
   </div>
 </template>

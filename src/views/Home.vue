@@ -41,6 +41,7 @@ export default {
   },
   created() {
     this.$store.dispatch('getUser');
+    
   },
   computed: {
     LoginUser() {

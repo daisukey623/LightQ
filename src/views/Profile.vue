@@ -8,7 +8,7 @@
           <SideMenu />
         </div>
         <div class="submenu column is-6">
-          <Score />
+          <Score ref="child"></Score>
           <h3 class="subtitle is-3">投稿一覧</h3>
           <FeedProfile></FeedProfile>
         </div>
@@ -22,6 +22,7 @@ import SideMenu from '@/components/Organisms/SideMenu';
 import Header from '@/components//Organisms/Header';
 import Score from '@/components//Organisms/Score';
 import FeedProfile from '@/components//Organisms/FeedProfile';
+import { auth } from '/src/main.js';
 
 export default {
   components: {
@@ -30,6 +31,18 @@ export default {
     Score,
     FeedProfile,
   },
+  data() {
+    return {};
+  },
+  created() {
+    this.$store.dispatch('getMyPosts', this.$route.params.id);
+  },
+  beforeRouteUpdate(to, from, next) {
+    this.$store.dispatch('getMyPosts', auth.currentUser.uid);
+    this.$refs.child.getMyScores()
+    next();
+  },
+
 };
 </script>
 
