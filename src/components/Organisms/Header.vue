@@ -29,7 +29,7 @@
     </div>
 
     <div class="navbar-end">
-      <div class="navbar-item">
+      <div class="navbar-item" v-if="auth">
         <button class="button is-light" @click="logOut()">ログアウト</button>
       </div>
     </div>
@@ -40,9 +40,15 @@
 import { auth } from '/src/main.js';
 
 export default {
+  data() {
+    return {
+      auth: auth.currentUser,
+    };
+  },
+
   methods: {
-     async logOut () {
-      await auth.signOut()
+    async logOut() {
+      await auth.signOut();
       await this.$store.dispatch('resetStore');
     },
     toHome() {
