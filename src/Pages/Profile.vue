@@ -5,7 +5,7 @@
       <H2>プロフィール</H2>
       <div class="columns">
         <div class="submenu column is-3">
-          <SideMenu />
+          <SideMenu class="is-hidden-mobile"></SideMenu>
         </div>
         <div class="submenu column is-6">
           <Score ref="child"></Score>

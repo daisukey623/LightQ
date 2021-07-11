@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <nav class="navbar fixed pt-3 m-3" role="navigation" aria-label="main navigation ">
     <div class="navbar-brand">
       <div>
         <a class="navbar-item pb-0" @click="toHome">
@@ -17,6 +17,8 @@
         aria-label="menu"
         aria-expanded="false"
         data-target="navbarBasicExample"
+        v-on:click="changeBurgerVisibillity"
+        v-bind:class="{ 'is-active': burgerVisibillity }"
       >
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -24,13 +26,20 @@
       </a>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start"></div>
+    <div id="navbarBasicExample" class="navbar-menu" v-bind:class="{ 'is-active': burgerVisibillity }">
+      <div class="navbar-start">
+      <SideMenu class="is-hidden-desktop"></SideMenu>
+              <button class="button is-light is-hidden-desktop" @click="logOut()">
+          ログアウト
+        </button>
+      </div>
     </div>
 
     <div class="navbar-end">
       <div class="navbar-item" v-if="auth">
-        <button class="button is-light" @click="logOut()">ログアウト</button>
+        <button class="button is-light is-hidden-mobile" @click="logOut()">
+          ログアウト
+        </button>
       </div>
     </div>
   </nav>
@@ -38,11 +47,17 @@
 
 <script>
 import { auth } from '/src/main.js';
+import SideMenu from '@/components/Organisms/SideMenu';
+
 
 export default {
+  components:{
+    SideMenu,
+  },
   data() {
     return {
       auth: auth.currentUser,
+      burgerVisibillity: false,
     };
   },
 
@@ -54,6 +69,9 @@ export default {
     toHome() {
       this.$router.push('/home');
     },
+    changeBurgerVisibillity() {
+      this.burgerVisibillity = !this.burgerVisibillity;
+    },
   },
 };
 </script>
@@ -61,5 +79,10 @@ export default {
 <style scoped>
 .font-size-small {
   font-size: 10px;
+}
+.fixed {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 </style>
