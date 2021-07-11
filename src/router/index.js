@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
-import SignIn from '../views/SignIn.vue';
-import SignUp from '../views/SignUp.vue';
-import Posts from '../views/Posts.vue';
-import Profile from '../views/Profile.vue';
-import Follows from '../views/Follows.vue';
+import Home from '@/Pages/Home.vue';
+import SignIn from '@/Pages/SignIn.vue';
+import SignUp from '@/Pages/SignUp.vue';
+import Posts from '@/Pages/Posts.vue';
+import Follows from '@/Pages/Follows.vue';
+import Profile from '@/Pages/Profile.vue';
 import firebase from 'firebase/app';
 
 Vue.use(VueRouter);
@@ -57,7 +57,6 @@ router.beforeEach((to, from, next) => {
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         next();
-        this.$store.dispatch('resetStore')
       } else {
         next('/signin');
       }

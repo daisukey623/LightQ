@@ -48,7 +48,6 @@ export default {
   },
   methods: {
     async getScores() {
-      console.log('クリック')
       await db
         .collection('scores')
         .where('user_id', '==', this.$route.params.id)
@@ -98,7 +97,6 @@ export default {
         });
     },
     async getMyScores() {
-      console.log('クリック')
       await db
         .collection('scores')
         .where('user_id', '==', auth.currentUser.uid)
