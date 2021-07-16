@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-        <Header></Header>
+    <button @click="test()">test</button>
+    <Header></Header>
     <div class=" columns is-centered">
       <div class="box column is-half mt-6">
         <H2 class="mt-4">新規登録</H2>
@@ -52,7 +53,9 @@
             </p>
           </div>
         </div>
-        <Button  color="is-info" @click.native="sendRegister">新規登録する</Button>
+        <Button color="is-info" @click.native="sendRegister"
+          >新規登録する</Button
+        >
         <div class="m-3">
           <router-link to="/signin">ログインはこちらから</router-link>
         </div>
@@ -71,14 +74,13 @@ import H2 from '@/components/Atoms/H2';
 import Button from '@/components/Atoms/Button';
 import Header from '@/components//Organisms/Header';
 
-
 export default {
   components: {
     QuestionnaireSignUp,
     ProfileIMG,
     H2,
     Button,
-    Header
+    Header,
   },
   data() {
     return {

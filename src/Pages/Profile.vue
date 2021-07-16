@@ -9,7 +9,7 @@
         </div>
         <div class="submenu column is-6">
           <Score ref="child"></Score>
-          <H3>投稿一覧</H3>
+          <H2>投稿一覧</H2>
           <FeedProfile></FeedProfile>
         </div>
       </div>

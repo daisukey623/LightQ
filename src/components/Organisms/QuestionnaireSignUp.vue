@@ -55,9 +55,7 @@
               <b-slider-tick :value="100">Perfect</b-slider-tick>
             </b-slider>
           </b-field>
-          <button class="button" type="submit" @click="send">
-           完了する
-          </button>
+
           <Button @click.native="send">完了する</Button>
         </div>
       </div>
