@@ -12,7 +12,7 @@
       </div>
       <div class="field">
         <p class="control">
-         <Button color="is-info" @click.native="addComment">回答を送信</Button>
+          <Button color="is-info" @click.native="addComment">回答を送信</Button>
         </p>
       </div>
     </div>
@@ -30,8 +30,8 @@ export default {
       comment: '',
     };
   },
-  components:{
-    Button
+  components: {
+    Button,
   },
   created() {
     this.$store.dispatch('getFollows');

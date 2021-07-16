@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <Header />
-      <H2>フォロー一覧</H2>
+      <H1>フォロー一覧</H1>
       <div class="columns">
         <div class="submenu column is-3">
           <SideMenu class="is-hidden-mobile"></SideMenu>
@@ -19,22 +19,19 @@
 import SideMenu from '@/components/Organisms/SideMenu';
 import Header from '@/components//Organisms/Header';
 import FeedFollows from '@/components//Organisms/FeedFollows';
-import H2 from '@/components/Atoms/H2';
-
+import H1 from '@/components/Atoms/H1';
 
 export default {
   components: {
     SideMenu,
     Header,
     FeedFollows,
-    H2
+    H1,
   },
 
-  created(){
-    this.$store.dispatch('getFollows')
+  created() {
+    this.$store.dispatch('getFollows');
   },
-
-
 };
 </script>
 

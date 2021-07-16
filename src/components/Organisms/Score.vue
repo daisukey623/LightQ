@@ -1,7 +1,7 @@
 <script>
 import { Bar } from 'vue-chartjs';
 import { mapGetters } from 'vuex';
-import { db,auth } from '/src/main.js';
+import { db, auth } from '/src/main.js';
 
 export default {
   extends: Bar,

@@ -4,7 +4,7 @@
     <Header></Header>
     <div class=" columns is-centered">
       <div class="box column is-half mt-6">
-        <H2 class="mt-4">新規登録</H2>
+        <H1 class="mt-4">新規登録</H1>
         <div class="has-text-left">
           <div class="control m-5">
             <label class="label">お名前</label>
@@ -67,43 +67,43 @@
 </template>
 
 <script>
-import { auth } from '../main';
-import QuestionnaireSignUp from '@/components/Organisms/QuestionnaireSignUp';
-import ProfileIMG from '@/components/Organisms/ProfileIMG';
-import H2 from '@/components/Atoms/H2';
-import Button from '@/components/Atoms/Button';
-import Header from '@/components//Organisms/Header';
+import { auth } from "../main";
+import QuestionnaireSignUp from "@/components/Organisms/QuestionnaireSignUp";
+import ProfileIMG from "@/components/Organisms/ProfileIMG";
+import H1 from "@/components/Atoms/H1";
+import Button from "@/components/Atoms/Button";
+import Header from "@/components//Organisms/Header";
 
 export default {
   components: {
     QuestionnaireSignUp,
     ProfileIMG,
-    H2,
+    H1,
     Button,
-    Header,
+    Header
   },
   data() {
     return {
-      userName: '',
-      email: '',
-      password: '',
+      userName: "",
+      email: "",
+      password: ""
     };
   },
   methods: {
     async sendRegister() {
       await auth
         .createUserWithEmailAndPassword(this.email, this.password)
-        .then((result) => {
+        .then(result => {
           result.user.updateProfile({
-            displayName: this.userName,
+            displayName: this.userName
           });
 
-          this.$store.dispatch('showProfileIMG');
+          this.$store.dispatch("showProfileIMG");
         })
-        .catch((error) => {
+        .catch(error => {
           alert(error.message);
         });
-    },
-  },
+    }
+  }
 };
 </script>

@@ -1,5 +1,9 @@
 <template>
-  <nav class="navbar fixed pt-3 m-3" role="navigation" aria-label="main navigation ">
+  <nav
+    class="navbar fixed pt-3 m-3"
+    role="navigation"
+    aria-label="main navigation "
+  >
     <div class="navbar-brand">
       <div>
         <a class="navbar-item pb-0" @click="toHome">
@@ -26,10 +30,14 @@
       </a>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu" v-bind:class="{ 'is-active': burgerVisibillity }">
+    <div
+      id="navbarBasicExample"
+      class="navbar-menu"
+      v-bind:class="{ 'is-active': burgerVisibillity }"
+    >
       <div class="navbar-start">
-      <SideMenu class="is-hidden-desktop"></SideMenu>
-              <button class="button is-light is-hidden-desktop" @click="logOut()">
+        <SideMenu class="is-hidden-desktop"></SideMenu>
+        <button class="button is-light is-hidden-desktop" @click="logOut()">
           ログアウト
         </button>
       </div>
@@ -49,9 +57,8 @@
 import { auth } from '/src/main.js';
 import SideMenu from '@/components/Organisms/SideMenu';
 
-
 export default {
-  components:{
+  components: {
     SideMenu,
   },
   data() {
