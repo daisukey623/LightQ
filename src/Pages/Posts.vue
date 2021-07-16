@@ -2,7 +2,7 @@
   <div class="container">
     <Header />
 
-    <H2>詳細ページ</H2>
+    <H1>詳細ページ</H1>
 
     <div class="columns">
       <div class="submenu column is-3">
@@ -28,7 +28,7 @@
                   <small class="mr-4 has-text-grey"
                     >@{{ post.user_name }}</small
                   >
-                  <small class="has-text-grey" >{{ setDate(post) }}</small>
+                  <small class="has-text-grey">{{ setDate(post) }}</small>
                 </p>
                 <p class="has-text-left" style="white-space:pre-wrap;">
                   {{ post.body }}
@@ -42,7 +42,7 @@
             </div>
           </article>
         </div>
-        <H3 class="mt-5">ベストアンサー</H3>
+        <H2 class="mt-5">ベストアンサー</H2>
         <p v-if="post.best_answer === ''">
           ベストアンサーはありません。回答受付中です。
         </p>
@@ -83,12 +83,12 @@
 
         <hr />
 
-        <H3 class = "mt-5">回答する</H3>
+        <H2 class="mt-5">回答する</H2>
 
         <FormComments />
         <hr />
 
-        <H3 class = "mt-5">回答一覧</H3>
+        <H2 class="mt-5">回答一覧</H2>
         <FeedComments />
         <Modal />
         <Questionnaire />
@@ -98,16 +98,15 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import SideMenu from '../components/Organisms/SideMenu';
-import Header from '../components/Organisms/Header';
-import FormComments from '../components/Molecules/FormComments';
-import FeedComments from '../components/Organisms/FeedComments';
-import Modal from '../components/Organisms/Modal';
-import Questionnaire from '@/components/Organisms/Questionnaire';
-import H2 from '@/components/Atoms/H2';
-import H3 from '@/components/Atoms/H3';
-
+import { mapGetters } from "vuex";
+import SideMenu from "../components/Organisms/SideMenu";
+import Header from "../components/Organisms/Header";
+import FormComments from "../components/Molecules/FormComments";
+import FeedComments from "../components/Organisms/FeedComments";
+import Modal from "../components/Organisms/Modal";
+import Questionnaire from "@/components/Organisms/Questionnaire";
+import H1 from "@/components/Atoms/H1";
+import H2 from "@/components/Atoms/H2";
 
 export default {
   components: {
@@ -117,23 +116,23 @@ export default {
     FeedComments,
     Modal,
     Questionnaire,
-    H2,
-    H3
+    H1,
+    H2
   },
   data() {
     return {};
   },
   created() {
-    this.$store.dispatch('getPost', this.$route.params.id);
-    this.$store.dispatch('getComments', this.$route.params.id);
+    this.$store.dispatch("getPost", this.$route.params.id);
+    this.$store.dispatch("getComments", this.$route.params.id);
   },
 
   beforeUpdate() {
-    this.$store.dispatch('getBestAnswerComment', this.post.best_answer);
+    this.$store.dispatch("getBestAnswerComment", this.post.best_answer);
   },
 
   computed: {
-    ...mapGetters(['post', 'bestAnswerComment']),
+    ...mapGetters(["post", "bestAnswerComment"]),
 
     setDate() {
       return function(item) {
@@ -145,8 +144,8 @@ export default {
                 ${item.createdAt.toDate().getMinutes()}
               `;
       };
-    },
-  },
+    }
+  }
 };
 </script>
 

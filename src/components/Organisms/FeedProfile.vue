@@ -45,36 +45,32 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 
 export default {
   data() {
-    return {
-    };
+    return {};
   },
-  created() {
-    
-  },
+  created() {},
 
   computed: {
-    setDate: function() {
-      return function(item) {
-        return `
-                ${item.createdAt.toDate().getFullYear()}/
-                ${item.createdAt.toDate().getMonth() + 1}/
-                ${item.createdAt.toDate().getDate()}
-                ${item.createdAt.toDate().getHours()}:
-                ${item.createdAt.toDate().getMinutes()}
-              `;
-      };
-    },
-    ...mapGetters(['myPosts']),
+    ...mapGetters(["myPosts"])
   },
   methods: {
     toPosts(index) {
       this.$router.push(`/posts/${this.myPosts[index].id}`);
     },
-  },
+    setDate(postsList) {
+      const date = postsList.createdAt.toDate();
+      return `
+                ${date.getFullYear()}/
+                ${date.getMonth() + 1}/
+                ${date.getDate()}
+                ${date.getHours()}:
+                ${date.getMinutes()}
+              `;
+    }
+  }
 };
 </script>
 

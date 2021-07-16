@@ -50,7 +50,9 @@
         v-model="body"
       ></textarea>
 
-          <Button class="mt-5" color="is-info" @click.native="addPost">送信する</Button>
+      <Button class="mt-5" color="is-info" @click.native="addPost"
+        >送信する</Button
+      >
     </div>
   </div>
 </template>
@@ -66,28 +68,28 @@ export default {
       body: '',
     };
   },
-  components:{
-    Button
+  components: {
+    Button,
   },
   methods: {
-   async addPost() {
-     const ref = await db.collection('posts').doc()
-        ref.set(
-          {
-            id:ref.id,
-            user_id: auth.currentUser.uid,
-            title: this.title,
-            body: this.body,
-            tags: this.tag,
-            status: '受付中',
-            like_count: 0,
-            user_name: auth.currentUser.displayName,
-            user_photoURL: auth.currentUser.photoURL,
-            best_answer:'',
-            createdAt: new Date()
-          },
-          { marge: true }
-        );
+    async addPost() {
+      const ref = await db.collection('posts').doc();
+      ref.set(
+        {
+          id: ref.id,
+          user_id: auth.currentUser.uid,
+          title: this.title,
+          body: this.body,
+          tags: this.tag,
+          status: '受付中',
+          like_count: 0,
+          user_name: auth.currentUser.displayName,
+          user_photoURL: auth.currentUser.photoURL,
+          best_answer: '',
+          createdAt: new Date(),
+        },
+        { marge: true }
+      );
       this.init();
     },
     init() {

@@ -27,7 +27,9 @@
                   <small class="mr-4 has-text-grey"
                     >@{{ commentsList.user_name }}</small
                   >
-                  <small class="has-text-grey">{{setDate(commentsList)}}</small>
+                  <small class="has-text-grey">{{
+                    setDate(commentsList)
+                  }}</small>
                 </div>
                 <p class="has-text-left" style="white-space:pre-wrap;">
                   {{ commentsList.comment }}
@@ -36,8 +38,11 @@
                   class="is-flex"
                   v-if="auth.currentUser.uid === post.user_id"
                 >
-  
-                  <Button class="is-small has-text-left" @click.native="uppdatePostStatus(commentsList.id)">ベストアンサーにする</Button>
+                  <Button
+                    class="is-small has-text-left"
+                    @click.native="uppdatePostStatus(commentsList.id)"
+                    >ベストアンサーにする</Button
+                  >
                 </div>
               </div>
             </div>
@@ -49,54 +54,54 @@
 </template>
 
 <script>
-import { auth, db } from '/src/main.js';
-import { mapGetters } from 'vuex';
-import Button from '@/components/Atoms/Button';
+import { auth, db } from "/src/main.js";
+import { mapGetters } from "vuex";
+import Button from "@/components/Atoms/Button";
 
 export default {
   data() {
     return {
-      auth: auth,
+      auth: auth
     };
   },
-  components:{
+  components: {
     Button
   },
   computed: {
-    setDate: function() {
-      return function(item) {
-        return `
-                ${item.createdAt.toDate().getFullYear()}/
-                ${item.createdAt.toDate().getMonth() + 1}/
-                ${item.createdAt.toDate().getDate()}
-                ${item.createdAt.toDate().getHours()}:
-                ${item.createdAt.toDate().getMinutes()}
-              `;
-      };
-    },
-    ...mapGetters(['comments', 'post']),
+    ...mapGetters(["comments", "post"])
   },
+
   methods: {
     uppdatePostStatus(id) {
-      this.$store.dispatch('uppdatePostStatus', {
+      this.$store.dispatch("uppdatePostStatus", {
         postId: this.$route.params.id,
-        commentId: id,
+        commentId: id
       });
       this.showQuestionnaire();
     },
     async deleteComment(id) {
-      if (window.confirm('コメントを削除しても良いですか？')) {
+      if (window.confirm("コメントを削除しても良いですか？")) {
         await db
-          .collection('comments')
+          .collection("comments")
           .doc(id)
           .delete();
-        window.alert('削除しました');
+        window.alert("削除しました");
       }
     },
     showQuestionnaire() {
-      this.$store.dispatch('showQuestionnaire');
+      this.$store.dispatch("showQuestionnaire");
     },
-  },
+    setDate(commentsList) {
+      const date = commentsList.createdAt.toDate();
+      return `
+                ${date.getFullYear()}/
+                ${date.getMonth() + 1}/
+                ${date.getDate()}
+                ${date.getHours()}:
+                ${date.getMinutes()}
+              `;
+    }
+  }
 };
 </script>
 

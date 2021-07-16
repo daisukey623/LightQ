@@ -60,7 +60,7 @@ export default {
         window.alert('削除しました');
       }
     },
-      toUsers(index) {
+    toUsers(index) {
       this.$router.push(`/users/${this.follows[index].followed}`);
     },
   },

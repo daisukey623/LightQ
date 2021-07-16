@@ -82,8 +82,8 @@ export default {
       tag4: 0,
     };
   },
-  components:{
-    Button
+  components: {
+    Button,
   },
   computed: {
     ...mapGetters(['isShowQuestionnaire']),
@@ -95,7 +95,6 @@ export default {
     send() {
       this.closeModal();
       this.setScores();
-      
     },
     setScores() {
       const ref = db.collection('scores').doc();

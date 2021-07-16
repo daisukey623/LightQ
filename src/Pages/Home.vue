@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <Header></Header>
-      <H2>投稿一覧</H2>
+      <H1>投稿一覧</H1>
       <div class="columns">
         <div class="submenu column is-3">
           <SideMenu class="is-hidden-mobile"></SideMenu>
@@ -21,7 +21,7 @@ import SideMenu from '../components/Organisms/SideMenu';
 import Header from '../components/Organisms/Header';
 import Modal from '../components/Organisms/Modal';
 import FeedPosts from '../components/Organisms/FeedPosts';
-import H2 from '@/components/Atoms/H2';
+import H1 from '@/components/Atoms/H1';
 import { auth } from '/src/main.js';
 
 export default {
@@ -30,7 +30,7 @@ export default {
     Header,
     Modal,
     FeedPosts,
-    H2,
+    H1,
   },
   data() {
     return {

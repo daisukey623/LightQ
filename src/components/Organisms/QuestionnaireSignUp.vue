@@ -4,7 +4,9 @@
     <div class="modal-content columns is-centered">
       <div class="card column is-half ">
         <div class="card-content">
-          <p class=" is-size-5 has-text-weight-bold">現在の採用業務の理解度を登録しましょう</p>
+          <p class=" is-size-5 has-text-weight-bold">
+            現在の採用業務の理解度を登録しましょう
+          </p>
           <p>以降の振り返りに役立ちます</p>
           <b-field label="採用計画" class="m-6">
             <b-slider
@@ -77,8 +79,8 @@ export default {
       value_tag4: 0,
     };
   },
-  components:{
-    Button
+  components: {
+    Button,
   },
   computed: {
     ...mapGetters(['isShowQuestionnaireSignUp']),
@@ -90,23 +92,22 @@ export default {
     send() {
       this.setScores();
       this.$router.push('/home');
-      this.closeModal()
+      this.closeModal();
     },
-      setScores() {
-      const ref = db.collection('scores')
-        .doc()
-        ref.set(
-          {
-            id:ref.id,
-            user_id: auth.currentUser.uid,
-            plan_score:this.value_tag1,
-            population_score:this.value_tag2,
-            selection_score:this.value_tag3,
-            follow_score:this.value_tag4,
-            createdAt: new Date()
-          },
-          { marge: true }
-        );
+    setScores() {
+      const ref = db.collection('scores').doc();
+      ref.set(
+        {
+          id: ref.id,
+          user_id: auth.currentUser.uid,
+          plan_score: this.value_tag1,
+          population_score: this.value_tag2,
+          selection_score: this.value_tag3,
+          follow_score: this.value_tag4,
+          createdAt: new Date(),
+        },
+        { marge: true }
+      );
     },
   },
 };
