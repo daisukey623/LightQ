@@ -9,6 +9,7 @@
         </div>
         <div class="submenu column is-6">
           <FeedFollows></FeedFollows>
+                  <Modal />
         </div>
       </div>
     </div>
@@ -19,6 +20,7 @@
 import SideMenu from '@/components/Organisms/SideMenu';
 import Header from '@/components//Organisms/Header';
 import FeedFollows from '@/components//Organisms/FeedFollows';
+import Modal from '@/components//Organisms/Modal';
 import H1 from '@/components/Atoms/H1';
 
 export default {
@@ -27,6 +29,7 @@ export default {
     Header,
     FeedFollows,
     H1,
+    Modal
   },
 
   created() {

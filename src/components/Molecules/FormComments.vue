@@ -23,11 +23,15 @@
 import { db, auth } from '/src/main.js';
 import { mapGetters } from 'vuex';
 import Button from '@/components/Atoms/Button';
+import { ToastProgrammatic as Toast } from 'buefy';
 
 export default {
   data() {
     return {
       comment: '',
+      msg: {
+        postAnswer: '回答しました！',
+      },
     };
   },
   components: {
@@ -63,6 +67,7 @@ export default {
     },
     init() {
       this.comment = '';
+      Toast.open(this.msg.postAnswer);
     },
     async addFollows() {
       let check = this.follows

@@ -108,6 +108,7 @@ import Questionnaire from "@/components/Organisms/Questionnaire";
 import H1 from "@/components/Atoms/H1";
 import H2 from "@/components/Atoms/H2";
 
+
 export default {
   components: {
     SideMenu,
