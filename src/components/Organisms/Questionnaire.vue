@@ -18,6 +18,7 @@
               :max="100"
               tooltip-always
               aria-label="採用計画"
+              type="is-info"
             >
               <b-slider-tick :value="0">Beginnerr</b-slider-tick>
               <b-slider-tick :value="50">OK</b-slider-tick>
@@ -31,6 +32,7 @@
               :max="100"
               tooltip-always
               aria-label="母集団形成"
+              type="is-info"
             >
               <b-slider-tick :value="0">Beginnerr</b-slider-tick>
               <b-slider-tick :value="50">OK</b-slider-tick>
@@ -43,6 +45,7 @@
               :max="100"
               tooltip-always
               aria-label="選考"
+              type="is-info"
             >
               <b-slider-tick :value="0">Beginnerr</b-slider-tick>
               <b-slider-tick :value="50">OK</b-slider-tick>
@@ -55,6 +58,7 @@
               :max="100"
               tooltip-always
               aria-label="内定者フォロー"
+              type="is-info"
             >
               <b-slider-tick :value="0">Beginnerr</b-slider-tick>
               <b-slider-tick :value="50">OK</b-slider-tick>
