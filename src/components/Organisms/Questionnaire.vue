@@ -69,9 +69,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import { auth, db } from '/src/main.js';
-import Button from '@/components/Atoms/Button';
+import { mapGetters } from "vuex";
+import { auth, db } from "/src/main.js";
+import Button from "@/components/Atoms/Button";
+import { ToastProgrammatic as Toast } from "buefy";
 
 export default {
   data() {
@@ -80,24 +81,26 @@ export default {
       tag2: 0,
       tag3: 0,
       tag4: 0,
+      msg: "振り返りを更新しました"
     };
   },
   components: {
-    Button,
+    Button
   },
   computed: {
-    ...mapGetters(['isShowQuestionnaire']),
+    ...mapGetters(["isShowQuestionnaire"])
   },
   methods: {
     closeModal() {
-      this.$store.dispatch('closeModal');
+      this.$store.dispatch("closeModal");
     },
     send() {
       this.closeModal();
       this.setScores();
+      Toast.open(this.msg);
     },
     setScores() {
-      const ref = db.collection('scores').doc();
+      const ref = db.collection("scores").doc();
       ref.set(
         {
           id: ref.id,
@@ -106,12 +109,12 @@ export default {
           population_score: this.tag2,
           selection_score: this.tag3,
           follow_score: this.tag4,
-          createdAt: new Date(),
+          createdAt: new Date()
         },
         { marge: true }
       );
-    },
-  },
+    }
+  }
 };
 </script>
 

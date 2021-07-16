@@ -54,42 +54,48 @@
 </template>
 
 <script>
-import { auth, db } from "/src/main.js";
-import { mapGetters } from "vuex";
-import Button from "@/components/Atoms/Button";
+import { auth, db } from '/src/main.js';
+import { mapGetters } from 'vuex';
+import Button from '@/components/Atoms/Button';
+import { ToastProgrammatic as Toast } from 'buefy';
 
 export default {
   data() {
     return {
-      auth: auth
+      auth: auth,
+      msg: {
+        bestAnswer: 'ベストアンサーにしました！',
+        deleteComment: 'コメントを削除しました',
+      },
     };
   },
   components: {
-    Button
+    Button,
   },
   computed: {
-    ...mapGetters(["comments", "post"])
+    ...mapGetters(['comments', 'post']),
   },
 
   methods: {
     uppdatePostStatus(id) {
-      this.$store.dispatch("uppdatePostStatus", {
+      this.$store.dispatch('uppdatePostStatus', {
         postId: this.$route.params.id,
-        commentId: id
+        commentId: id,
       });
+      Toast.open(this.msg.bestAnswer);
       this.showQuestionnaire();
     },
     async deleteComment(id) {
-      if (window.confirm("コメントを削除しても良いですか？")) {
+      if (window.confirm('コメントを削除しても良いですか？')) {
         await db
-          .collection("comments")
+          .collection('comments')
           .doc(id)
           .delete();
-        window.alert("削除しました");
+        Toast.open(this.msg.deleteComment);
       }
     },
     showQuestionnaire() {
-      this.$store.dispatch("showQuestionnaire");
+      this.$store.dispatch('showQuestionnaire');
     },
     setDate(commentsList) {
       const date = commentsList.createdAt.toDate();
@@ -100,8 +106,8 @@ export default {
                 ${date.getHours()}:
                 ${date.getMinutes()}
               `;
-    }
-  }
+    },
+  },
 };
 </script>
 

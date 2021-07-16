@@ -11,6 +11,7 @@
           <Score ref="child" class="mb-6"></Score>
           <H2>投稿一覧</H2>
           <FeedProfile></FeedProfile>
+          <Modal />
         </div>
       </div>
     </div>
@@ -22,6 +23,7 @@ import SideMenu from '@/components/Organisms/SideMenu';
 import Header from '@/components//Organisms/Header';
 import Score from '@/components//Organisms/Score';
 import FeedProfile from '@/components//Organisms/FeedProfile';
+import Modal from '@/components//Organisms/Modal';
 import H1 from '@/components/Atoms/H1';
 import H2 from '@/components/Atoms/H2';
 import { auth } from '/src/main.js';
@@ -32,6 +34,7 @@ export default {
     Header,
     Score,
     FeedProfile,
+    Modal,
     H1,
     H2,
   },

@@ -1,8 +1,7 @@
 <template>
   <div>
-    <p>フォロー</p>
     <div v-for="(list, index) in follows" :key="`first-${index}`">
-      <div class="isPointer box mb-1" @click="toUsers(index)">
+      <div class="isPointer box mb-1" >
         <div class="has-text-right">
           <button
             class="delete"
@@ -10,10 +9,10 @@
             v-if="auth.currentUser.uid === list.following"
           ></button>
         </div>
-        <article class="media">
+        <article class="media" @click="toUsers(index)">
           <div class="media-left">
             <figure class="mb-3">
-              <p class="image  ">
+              <p class="image ">
                 <img class="is-rounded isFit" :src="list.followed_photoURL" />
               </p>
             </figure>
@@ -26,7 +25,6 @@
                   >@{{ list.followed_name }}</small
                 >
               </p>
-
               <div class="is-flex"></div>
             </div>
           </div>
@@ -39,11 +37,13 @@
 <script>
 import { auth, db } from '/src/main.js';
 import { mapGetters } from 'vuex';
+import { ToastProgrammatic as Toast } from 'buefy';
 
 export default {
   data() {
     return {
       auth: auth,
+      msg: '削除しました',
     };
   },
   created() {},
@@ -57,7 +57,7 @@ export default {
           .collection('follows')
           .doc(this.follows[index].id)
           .delete();
-        window.alert('削除しました');
+        Toast.open(this.msg);
       }
     },
     toUsers(index) {

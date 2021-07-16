@@ -60,12 +60,14 @@
 <script>
 import { db, auth } from '/src/main.js';
 import Button from '@/components/Atoms/Button';
+import { ToastProgrammatic as Toast } from 'buefy'
 export default {
   data() {
     return {
       tag: '',
       title: '',
       body: '',
+      msg:'投稿しました！'
     };
   },
   components: {
@@ -91,6 +93,7 @@ export default {
         { marge: true }
       );
       this.init();
+      Toast.open(this.msg)
     },
     init() {
       this.tag = '';
@@ -98,6 +101,7 @@ export default {
       this.body = '';
       this.$store.dispatch('closeModal');
     },
+
   },
 };
 </script>
