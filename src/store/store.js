@@ -86,8 +86,10 @@ export default new Vuex.Store({
 
     resetStore(state) {
       state.LoginUser = '';
-      (state.post = ''), (state.posts = []);
-      (state.comments = []), (state.bestAnswerComment = '');
+      state.post = '',
+      state.posts = [],
+      state.comments = [],
+      state.bestAnswerComment = '';
     },
     getReceiveUserIndex(state, index) {
       state.ReceiveUserListsIndex = index;

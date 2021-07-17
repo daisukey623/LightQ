@@ -98,16 +98,15 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import SideMenu from "../components/Organisms/SideMenu";
-import Header from "../components/Organisms/Header";
-import FormComments from "../components/Molecules/FormComments";
-import FeedComments from "../components/Organisms/FeedComments";
-import Modal from "../components/Organisms/Modal";
-import Questionnaire from "@/components/Organisms/Questionnaire";
-import H1 from "@/components/Atoms/H1";
-import H2 from "@/components/Atoms/H2";
-
+import { mapGetters } from 'vuex';
+import SideMenu from '../components/Organisms/SideMenu';
+import Header from '../components/Organisms/Header';
+import FormComments from '../components/Molecules/FormComments';
+import FeedComments from '../components/Organisms/FeedComments';
+import Modal from '../components/Organisms/Modal';
+import Questionnaire from '@/components/Organisms/Questionnaire';
+import H1 from '@/components/Atoms/H1';
+import H2 from '@/components/Atoms/H2';
 
 export default {
   components: {
@@ -118,22 +117,26 @@ export default {
     Modal,
     Questionnaire,
     H1,
-    H2
+    H2,
   },
   data() {
     return {};
   },
   created() {
-    this.$store.dispatch("getPost", this.$route.params.id);
-    this.$store.dispatch("getComments", this.$route.params.id);
+    this.$store.dispatch('getPost', this.$route.params.id);
+    this.$store.dispatch('getComments', this.$route.params.id);
   },
 
   beforeUpdate() {
-    this.$store.dispatch("getBestAnswerComment", this.post.best_answer);
+    this.$store.dispatch('getBestAnswerComment', this.post.best_answer);
+  },
+  beforeRouteLeave(to, from, next) {
+    this.$store.dispatch('resetStore');
+    next();
   },
 
   computed: {
-    ...mapGetters(["post", "bestAnswerComment"]),
+    ...mapGetters(['post', 'bestAnswerComment']),
 
     setDate() {
       return function(item) {
@@ -145,8 +148,8 @@ export default {
                 ${item.createdAt.toDate().getMinutes()}
               `;
       };
-    }
-  }
+    },
+  },
 };
 </script>
 
