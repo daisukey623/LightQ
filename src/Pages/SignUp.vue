@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <button @click="test()">test</button>
     <Header></Header>
     <div class=" columns is-centered">
       <div class="box column is-half mt-6">
