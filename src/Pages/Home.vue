@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div class="container ">
       <Header></Header>
       <H1>投稿一覧</H1>
       <div class="columns">
