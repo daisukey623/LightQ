@@ -6,15 +6,16 @@ import SignUp from '@/Pages/SignUp.vue';
 import Posts from '@/Pages/Posts.vue';
 import Follows from '@/Pages/Follows.vue';
 import Profile from '@/Pages/Profile.vue';
+import Top from '@/Pages/Top.vue';
 import firebase from 'firebase/app';
 
 Vue.use(VueRouter);
 
 const routes = [
-  // {
-  //   path: '/',
-  //   component: Top,
-  // },
+  {
+    path: '/',
+    component: Top,
+  },
   {
     path: '/home',
     component: Home,

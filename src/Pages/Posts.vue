@@ -1,14 +1,14 @@
 <template>
-  <div class="container">
+  <div class="container ">
     <Header />
 
     <H1>詳細ページ</H1>
 
-    <div class="columns">
+    <div class="columns ">
       <div class="submenu column is-3">
         <SideMenu class="is-hidden-mobile"></SideMenu>
       </div>
-      <div class="column is-6">
+      <div class="column is-6"> 
         <div class="box mb-1">
           <article class="media">
             <div class="media-left">

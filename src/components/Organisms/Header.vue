@@ -1,8 +1,9 @@
 <template>
   <nav
-    class="navbar fixed pt-3 m-3"
+    class="navbar fixed "
     role="navigation"
     aria-label="main navigation "
+    
   >
     <div class="navbar-brand">
       <div>
