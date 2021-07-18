@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Header></Header>
-    <div class=" columns is-centered">
+    <div class=" columns is-centered  mr-4 ml-4">
       <div class="box column is-half mt-6">
         <H1 class="mt-4">新規登録</H1>
         <div class="has-text-left">
