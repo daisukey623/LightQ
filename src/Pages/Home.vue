@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="container ">
+    <div class="container">
       <Header></Header>
       <H1>投稿一覧</H1>
-      <div class="columns">
+      <div class="columns  mr-4 ml-4">
         <div class="submenu column is-3">
           <SideMenu class="is-hidden-mobile"></SideMenu>
         </div>

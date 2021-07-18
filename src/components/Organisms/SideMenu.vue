@@ -74,6 +74,6 @@ export default {
 .fixed {
   position: -webkit-sticky;
   position: sticky;
-  top: 100px;
+  top: 190px;
 }
 </style>

@@ -4,8 +4,8 @@
 
     <H1>詳細ページ</H1>
 
-    <div class="columns ">
-      <div class="submenu column is-3">
+    <div class="columns  mr-4 ml-4">
+      <div class="submenu column is-3 ">
         <SideMenu class="is-hidden-mobile"></SideMenu>
       </div>
       <div class="column is-6"> 

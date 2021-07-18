@@ -1,9 +1,9 @@
 <template>
+
   <nav
-    class="navbar fixed "
+    class="navbar fixed pr-5 pl-5 pb-5 pt-6"
     role="navigation"
     aria-label="main navigation "
-    
   >
     <div class="navbar-brand">
       <div>
@@ -52,6 +52,7 @@
       </div>
     </div>
   </nav>
+  
 </template>
 
 <script>
@@ -91,6 +92,7 @@ export default {
 .fixed {
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
+  top: 0px;
+  /* padding: 100px; */
 }
 </style>

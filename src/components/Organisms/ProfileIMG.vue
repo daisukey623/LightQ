@@ -89,7 +89,6 @@ export default {
       this.radio = null;
     },
     closeModal() {
-      console.log('クリック');
       this.$store.dispatch('closeModal');
     },
 
@@ -113,7 +112,6 @@ export default {
 
       await storageRef.getDownloadURL().then((url) => {
         this.url = url;
-        console.log(this.url);
       });
 
       const user = auth.currentUser;
@@ -143,7 +141,6 @@ export default {
 
       await this.refIMG.getDownloadURL().then((url) => {
         this.url = url;
-        console.log(this.url);
       });
 
       await auth.currentUser
