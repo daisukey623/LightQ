@@ -1,13 +1,15 @@
 <template>
-
   <nav
-    class="navbar fixed pr-5 pl-5 pb-5 pt-6"
+    class="navbar fixed pr-5 pl-5 pb-5 pt-5"
     role="navigation"
     aria-label="main navigation "
   >
     <div class="navbar-brand">
       <div>
-        <a class="navbar-item pb-0" @click="toHome">
+        <a class="navbar-item pb-0" @click="toTop" v-if="!auth">
+          <img src="@/assets/Logo.png" />
+        </a>
+        <a class="navbar-item pb-0" @click="toHome" v-if="auth">
           <img src="@/assets/Logo.png" />
         </a>
 
@@ -50,9 +52,13 @@
           ログアウト
         </button>
       </div>
+      <div class="navbar-item" v-if="!auth">
+        <button class="button is-light is-hidden-mobile" @click="logIn()">
+          ログイン
+        </button>
+      </div>
     </div>
   </nav>
-  
 </template>
 
 <script>
@@ -75,11 +81,17 @@ export default {
       await auth.signOut();
       await this.$store.dispatch('resetStore');
     },
+    toTop() {
+      this.$router.push('/');
+    },
     toHome() {
       this.$router.push('/home');
     },
     changeBurgerVisibillity() {
       this.burgerVisibillity = !this.burgerVisibillity;
+    },
+    logIn() {
+      this.$router.push('/signin');
     },
   },
 };
