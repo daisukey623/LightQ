@@ -1,11 +1,9 @@
 <template>
-  <section>
-    <div class="head">
-      <Header />
-    </div>
+  <div>
+    <Header></Header>
     <section class="hero bg-color  pr-6 pl-6 pt-5 pb-5 mt-1">
       <div class="container">
-        <div class="columns">
+        <div class="columns ">
           <div class="hero-body column is-half">
             <p class="title has-text-white has-text-left">
               人事が人事を支援する<br />投稿型コミュニティー Light Q
@@ -15,7 +13,10 @@
               LightQは、人事担当者に業務の疑問を、気軽質問できる投稿型コミュニティーです。
               社内外の境界なく現場の知見を共有し、フォローし合うことで、業務の疑問を解決できます。
             </p>
-            <button class="button is-white is-rounded mt-6 ">
+            <button
+              class="button is-white is-rounded mt-6 "
+              @click="toSignUp()"
+            >
               <span class="icon color">
                 <i class="fas fa-paper-plane"></i>
               </span>
@@ -31,7 +32,7 @@
     <div class="container mt-6">
       <H2>Light Qにできること</H2>
 
-      <div class="columns mt-6">
+      <div class="columns mt-6 mr-4 ml-4">
         <div class="column">
           <H3>{{ able01.title }}</H3>
           <p class="has-text-left">{{ able01.description }}</p>
@@ -50,7 +51,7 @@
         </div>
       </div>
 
-      <div class="columns mt-6">
+      <div class="columns mt-6 mr-4 ml-4">
         <div class="column">
           <H3>{{ able02.title }}</H3>
           <p class="has-text-left">
@@ -65,7 +66,7 @@
         </div>
       </div>
 
-      <div class="columns mt-6">
+      <div class="columns mt-6 mr-4 ml-4">
         <div class="column">
           <img :src="able03.img" class="mr-6 " />
         </div>
@@ -82,7 +83,7 @@
         </div>
       </div>
 
-      <div class="columns mt-6">
+      <div class="columns mt-6 mr-4 ml-4">
         <div class="column">
           <img :src="able04.img" class="mr-6 " />
         </div>
@@ -98,7 +99,30 @@
         </div>
       </div>
     </div>
-  </section>
+
+    <section class="hero bg-color  pr-6 pl-6 pt-5 pb-5 mt-1">
+      <div class="container">
+        <div class="hero-body ">
+          <p class="title has-text-white has-text-left">
+            人事が人事を支援する<br />投稿型コミュニティー Light Q
+          </p>
+
+          <p class="has-text-white has-text-weight-bold">
+            登録して気軽に質問してみましょう！
+          </p>
+          <button class="button is-white is-rounded mt-6 " @click="toSignUp()">
+            <span class="icon color">
+              <i class="fas fa-paper-plane"></i>
+            </span>
+            <span class="font">新規登録する</span>
+          </button>
+        </div>
+      </div>
+    </section>
+    <footer class="footer has-text-centered">
+      <strong>Light Q</strong> by Yokoyama Disuke
+    </footer>
+  </div>
 </template>
 
 <script>
@@ -116,7 +140,7 @@ export default {
     return {
       main: require('@/assets/LIghtQ_main.png'),
       able01: {
-        title: '1. 些細疑問も気軽に質問',
+        title: '1. 些細な疑問も気軽に質問',
         description:
           '人事業務でわからないところが質問できます。現在は採用領域で以下の業務内容に的絞って質問することができます。あらかじめ的が絞られていることで、言語化しにくい疑問も気軽に質問しやすくなります。',
         img: require('@/assets/LIghtQ_able01.png'),
@@ -135,6 +159,11 @@ export default {
       },
     };
   },
+  methods: {
+    toSignUp() {
+      this.$router.push('/signup');
+    },
+  },
 };
 </script>
 
@@ -148,22 +177,5 @@ export default {
 }
 .color {
   color: #56cbe1;
-}
-.head {
-  padding-left: 80px;
-}
-.wave {
-  opacity: 0.4;
-  position: absolute;
-  top: 3%;
-  left: 50%;
-  background: #0af;
-  width: 500px;
-  height: 500px;
-  margin-left: -250px;
-  margin-top: -250px;
-  transform-origin: 50% 48%;
-  border-radius: 43%;
-  animation: drift 3000ms infinite linear;
 }
 </style>
