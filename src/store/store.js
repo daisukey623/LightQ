@@ -111,6 +111,7 @@ export default new Vuex.Store({
       state.stateModal = false;
       state.isShowQuestionnaire = false;
       state.isShowQuestionnaireSignUp = false;
+      state.isShowProfileIMG = false;
     },
     IsloadingShow(state) {
       state.IsloadingShow = false;
