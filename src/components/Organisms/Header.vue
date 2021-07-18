@@ -1,12 +1,12 @@
 <template>
   <nav
-    class="navbar fixed pr-5 pl-5 pb-5 pt-5"
+    class="navbar fixed pr-5 pl-5 pb-5 pt-5 "
     role="navigation"
     aria-label="main navigation "
   >
     <div class="navbar-brand">
       <div>
-        <a class="navbar-item pb-0" @click="toTop" v-if="!auth">
+        <a class="navbar-item pb-0 " @click="toTop" v-if="!auth">
           <img src="@/assets/Logo.png" />
         </a>
         <a class="navbar-item pb-0" @click="toHome" v-if="auth">
@@ -19,6 +19,7 @@
       </div>
 
       <a
+        v-if="auth"
         role="button"
         class="navbar-burger"
         aria-label="menu"
@@ -27,6 +28,26 @@
         v-on:click="changeBurgerVisibillity"
         v-bind:class="{ 'is-active': burgerVisibillity }"
       >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+
+      <a
+        v-if="!auth"
+        role="button"
+        aria-label="menu"
+        aria-expanded="false"
+        data-target="navbarBasicExample"
+        v-on:click="changeBurgerVisibillity"
+        v-bind:class="{ 'is-active': burgerVisibillity }"
+      >
+        <button
+          class="button is-light ml-6 mt-3 is-hidden-desktop"
+          @click="logIn()"
+        >
+          ログイン
+        </button>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -104,7 +125,6 @@ export default {
 .fixed {
   position: -webkit-sticky;
   position: sticky;
-  top: 0px;
-  /* padding: 100px; */
+  top: -20px;
 }
 </style>
