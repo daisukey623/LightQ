@@ -1,6 +1,9 @@
 <template>
   <div>
-    <Header></Header>
+    <div class="container mp-0 ">
+      <Header></Header>
+    </div>
+
     <section class="hero bg-color  pr-6 pl-6 pt-5 pb-5 mt-1">
       <div class="container">
         <div class="columns ">
@@ -119,57 +122,57 @@
         </div>
       </div>
     </section>
-    <footer class="footer has-text-centered">
+    <footer class="footer has-text-centered ">
       <strong>Light Q</strong> by Yokoyama Disuke
     </footer>
   </div>
 </template>
 
 <script>
-import Header from '../components/Organisms/Header';
-import H2 from '@/components/Atoms/H2';
-import H3 from '@/components/Atoms/H3';
+import Header from "../components/Organisms/Header";
+import H2 from "@/components/Atoms/H2";
+import H3 from "@/components/Atoms/H3";
 
 export default {
   components: {
     Header,
     H2,
-    H3,
+    H3
   },
   data() {
     return {
-      main: require('@/assets/LIghtQ_main.png'),
+      main: require("@/assets/LIghtQ_main.png"),
       able01: {
-        title: '1. 些細な疑問も気軽に質問',
+        title: "1. 些細な疑問も気軽に質問",
         description:
-          '人事業務でわからないところが質問できます。現在は採用領域で以下の業務内容に的絞って質問することができます。あらかじめ的が絞られていることで、言語化しにくい疑問も気軽に質問しやすくなります。',
-        img: require('@/assets/LIghtQ_able01.png'),
+          "人事業務でわからないところが質問できます。現在は採用領域で以下の業務内容に的絞って質問することができます。あらかじめ的が絞られていることで、言語化しにくい疑問も気軽に質問しやすくなります。",
+        img: require("@/assets/LIghtQ_able01.png")
       },
       able02: {
-        title: '2. 変化の振り返り',
-        img: require('@/assets/LIghtQ_able02.png'),
+        title: "2. 変化の振り返り",
+        img: require("@/assets/LIghtQ_able02.png")
       },
       able03: {
-        title: '3.悩んでいる人事を支援',
-        img: require('@/assets/LIghtQ_able03.png'),
+        title: "3.悩んでいる人事を支援",
+        img: require("@/assets/LIghtQ_able03.png")
       },
       able04: {
-        title: '4.支援した人事の成長を見守る',
-        img: require('@/assets/LIghtQ_able04.png'),
-      },
+        title: "4.支援した人事の成長を見守る",
+        img: require("@/assets/LIghtQ_able04.png")
+      }
     };
   },
   methods: {
     toSignUp() {
-      this.$router.push('/signup');
-    },
-  },
+      this.$router.push("/signup");
+    }
+  }
 };
 </script>
 
 <style scoped>
 .bg-color {
-  background: linear-gradient(135deg, #167DF0, #12d8fa, #a6ffcb);
+  background: linear-gradient(135deg, #167df0, #12d8fa, #a6ffcb);
 }
 .font {
   color: #56cbe1;
@@ -177,5 +180,9 @@ export default {
 }
 .color {
   color: #56cbe1;
+}
+.mp-0 {
+  margin-top: -5px;
+  margin-bottom: -3px;
 }
 </style>

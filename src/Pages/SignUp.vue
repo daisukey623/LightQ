@@ -1,77 +1,80 @@
 <template>
-  <div class="container">
-    <Header></Header>
-    <div class=" columns is-centered  mr-4 ml-4">
-      <div class="box column is-half mt-6">
-        <H1 class="mt-4">新規登録</H1>
-        <div class="has-text-left">
-          <div class="control m-5">
-            <label class="label">お名前</label>
-            <p class="control has-icons-left has-icons-right">
-              <input
-                class="input"
-                id="userName"
-                type="text"
-                v-model="userName"
-                placeholder="お名前を入力してください"
-              />
-              <span class="icon is-small is-left">
-                <i class="fas fa-user"></i>
-              </span>
-            </p>
-          </div>
+  <section>
+    <div class="bg-color"></div>
+    <div class="container">
+      <Header></Header>
+      <div class=" columns is-centered  mr-4 ml-4">
+        <div class="box column is-half mt-6">
+          <H1 class="mt-4">新規登録</H1>
+          <div class="has-text-left">
+            <div class="control m-5">
+              <label class="label">お名前</label>
+              <p class="control has-icons-left has-icons-right">
+                <input
+                  class="input"
+                  id="userName"
+                  type="text"
+                  v-model="userName"
+                  placeholder="お名前を入力してください"
+                />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+              </p>
+            </div>
 
-          <div class="control m-5">
-            <label class="label">Email</label>
-            <p class="control has-icons-left has-icons-right">
-              <input
-                class="input"
-                id="remail"
-                type="email"
-                placeholder="メールアドレスを入力してください"
-                v-model="email"
-              />
-              <span class="icon is-small is-left">
-                <i class="fas fa-envelope"></i>
-              </span>
-            </p>
+            <div class="control m-5">
+              <label class="label">Email</label>
+              <p class="control has-icons-left has-icons-right">
+                <input
+                  class="input"
+                  id="remail"
+                  type="email"
+                  placeholder="メールアドレスを入力してください"
+                  v-model="email"
+                />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-envelope"></i>
+                </span>
+              </p>
+            </div>
+            <div class="control m-5">
+              <label class="label" for="password">パスワード</label>
+              <p class="control has-icons-left has-icons-right">
+                <input
+                  class="input"
+                  id="password"
+                  type="password"
+                  placeholder="パスワードを入力してください"
+                  v-model="password"
+                />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-lock"></i>
+                </span>
+              </p>
+            </div>
           </div>
-          <div class="control m-5">
-            <label class="label" for="password">パスワード</label>
-            <p class="control has-icons-left has-icons-right">
-              <input
-                class="input"
-                id="password"
-                type="password"
-                placeholder="パスワードを入力してください"
-                v-model="password"
-              />
-              <span class="icon is-small is-left">
-                <i class="fas fa-lock"></i>
-              </span>
-            </p>
+          <Button color="is-info" @click.native="sendRegister"
+            >新規登録する</Button
+          >
+          <div class="m-3">
+            <router-link to="/signin">ログインはこちらから</router-link>
           </div>
-        </div>
-        <Button color="is-info" @click.native="sendRegister"
-          >新規登録する</Button
-        >
-        <div class="m-3">
-          <router-link to="/signin">ログインはこちらから</router-link>
         </div>
       </div>
+      <ProfileIMG />
+      <QuestionnaireSignUp />
     </div>
-    <ProfileIMG />
-    <QuestionnaireSignUp />
-  </div>
+  </section>
 </template>
 
 <script>
-import { auth } from "../main";
-import QuestionnaireSignUp from "@/components/Organisms/QuestionnaireSignUp";
-import ProfileIMG from "@/components/Organisms/ProfileIMG";
-import H1 from "@/components/Atoms/H1";
-import Button from "@/components/Atoms/Button";
-import Header from "@/components//Organisms/Header";
+import { auth } from '../main';
+import QuestionnaireSignUp from '@/components/Organisms/QuestionnaireSignUp';
+import ProfileIMG from '@/components/Organisms/ProfileIMG';
+import H1 from '@/components/Atoms/H1';
+import Button from '@/components/Atoms/Button';
+import Header from '@/components//Organisms/Header';
 
 export default {
   components: {
@@ -79,30 +82,37 @@ export default {
     ProfileIMG,
     H1,
     Button,
-    Header
+    Header,
   },
   data() {
     return {
-      userName: "",
-      email: "",
-      password: ""
+      userName: '',
+      email: '',
+      password: '',
     };
   },
   methods: {
     async sendRegister() {
       await auth
         .createUserWithEmailAndPassword(this.email, this.password)
-        .then(result => {
+        .then((result) => {
           result.user.updateProfile({
-            displayName: this.userName
+            displayName: this.userName,
           });
 
-          this.$store.dispatch("showProfileIMG");
+          this.$store.dispatch('showProfileIMG');
         })
-        .catch(error => {
+        .catch((error) => {
           alert(error.message);
         });
-    }
-  }
+    },
+  },
 };
 </script>
+
+<style scoped>
+.bg-color {
+  background: linear-gradient(135deg, #167df0, #12d8fa, #a6ffcb);
+  height: 5px;
+}
+</style>

@@ -1,30 +1,33 @@
 <template>
-  <div class="container ">
-    <Header />
+  <section>
+    <div class="bg-color"></div>
+    <div class="container ">
+      <Header />
 
-    <H1>詳細ページ</H1>
+      <H1>詳細ページ</H1>
 
-    <div class="columns  mr-4 ml-4">
-      <div class="submenu column is-3 ">
-        <SideMenu class="is-hidden-mobile"></SideMenu>
-      </div>
-      <div class="column is-6">
-        <Post></Post>
+      <div class="columns  mr-4 ml-4">
+        <div class="submenu column is-3 ">
+          <SideMenu class="is-hidden-mobile"></SideMenu>
+        </div>
+        <div class="column is-6">
+          <Post></Post>
 
-        <hr />
+          <hr />
 
-        <H2 class="mt-5">回答する</H2>
+          <H2 class="mt-5">回答する</H2>
 
-        <FormComments />
-        <hr />
+          <FormComments />
+          <hr />
 
-        <H2 class="mt-5">回答一覧</H2>
-        <FeedComments />
-        <Modal />
-        <Questionnaire />
+          <H2 class="mt-5">回答一覧</H2>
+          <FeedComments />
+          <Modal />
+          <Questionnaire />
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

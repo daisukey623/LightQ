@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <section>
+    <div class="bg-color"></div>
     <div class="container">
       <Header />
       <H1>プロフィール</H1>
@@ -27,7 +28,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
