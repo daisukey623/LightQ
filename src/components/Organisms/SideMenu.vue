@@ -20,21 +20,21 @@
  
         <li @click="toHome" class="has-text-left"><a>
           <span class="icon-text">
-          <span class="icon"> <i class="fas fa-home"></i></span
+          <span class="icon mr-3"> <i class="fas fa-home"></i></span
           ><span>ホーム</span>
         </span></a>
         </li>
         
         <li @click="toUsers" class="has-text-left"><a>
           <span class="icon-text">
-          <span class="icon"> <i class="fas fa-user"></i></span
+          <span class="icon mr-3"> <i class="fas fa-user"></i></span
           ><span>プロフィール</span>
         </span></a>
         </li>
 
         <li @click="toFollows" class="has-text-left"><a>
           <span class="icon-text">
-          <span class="icon"> <i class="fas fa-user-friends"></i></span
+          <span class="icon mr-3"> <i class="fas fa-user-friends"></i></span
           ><span>フォロー</span>
         </span></a>
         </li>

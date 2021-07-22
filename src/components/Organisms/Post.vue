@@ -8,7 +8,14 @@
               <img class="is-rounded isFit" :src="post.user_photoURL" />
             </p>
           </figure>
-          <span class="tag is-info is-light mx-1 ">{{ post.status }}</span>
+          <span
+            class="tag is-info is-light mx-1 is-rounded"
+            v-if="post.status === '受付中'"
+            >{{ post.status }}</span
+          >
+          <span class="tag is-success is-light mx-1 is-rounded" v-else>{{
+            post.status
+          }}</span>
         </div>
 
         <div class="media-content">

@@ -13,7 +13,13 @@
                   />
                 </p>
               </figure>
-              <span class="tag is-info is-light mx-1 ">{{
+
+              <span
+                class="tag is-info is-light mx-1 is-rounded"
+                v-if="postsList.status === '受付中'"
+                >{{ postsList.status }}</span
+              >
+              <span class="tag mx-1 is-light is-rounded" v-else>{{
                 postsList.status
               }}</span>
             </div>
@@ -23,6 +29,7 @@
                 <p class="has-text-left">
                   {{ postsList.title }}
                   <br />
+
                   <small class="mr-4 has-text-grey"
                     >@{{ postsList.user_name }}</small
                   >
@@ -30,9 +37,9 @@
                 </p>
                 <div class="is-flex">
                   <p class=" has-text-left mt-3">
-                    <span class="tag mx-1 has-text-left">{{
-                      postsList.tags
-                    }}</span>
+                    <span class="tag mx-1 has-text-left"
+                      >#{{ postsList.tags }}</span
+                    >
                   </p>
                 </div>
               </div>
@@ -48,6 +55,11 @@
 import { mapGetters } from 'vuex';
 
 export default {
+  data() {
+    return {
+      postStatus: '',
+    };
+  },
   created() {
     this.$store.dispatch('getPosts');
   },
