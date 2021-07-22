@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <Header></Header>
-      <H1>投稿一覧</H1>
+      <H1>ホーム</H1>
       <div class="columns  mr-4 ml-4">
         <div class="submenu column is-3">
           <SideMenu class="is-hidden-mobile"></SideMenu>

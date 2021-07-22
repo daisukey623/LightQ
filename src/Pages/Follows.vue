@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <Header />
-      <H1>フォロー一覧</H1>
+      <H1>フォロー</H1>
       <div class="columns  mr-4 ml-4">
         <div class="submenu column is-3">
           <SideMenu class="is-hidden-mobile"></SideMenu>

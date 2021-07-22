@@ -1,6 +1,6 @@
 <template>
-  <aside class="fixed">
-    <p class="menu-label p-3  has-background-light">
+  <aside class="fixed menu">
+    <p class="menu-label p-3  has-background-light ">
       Menu
     </p>
 
@@ -15,17 +15,34 @@
         <small>{{ auth.currentUser.displayName }}</small>
       </p>
     </div>
+    <div class=" mt-5 columns is-mobile is-centered">
+      <ul class="menu-list ">
+ 
+        <li @click="toHome" class="has-text-left"><a>
+          <span class="icon-text">
+          <span class="icon"> <i class="fas fa-home"></i></span
+          ><span>ホーム</span>
+        </span></a>
+        </li>
+        
+        <li @click="toUsers" class="has-text-left"><a>
+          <span class="icon-text">
+          <span class="icon"> <i class="fas fa-user"></i></span
+          ><span>プロフィール</span>
+        </span></a>
+        </li>
 
-    <ul class="menu-list ">
-      <li @click="toHome"><a>ホーム</a></li>
-      <li>
-        <a>マイページ</a>
-        <ul>
-          <li @click="toUsers"><a>プロフィール</a></li>
-          <li @click="toFollows"><a>フォロー</a></li>
-        </ul>
-      </li>
-    </ul>
+        <li @click="toFollows" class="has-text-left"><a>
+          <span class="icon-text">
+          <span class="icon"> <i class="fas fa-user-friends"></i></span
+          ><span>フォロー</span>
+        </span></a>
+        </li>
+
+
+      </ul>
+    </div>
+
     <Button color="is-info mt-6 is-hidden-mobile" @click.native="showModal"
       >質問する</Button
     >
@@ -33,32 +50,32 @@
 </template>
 
 <script>
-import { auth } from "/src/main.js";
-import Button from "@/components/Atoms/Button";
+import { auth } from '/src/main.js';
+import Button from '@/components/Atoms/Button';
 
 export default {
   data() {
     return {
-      auth: auth
+      auth: auth,
     };
   },
   components: {
-    Button
+    Button,
   },
   methods: {
     showModal() {
-      this.$store.dispatch("showModal");
+      this.$store.dispatch('showModal');
     },
     toHome() {
-      this.$router.push("/home");
+      this.$router.push('/home');
     },
     toUsers() {
       this.$router.push(`/users/${auth.currentUser.uid}`);
     },
     toFollows() {
       this.$router.push(`/follows/${auth.currentUser.uid}`);
-    }
-  }
+    },
+  },
 };
 </script>
 
