@@ -8,6 +8,14 @@
           <SideMenu class="is-hidden-mobile"></SideMenu>
         </div>
         <div class="column is-6">
+          <button
+            class="button is-rounded mobile-post is-info is-outlined has-background-white is-hidden-desktop"
+            @click="showModalMobile()"
+          >
+            <span class="icon color">
+              <i class="fas fa-paper-plane"></i>
+            </span>
+          </button>
           <FeedPosts></FeedPosts>
           <Modal></Modal>
         </div>
@@ -15,7 +23,6 @@
     </div>
   </section>
 </template>
-
 
 <script>
 import SideMenu from '../components/Organisms/SideMenu';
@@ -49,7 +56,24 @@ export default {
       return this.$store.getters.LoginUser;
     },
   },
+  methods: {
+    showModalMobile() {
+      this.$store.dispatch('showModal');
+    },
+  },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.mobile-post {
+  position: fixed;
+  top: 650px;
+  left: 280px;
+  /* border-radius: 50%; */
+  width: 55px;
+  height: 55px;
+  z-index: 10;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+}
+</style>

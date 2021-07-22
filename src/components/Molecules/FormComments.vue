@@ -13,7 +13,12 @@
       </div>
       <div class="field">
         <p class="control">
-          <Button color="is-info mt-3" @click.native="addComment">回答を送信</Button>
+          <Button color="is-info mt-3" @click.native="addComment">
+            <span class="icon color">
+              <i class="fas fa-paper-plane "></i>
+            </span>
+            <span> 回答を送信</span></Button
+          >
         </p>
       </div>
     </div>
