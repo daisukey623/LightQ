@@ -8,7 +8,19 @@
           <SideMenu class="is-hidden-mobile"></SideMenu>
         </div>
         <div class="submenu column is-6">
-          <Score ref="child" class="mb-6"></Score>
+          <b-tooltip
+            multilined
+            always
+            position="is-right"
+            type="is-info is-light"
+            label="自分の投稿にベストアンサーを設定すると、振り返りが表示され、グラフが更新されます。"
+            class="is-hidden-mobile"
+          >
+            <Score ref="child" class="mb-6"></Score>
+          </b-tooltip>
+
+          <Score ref="child" class="mb-6 is-hidden-desktop"></Score>
+
           <H2>投稿一覧</H2>
           <FeedProfile></FeedProfile>
           <Modal />
@@ -38,9 +50,7 @@ export default {
     H1,
     H2,
   },
-  data() {
-    return {};
-  },
+
   created() {
     this.$store.dispatch('getMyPosts', this.$route.params.id);
   },
@@ -52,4 +62,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.b-tooltip {
+  margin-bottom: 0.5em;
+}
+</style>
