@@ -13,7 +13,12 @@
                   />
                 </p>
               </figure>
-              <span class="tag is-info is-light mx-1 ">{{
+              <span
+                class="tag is-info is-light mx-1 is-rounded"
+                v-if="postsList.status === '受付中'"
+                >{{ postsList.status }}</span
+              >
+              <span class="tag is-success is-light is-rounded mx-1 " v-else>{{
                 postsList.status
               }}</span>
             </div>
@@ -45,7 +50,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex';
 
 export default {
   data() {
@@ -54,7 +59,7 @@ export default {
   created() {},
 
   computed: {
-    ...mapGetters(["myPosts"])
+    ...mapGetters(['myPosts']),
   },
   methods: {
     toPosts(index) {
@@ -69,8 +74,8 @@ export default {
                 ${date.getHours()}:
                 ${date.getMinutes()}
               `;
-    }
-  }
+    },
+  },
 };
 </script>
 
