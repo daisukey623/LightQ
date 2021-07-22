@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <div v-for="(postsList, index) in posts" :key="`first-${index}`">
       <div @click="toPosts(index)" class="isPointer">
         <div class="box mb-1">
@@ -48,7 +48,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

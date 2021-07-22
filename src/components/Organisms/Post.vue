@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <div class="box mb-1">
       <article class="media">
         <div class="media-left">
@@ -74,7 +74,7 @@
         </div>
       </article>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

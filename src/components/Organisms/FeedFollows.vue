@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <div v-for="(list, index) in follows" :key="`first-${index}`">
       <div class="isPointer box mb-1" >
         <div class="has-text-right">
@@ -31,7 +31,7 @@
         </article>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

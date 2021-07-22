@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <div class="container">
       <Header></Header>
       <H1>ホーム</H1>
@@ -13,8 +13,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
+
 
 <script>
 import SideMenu from '../components/Organisms/SideMenu';

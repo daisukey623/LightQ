@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <div v-for="(commentsList, index) in comments" :key="`first-${index}`">
       <div class="isPointer">
         <div class="box mb-1">
@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
