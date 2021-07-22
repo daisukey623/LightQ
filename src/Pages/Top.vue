@@ -169,7 +169,7 @@ export default {
 
 <style scoped>
 .bg-color {
-  background: linear-gradient(135deg, #1fa2ff, #12d8fa, #a6ffcb);
+  background: linear-gradient(135deg, #167DF0, #12d8fa, #a6ffcb);
 }
 .font {
   color: #56cbe1;

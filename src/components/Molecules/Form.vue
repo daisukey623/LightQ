@@ -50,32 +50,35 @@
         v-model="body"
       ></textarea>
 
-      <Button class="mt-5" color="is-info" @click.native="addPost"
-        >送信する</Button
+      <Button class="mt-5" color="is-info" @click.native="addPost">
+        <span class="icon color">
+          <i class="fas fa-paper-plane "></i>
+        </span>
+        <span>送信する</span></Button
       >
     </div>
   </section>
 </template>
 
 <script>
-import { db, auth } from '/src/main.js';
-import Button from '@/components/Atoms/Button';
-import { ToastProgrammatic as Toast } from 'buefy'
+import { db, auth } from "/src/main.js";
+import Button from "@/components/Atoms/Button";
+import { ToastProgrammatic as Toast } from "buefy";
 export default {
   data() {
     return {
-      tag: '',
-      title: '',
-      body: '',
-      msg:'投稿しました！'
+      tag: "",
+      title: "",
+      body: "",
+      msg: "投稿しました！"
     };
   },
   components: {
-    Button,
+    Button
   },
   methods: {
     async addPost() {
-      const ref = await db.collection('posts').doc();
+      const ref = await db.collection("posts").doc();
       ref.set(
         {
           id: ref.id,
@@ -83,26 +86,25 @@ export default {
           title: this.title,
           body: this.body,
           tags: this.tag,
-          status: '受付中',
+          status: "受付中",
           like_count: 0,
           user_name: auth.currentUser.displayName,
           user_photoURL: auth.currentUser.photoURL,
-          best_answer: '',
-          createdAt: new Date(),
+          best_answer: "",
+          createdAt: new Date()
         },
         { marge: true }
       );
       this.init();
-      Toast.open(this.msg)
+      Toast.open(this.msg);
     },
     init() {
-      this.tag = '';
-      this.title = '';
-      this.body = '';
-      this.$store.dispatch('closeModal');
-    },
-
-  },
+      this.tag = "";
+      this.title = "";
+      this.body = "";
+      this.$store.dispatch("closeModal");
+    }
+  }
 };
 </script>
 

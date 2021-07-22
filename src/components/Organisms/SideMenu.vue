@@ -17,34 +17,41 @@
     </div>
     <div class=" mt-5 columns is-mobile is-centered">
       <ul class="menu-list ">
- 
-        <li @click="toHome" class="has-text-left"><a>
-          <span class="icon-text">
-          <span class="icon mr-3"> <i class="fas fa-home"></i></span
-          ><span>ホーム</span>
-        </span></a>
-        </li>
-        
-        <li @click="toUsers" class="has-text-left"><a>
-          <span class="icon-text">
-          <span class="icon mr-3"> <i class="fas fa-user"></i></span
-          ><span>プロフィール</span>
-        </span></a>
+        <li @click="toHome" class="has-text-left">
+          <a>
+            <span class="icon-text">
+              <span class="icon mr-3"> <i class="fas fa-home"></i></span
+              ><span>ホーム</span>
+            </span></a
+          >
         </li>
 
-        <li @click="toFollows" class="has-text-left"><a>
-          <span class="icon-text">
-          <span class="icon mr-3"> <i class="fas fa-user-friends"></i></span
-          ><span>フォロー</span>
-        </span></a>
+        <li @click="toUsers" class="has-text-left">
+          <a>
+            <span class="icon-text">
+              <span class="icon mr-3"> <i class="fas fa-user"></i></span
+              ><span>プロフィール</span>
+            </span></a
+          >
         </li>
 
-
+        <li @click="toFollows" class="has-text-left">
+          <a>
+            <span class="icon-text">
+              <span class="icon mr-3"> <i class="fas fa-user-friends"></i></span
+              ><span>フォロー</span>
+            </span></a
+          >
+        </li>
       </ul>
     </div>
 
-    <Button color="is-info mt-6 is-hidden-mobile" @click.native="showModal"
-      >質問する</Button
+    <Button color="is-info mt-6 is-hidden-mobile" @click.native="showModal">
+      <span class="icon color">
+        <i class="fas fa-paper-plane "></i>
+      </span>
+
+      <span>質問する</span></Button
     >
   </nav>
 </template>
