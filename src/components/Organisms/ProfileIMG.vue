@@ -56,7 +56,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { auth, storage } from '/src/main.js';
+import { auth, storage, db } from '/src/main.js';
 
 export default {
   data() {
@@ -123,6 +123,8 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+
+      this.setDefaultScores();
     },
 
     async addProfile() {
@@ -150,6 +152,23 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+
+      this.setDefaultScores();
+    },
+    setDefaultScores() {
+      const ref = db.collection('scores').doc();
+      ref.set(
+        {
+          id: ref.id,
+          user_id: auth.currentUser.uid,
+          plan_score: 0,
+          population_score: 0,
+          selection_score: 0,
+          follow_score: 0,
+          createdAt: new Date(),
+        },
+        { marge: true }
+      );
     },
   },
 };

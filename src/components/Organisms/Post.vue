@@ -13,7 +13,7 @@
             v-if="post.status === '受付中'"
             >{{ post.status }}</span
           >
-          <span class="tag is-success is-light mx-1 is-rounded" v-else>{{
+          <span class="tag  is-light mx-1 is-rounded" v-else>{{
             post.status
           }}</span>
         </div>

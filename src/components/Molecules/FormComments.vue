@@ -31,6 +31,7 @@ export default {
       comment: '',
       msg: {
         postAnswer: '回答しました！',
+        addFollows: 'この投稿ユーザーをフォローしました',
       },
     };
   },
@@ -59,7 +60,11 @@ export default {
           },
           { marge: true }
         );
-        await this.addFollows();
+        Toast.open(this.msg.postAnswer);
+        if (this.post.user_id !== auth.currentUser.uid) {
+          await this.addFollows();
+        }
+
         await this.init();
       } else {
         window.alert('回答が空白です');
@@ -67,13 +72,13 @@ export default {
     },
     init() {
       this.comment = '';
-      Toast.open(this.msg.postAnswer);
     },
     async addFollows() {
-      let check = this.follows
+      let checkMyfollws = this.follows
         .map((item) => item.followed)
         .includes(this.post.user_id);
-      if (!check) {
+
+      if (!checkMyfollws) {
         const ref = await db.collection('follows').doc();
         ref.set(
           {
@@ -85,6 +90,7 @@ export default {
           },
           { marge: true }
         );
+        Toast.open(this.msg.addFollows);
       } else {
         console.log('セットできません');
       }
