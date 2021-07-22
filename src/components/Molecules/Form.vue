@@ -1,5 +1,5 @@
 <template>
-  <div class="field">
+  <section class="field">
     <label class="label">相談したい採用領域</label>
     <div class="control">
       <label class="radio">
@@ -54,7 +54,7 @@
         >送信する</Button
       >
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

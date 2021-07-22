@@ -1,5 +1,5 @@
 <template>
-  <nav
+  <header
     class="navbar fixed pr-5 pl-5 pb-5 pt-5 "
     role="navigation"
     aria-label="main navigation "
@@ -79,7 +79,7 @@
         </button>
       </div>
     </div>
-  </nav>
+  </header>
 </template>
 
 <script>

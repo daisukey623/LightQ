@@ -1,22 +1,23 @@
 <template>
-  <article class="media">
+  <section class="media">
     <div class="media-content">
       <div class="field">
         <p class="control">
           <textarea
-            class="textarea"
-            placeholder="質問の回答を入力してください"
+            class="textarea "
+            placeholder="質問の回答を入力してください。回答を送信すると、投稿ユーザーをフォローできます。"
             v-model="comment"
+            rows="10"
           ></textarea>
         </p>
       </div>
       <div class="field">
         <p class="control">
-          <Button color="is-info" @click.native="addComment">回答を送信</Button>
+          <Button color="is-info mt-3" @click.native="addComment">回答を送信</Button>
         </p>
       </div>
     </div>
-  </article>
+  </section>
 </template>
 
 <script>

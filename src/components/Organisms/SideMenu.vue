@@ -1,5 +1,5 @@
 <template>
-  <aside class="fixed menu">
+  <nav class="fixed menu">
     <p class="menu-label p-3  has-background-light ">
       Menu
     </p>
@@ -46,7 +46,7 @@
     <Button color="is-info mt-6 is-hidden-mobile" @click.native="showModal"
       >質問する</Button
     >
-  </aside>
+  </nav>
 </template>
 
 <script>
