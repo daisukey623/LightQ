@@ -45,7 +45,7 @@ Light Qは以下4つの利用方法から構成されます。
 
 
 ### 1. 些細な疑問も気軽に質問
-<img src="https://drive.google.com/drive/my-drive">
+<img src="https://github.com/daisukey623/LightQ/blob/tada/vuex-store/LightQ_howTo04.mp4">
 人事業務でわからないところを投稿機能で質問できます。
 
 
