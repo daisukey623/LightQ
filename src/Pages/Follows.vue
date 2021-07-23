@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="bg-color"></div>
     <div class="container">
       <Header />
       <H1>フォロー</H1>
@@ -9,7 +10,7 @@
         </div>
         <div class="submenu column is-6">
           <FeedFollows></FeedFollows>
-                  <Modal />
+          <Modal />
         </div>
       </div>
     </div>
@@ -29,7 +30,7 @@ export default {
     Header,
     FeedFollows,
     H1,
-    Modal
+    Modal,
   },
 
   created() {

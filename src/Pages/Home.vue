@@ -1,5 +1,6 @@
 <template>
   <section>
+    <div class="bg-color fixed"></div>
     <div class="container">
       <Header></Header>
       <H1>ホーム</H1>
@@ -75,5 +76,9 @@ export default {
   z-index: 10;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+}
+.bg-color {
+  background: linear-gradient(135deg, #167df0, #12d8fa, #a6ffcb);
+  height: 5px;
 }
 </style>

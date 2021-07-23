@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <section>
+    <div class="bg-color"></div>
     <div class="container">
       <Header />
       <H1>プロフィール</H1>
@@ -7,6 +8,7 @@
         <div class="submenu column is-3">
           <SideMenu class="is-hidden-mobile"></SideMenu>
         </div>
+        
         <div class="submenu column is-6">
           <b-tooltip
             multilined
@@ -27,7 +29,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

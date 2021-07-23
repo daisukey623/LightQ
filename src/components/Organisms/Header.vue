@@ -127,4 +127,7 @@ export default {
   position: sticky;
   top: -20px;
 }
+.bg-color {
+  background: linear-gradient(135deg, #167df0, #12d8fa, #a6ffcb);
+}
 </style>
