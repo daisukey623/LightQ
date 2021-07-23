@@ -1,5 +1,5 @@
 ## アプリケーション名
-![name](https://user-images.githubusercontent.com/42987402/126762551-7a4de23e-699d-4e23-b4ef-53c15d9edac4.png) 
+<img src="https://user-images.githubusercontent.com/42987402/126762551-7a4de23e-699d-4e23-b4ef-53c15d9edac4.png" width="200px"> 
 Light Q
 
 [https://lightq-e5c74.web.app](https://lightq-e5c74.web.app)
