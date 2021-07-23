@@ -1,5 +1,5 @@
 ## アプリケーション名
-<img src="https://user-images.githubusercontent.com/42987402/126762551-7a4de23e-699d-4e23-b4ef-53c15d9edac4.png" width="800px"> 
+<img src="https://user-images.githubusercontent.com/42987402/126762551-7a4de23e-699d-4e23-b4ef-53c15d9edac4.png" width="600px"> 
 Light Q
 
 [https://lightq-e5c74.web.app](https://lightq-e5c74.web.app)
@@ -45,22 +45,22 @@ Light Qは以下4つの利用方法から構成されます。
 
 
 ### 1. 些細な疑問も気軽に質問
-<img src="https://user-images.githubusercontent.com/42987402/126772074-43904717-fda7-4459-875d-e2de835289dd.gif" width="800px">
+<img src="https://user-images.githubusercontent.com/42987402/126772074-43904717-fda7-4459-875d-e2de835289dd.gif" width="600px">
 人事業務でわからないところを投稿機能で質問できます。
 
 
 ### 2. 変化の振り返り
-
+<img src="https://user-images.githubusercontent.com/42987402/126772110-789a641f-acd4-48cc-bf9d-bc2d25005351.gif" width="600px">
 自分の投稿で他のユーザーから得られたコメントを、ベストアンサーに設定することができます。ベストアンサー設定時に、各業務の振り返りを行え、振り返りはグラフ化されます。グラフは自分のプロフィールから閲覧することができます。
 
 
 ### 3.悩んでいる人事を支援
-
+<img src="https://user-images.githubusercontent.com/42987402/126772116-0b43256c-654a-4c3c-8b7e-a6937ef28703.gif" width="600px">
 他のユーザーの投稿に対して、コメントをすることができます。疑問の解決に繋がるような支援を行えます。
 
 
 ### 4.支援した人事の成長を見守る
-
+<img src="https://user-images.githubusercontent.com/42987402/126772117-ac15fa7f-4aae-41ad-92cd-b6496286c237.gif" width="600px">
 コメントしたユーザーに対して、自動でフォローがされます。フォローしたユーザーのプロフィールから、グラフや投稿リストの閲覧することができ、より身近に支援する枠組みが提供されます。
 
 
@@ -72,7 +72,7 @@ Light Qは以下4つの利用方法から構成されます。
 
 
 ## データベース設計
-<img src="https://user-images.githubusercontent.com/42987402/126762536-4693e18f-206c-4522-ad48-b5eb0b67f724.png" width="800px">
+<img src="https://user-images.githubusercontent.com/42987402/126762536-4693e18f-206c-4522-ad48-b5eb0b67f724.png" width="600px">
 
 ## 実装機能
-<img src="https://user-images.githubusercontent.com/42987402/126762332-6f2ebf0a-c919-4fee-8231-ea491f19b081.png" width="800px">
+<img src="https://user-images.githubusercontent.com/42987402/126762332-6f2ebf0a-c919-4fee-8231-ea491f19b081.png" width="600px">
