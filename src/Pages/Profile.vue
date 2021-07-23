@@ -8,6 +8,7 @@
         <div class="submenu column is-3">
           <SideMenu class="is-hidden-mobile"></SideMenu>
         </div>
+        
         <div class="submenu column is-6">
           <b-tooltip
             multilined
