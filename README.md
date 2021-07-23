@@ -78,4 +78,4 @@ Light Qは以下4つの利用方法から構成されます。
 
 
 ## 実装機能
-![name](https://github.com/daisukey623/LightQ/blob/main/function.png)
+![name](https://user-images.githubusercontent.com/42987402/126762332-6f2ebf0a-c919-4fee-8231-ea491f19b081.png)
