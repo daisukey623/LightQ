@@ -1,5 +1,5 @@
 ## アプリケーション名
-<img src="https://user-images.githubusercontent.com/42987402/126762551-7a4de23e-699d-4e23-b4ef-53c15d9edac4.png" width="200px"> 
+<img src="https://user-images.githubusercontent.com/42987402/126762551-7a4de23e-699d-4e23-b4ef-53c15d9edac4.png" width="800px"> 
 Light Q
 
 [https://lightq-e5c74.web.app](https://lightq-e5c74.web.app)
@@ -72,7 +72,7 @@ Light Qは以下4つの利用方法から構成されます。
 
 
 ## データベース設計
-![name](https://user-images.githubusercontent.com/42987402/126762536-4693e18f-206c-4522-ad48-b5eb0b67f724.png)
+<img src="https://user-images.githubusercontent.com/42987402/126762536-4693e18f-206c-4522-ad48-b5eb0b67f724.png" width="800px">
 
 ## 実装機能
-![name](https://user-images.githubusercontent.com/42987402/126762332-6f2ebf0a-c919-4fee-8231-ea491f19b081.png)
+<img src="https://user-images.githubusercontent.com/42987402/126762332-6f2ebf0a-c919-4fee-8231-ea491f19b081.png" width="800px">
