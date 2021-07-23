@@ -45,7 +45,7 @@ Light Qは以下4つの利用方法から構成されます。
 
 
 ### 1. 些細な疑問も気軽に質問
-
+<img src="https://github.com/daisukey623/LightQ/issues/55#issuecomment-885532532">
 人事業務でわからないところを投稿機能で質問できます。
 
 
