@@ -68,7 +68,7 @@ Light Qは以下4つの利用方法から構成されます。
 * HTML / CSS
 * JavaScript
 * Vue2.6.12 / Vue CLI.5.12 / Vuex / Vue Router
-* firebase 9.16.0
+* firebase （Hosting,Firestore,Storage）
 
 
 ## データベース設計
