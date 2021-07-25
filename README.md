@@ -75,4 +75,4 @@ Light Qは以下4つの利用方法から構成されます。
 <img src="https://user-images.githubusercontent.com/42987402/126762536-4693e18f-206c-4522-ad48-b5eb0b67f724.png" width="600px">
 
 ## 実装機能
-<img src="https://user-images.githubusercontent.com/42987402/126762332-6f2ebf0a-c919-4fee-8231-ea491f19b081.png" width="600px">
+<img src="https://user-images.githubusercontent.com/42987402/126884546-7ec52ff6-c292-4315-8b27-48af5b66747f.png" width="600px">
