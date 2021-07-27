@@ -66,7 +66,7 @@ Light Qは以下4つの利用方法から構成されます。
 
 ## 使用技術
 * HTML / CSS
-* bulma 0.9.2
+* bulma 0.9.2 ※開発期間短縮のため利用
 * JavaScript
 * Vue2.6.12 / Vue CLI.5.12 / Vuex / Vue Router
 * vue-chartjs 3.5.1
