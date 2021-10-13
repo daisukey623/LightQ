@@ -1,7 +1,7 @@
 <template>
   <div>
-    <span>あいうえお</span>
-    <span>かきくけこ</span>
+    <span>ABCDE</span>
+    <span>EFGHIJ</span>
     <span>さしすせそ</span>
     <span>たちつてと</span>
     <span>なにぬねの</span>
