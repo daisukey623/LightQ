@@ -2,6 +2,8 @@
   <div>
     <span>ABCDE</span>
     <span>EFGHIJ</span>
+    <span>さしすせそ</span>
+    <span>たちつてと</span>
     <span>なにぬねの</span>
   </div>
 </template>
